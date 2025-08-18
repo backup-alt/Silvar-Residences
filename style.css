@@ -339,7 +339,7 @@ html, body {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: url("/images/bg.jpg") center center/cover no-repeat;
+  background: url("images/bg.jpg") center center/cover no-repeat;
   z-index: 1;
   filter: blur(6.9px) brightness(0.65);
   opacity: 0.92;
@@ -661,4 +661,5 @@ html, body {
 .homepage-footer {
   position: relative; /* Add this if you haven't already! */
 }
+
 
