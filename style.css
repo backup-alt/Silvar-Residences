@@ -1,6 +1,6 @@
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* height of your navbar (adjust if needed) */
+  scroll-padding-top: 160px; /* height of your navbar (adjust if needed) */
 }
 
 
@@ -667,6 +667,7 @@ html, body {
 .homepage-footer {
   position: relative; /* Add this if you haven't already! */
 }
+
 
 
 
