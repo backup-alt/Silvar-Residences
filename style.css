@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -904,5 +908,6 @@ html, body {
   color: #444;
   font-size: 1.02rem;
 }
+
 
 
