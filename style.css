@@ -65,7 +65,7 @@ html, body {
   margin: 0;
   padding: 0;
   gap: 69px;
-  margin-left: 480px; /* Add left margin to push nav links right */
+  margin-left: 600px; /* Add left margin to push nav links right */
 }
 
 
@@ -909,6 +909,7 @@ html, body {
   color: #444;
   font-size: 1.02rem;
 }
+
 
 
 
