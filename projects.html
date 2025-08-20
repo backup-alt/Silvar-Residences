@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<body>
+  <nav class="navbar">
+    <div class="logo img">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" />
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#Projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#values">Values</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#press-contact">Press Contact</a></li>
+    </ul>
+    <a href="{% url 'projects' %}" class="btn-consultation"> Schedule a Consultation </a>
+  </nav>
+
+  <!-- Rest of your projects.html content here -->
+</body>
+
+<section class="project-contact-section">
+  <div class="project-message" id="project-message">
+    <h2>Because your dream deserves attention. Speak to our team now.</h2>
+    <p>Your dream deserves more than just a plan — it deserves the right attention. Speak with us today and discover how simple it can be to bring your vision home.</p>
+  </div>
+  <div class="form-progress-bar" id="progress-bar"><div class="progress"></div></div>
+
+  <form id="projectForm" class="project-form">
+    <!-- Step 1: Names -->
+    <div class="form-step active" id="step1">
+      <input type="text" name="first_name" placeholder="First Name" required>
+      <input type="text" name="last_name" placeholder="Last Name" required>
+      <button type="button" class="next-btn">Next</button>
+    </div>
+    <!-- Step 2: Email/Phone -->
+    <div class="form-step" id="step2">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <button type="button" class="next-btn">Next</button>
+    </div>
+    <!-- Step 3: Final Message and Send -->
+    <div class="form-step" id="step3">
+      <div class="catchy-message">
+        <h3>One final step!</h3>
+        <p>We’re almost ready to connect you with our team. Just hit send and we’ll reach out to you soon.</p>
+      </div>
+      <button type="submit" class="send-btn">Send</button>
+    </div>
+    <script src="{% static 'js/projects.js' %}"></script>
+  </form>
+</section>
