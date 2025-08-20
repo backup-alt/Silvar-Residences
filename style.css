@@ -1,6 +1,6 @@
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 100px;
 }
 
 html, body {
@@ -909,6 +909,7 @@ html, body {
   color: #444;
   font-size: 1.02rem;
 }
+
 
 
 
