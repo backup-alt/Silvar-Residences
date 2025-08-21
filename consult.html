@@ -6,7 +6,18 @@
 </head>
 <body>
 <body>
-  {% include 'nav.html' %}
+  <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
+
+  <script>
+    // Load nav.html into the placeholder div
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+      })
+      .catch(err => console.error('Failed to load navbar:', err));
+  </script>
+
 
   <!-- Rest of your projects.html content here -->
 </body>
@@ -42,6 +53,7 @@
     <script src="js/consult.js"></script>
   </form>
 </section>
+
 
 
 
