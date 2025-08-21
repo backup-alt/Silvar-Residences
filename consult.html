@@ -6,20 +6,7 @@
 </head>
 <body>
 <body>
-  <nav class="navbar">
-    <div class="logo img">
-      <img src="images/logo.png" alt="Logo" />
-    </div>
-    <ul class="nav-menu">
-      <li><a href="#Projects">Projects</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#values">Values</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#press-contact">Press Contact</a></li>
-    </ul>
-    <a href="{% url 'projects' %}" class="btn-consultation"> Schedule a Consultation </a>
-  </nav>
+  {% include 'nav.html' %}
 
   <!-- Rest of your projects.html content here -->
 </body>
@@ -55,6 +42,7 @@
     <script src="js/consult.js"></script>
   </form>
 </section>
+
 
 
 
