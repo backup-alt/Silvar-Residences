@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <body>
@@ -18,38 +18,107 @@
   </script>
 
   <!-- Rest of your projects.html content here -->
-</body>
-
-<section class="project-contact-section">
-  <div class="project-message" id="project-message">
-    <h2>Because your dream deserves attention. Speak to our team now.</h2>
-    <p>Your dream deserves more than just a plan — it deserves the right attention. Speak with us today and discover how simple it can be to bring your vision home.</p>
-  </div>
-  <div class="form-progress-bar" id="progress-bar"><div class="progress"></div></div>
-
-  <form id="projectForm" class="project-form">
-    <!-- Step 1: Names -->
-    <div class="form-step active" id="step1">
-      <input type="text" name="first_name" placeholder="First Name" required>
-      <input type="text" name="last_name" placeholder="Last Name" required>
-      <button type="button" class="next-btn">Next</button>
+<!-- Main Content Section -->
+  <main class="works-main">
+    <!-- Main Heading -->
+    <h1 class="works-heading">Our Works</h1>
+    
+    <!-- Quote Section -->
+    <div class="works-quote">
+      <p>"We believe a home should be more than bricks and walls — it should be the place where your story unfolds. Every design we create is carefully tailored to reflect your lifestyle, your dreams, and the essence of timeless living."</p>
     </div>
-    <!-- Step 2: Email/Phone -->
-    <div class="form-step" id="step2">
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <button type="button" class="next-btn">Next</button>
-    </div>
-    <!-- Step 3: Final Message and Send -->
-    <div class="form-step" id="step3">
-      <div class="catchy-message">
-        <h3>One final step!</h3>
-        <p>We’re almost ready to connect you with our team. Just hit send and we’ll reach out to you soon.</p>
+
+    <!-- Work Categories Grid -->
+    <div class="works-grid">
+      <div class="work-item">
+        <img src="images/w1.jpg" alt="New Homes" class="work-image">
+        <div class="work-overlay">
+          <h3>New Homes</h3>
+        </div>
       </div>
-      <button type="submit" class="send-btn">Send</button>
+
+      <div class="work-item">
+        <img src="images/w2.jpg" alt="Additions & Exterior Spaces" class="work-image">
+        <div class="work-overlay">
+          <h3>Additions & Exterior Spaces</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <img src="images/w3.jpg" alt="Kitchens & Baths" class="work-image">
+        <div class="work-overlay">
+          <h3>Kitchens & Baths</h3>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <img src="images/w4.jpg" alt="Off The Grid" class="work-image">
+        <div class="work-overlay">
+          <h3>Off The Grid</h3>
+        </div>
+      </div>
     </div>
-    <script src="{% static 'js/projects.js' %}"></script>
-  </form>
-</section>
 
+    <!-- Email Signup Section -->
+    <div class="email-signup">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+      <div class="signup-form">
+        <input type="email" placeholder="Enter your email address" class="email-input">
+        <button type="submit" class="signup-btn">Sign Up</button>
+      </div>
+    </div>
+  </main>
 
+  <footer class="homepage-footer">
+    <div class="footer-main">
+      <img src="{% static 'images/logo.png' %}" alt="Silvaré Residences logo" class="footer-logo">
+      <div class="footer-brand">Silvaré Residences</div>
+      <div class="footer-socials-corner">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-icon-corner">
+          <!-- Facebook SVG outline -->
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="black" stroke-width="1.7">
+            <circle cx="16" cy="16" r="13" fill="none"/>
+            <path d="M18 24v-6h2l.3-2.4H18v-1.5c0-.5.2-.7.7-.7H20v-2c-.2 0-.7-.1-1.3-.1-1.5 0-2.3.9-2.3 2.3v2h-2v2.4h2V24h2z" fill="none" stroke="black" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <a href="https://x.com" target="_blank" aria-label="X" class="social-icon-corner">
+          <!-- X (Twitter) outline SVG -->
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="black" stroke-width="1.7">
+            <circle cx="16" cy="16" r="13" fill="none"/>
+            <path d="M10.7 10.5l10.6 11M21.3 10.5l-10.6 11" stroke="black" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-icon-corner">
+          <!-- Instagram outline SVG -->
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="black" stroke-width="1.7">
+            <circle cx="16" cy="16" r="13" fill="none"/>
+            <rect x="11" y="11" width="10" height="10" rx="3" fill="none"/>
+            <circle cx="16" cy="16" r="3" fill="none"/>
+            <circle cx="21" cy="12" r="1" fill="black"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-icon-corner">
+          <!-- LinkedIn outline SVG -->
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="black" stroke-width="1.7">
+            <circle cx="16" cy="16" r="13" fill="none"/>
+            <rect x="12" y="15" width="2" height="6" fill="none"/>
+            <rect x="18" y="17" width="2" height="4" fill="none"/>
+            <rect x="15" y="17" width="2" height="4" fill="none"/>
+            <circle cx="13" cy="13" r="1" fill="black"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="social-icon-corner">
+          <!-- YouTube outline SVG -->
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="black" stroke-width="1.7">
+            <circle cx="16" cy="16" r="13" fill="none"/>
+            <polygon points="14,12 22,16 14,20" fill="none"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      All rights reserved. 20XX Silvaré Residences. <br>
+    </div>
+  </footer>
