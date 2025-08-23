@@ -427,6 +427,45 @@ html, body {
   }
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:10px;
+  background-color: transparent;
+  padding: 7px;
+  margin-top:25px;
+  margin-bottom: -20px;
+}
+
+.about-btn {
+  background-color: transparent;
+  color: black;
+  padding: 0.75em 1.5em;
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+
+.about-btn:hover {
+  background-color: rgba(80, 68, 68, 0.2);
+  color: white;
+  border-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .about-btn {
+    font-size: 0.9rem;
+    padding: 0.6em 1.2em;
+    width: 80%;
+    text-align: center;
+  }
+}
+
 .image-buttons {
   display: flex;
   justify-content: center;
@@ -1046,4 +1085,5 @@ html, body {
 .signup-btn:hover {
   background: #555;
 }
+
 
