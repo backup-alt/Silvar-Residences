@@ -340,8 +340,6 @@ html, body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  border:none;
-  outline:none;
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
 
@@ -981,6 +979,7 @@ html, body {
 .signup-btn:hover {
   background: #555;
 }
+
 
 
 
