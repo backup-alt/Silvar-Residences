@@ -1,8 +1,7 @@
-/* Reset and basic navbar styling */
 .navbar {
   position: fixed;
   width: 100%;
-  top: 0;
+  top: 0px;
   left: 0;
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.17);
@@ -10,31 +9,47 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 1000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 .navbar-container {
-  max-width: min(1200px, 95vw);
-  margin: 0 auto;
-  padding: clamp(12px, 2vw, 32px) clamp(16px, 4vw, 32px);
+  max-width: 1200px;
+  margin: -100 auto;
+  padding: 16px 32px;   /* balanced padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: clamp(56px, 8vw, 80px);
-  position: relative;
+  min-height: 64px;     /* balanced height */
 }
 
-/* Home Icon - Scalable for all pixel ratios */
+.logo img {
+  height: 69px;         /* moderate logo size */
+  object-fit: contain;
+  display: block;
+  margin-left: 150px; 
+  position: relative;
+  top: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 69px;
+  margin-left: 500px; /* Add left margin to push nav links right */
+}
+
 .nav-home-icon {
-  position: static;
-  z-index: 1001;
+  position: absolute;
+  top: 67px;
+  left: 400px;
+  z-index: 1001; /* Ensure it's above other content */
 }
 
 .nav-home-icon svg {
-  width: clamp(18px, 2.5vw, 28px);
-  height: clamp(18px, 2.5vw, 28px);
-  fill: #333;
+  width: 22px;
+  height: 22px;
+  fill: #333; /* or your brand color */
   vertical-align: middle;
   cursor: pointer;
   transition: fill 0.3s ease;
@@ -42,154 +57,137 @@
 
 .nav-home-icon:hover svg,
 .nav-home-icon:focus svg {
-  fill: #c6a564;
+  fill: #c6a564; /* accent color on hover/focus */
   outline: none;
 }
 
-/* Logo - Responsive scaling */
-.logo img {
-  height: clamp(40px, 6vw, 80px);
-  object-fit: contain;
-  display: block;
-  position: static;
-  max-width: 100%;
-}
-
-/* Navigation Menu - Fluid spacing */
-.nav-menu {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: clamp(16px, 3vw, 40px);
-}
 
 .nav-menu li a {
   color: #000000d9;
   text-decoration: none;
-  font-weight: 620;
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-  padding: clamp(4px, 1vw, 8px) 0;
+  font-weight: 620;     /* slightly bolder for clarity */
+  font-size: 1.1rem;
+  padding: 6px 0;
   transition: color 0.3s ease;
-  white-space: nowrap;
 }
 
 .nav-menu li a:hover,
 .nav-menu li a:focus {
-  color: #ffd700;
+  color: #ffd700;       /* warm accent color */
   outline: none;
 }
 
-/* Consultation Button - Adaptive sizing */
 .btn-consultation {
   display: inline-block;
   background-color: #d4913282;
   color: #000;
-  padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px);
-  border-radius: clamp(20px, 3vw, 30px);
+  padding: 10px 22px;
+  border-radius: 25px;
   font-weight: 600;
-  font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+  font-size: 1rem;
   text-decoration: none;
   white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  position: static;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642);
+
+  /* Add this to push the button to the right side */
+  margin-left: 1450px;
+  position: relative;
+  top: -35px; 
+
 }
+
 
 .btn-consultation:hover,
 .btn-consultation:focus {
-  background-color: rgba(255, 215, 0, 0.3);
+  background-color: #00000000;
   color: #11100f;
   outline: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Mobile Menu Toggle */
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: clamp(6px, 1vw, 10px);
-  z-index: 1001;
-}
+/* RESPONSIVE MEDIA QUERIES */
 
-.mobile-menu-toggle span {
-  width: clamp(20px, 3vw, 28px);
-  height: clamp(2px, 0.4vw, 4px);
-  background: #000;
-  margin: clamp(2px, 0.4vw, 4px) 0;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-
-/* HIGH-DPI/RETINA DISPLAYS (2x pixel density) */
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-       only screen and (min--moz-device-pixel-ratio: 2),
-       only screen and (-o-min-device-pixel-ratio: 2/1),
-       only screen and (min-device-pixel-ratio: 2),
-       only screen and (min-resolution: 192dpi),
-       only screen and (min-resolution: 2dppx) {
+/* Extra Large Screens (1400px+) */
+@media (min-width: 1400px) {
+  .navbar-container {
+    max-width: 1400px;
+    padding: 16px 40px;
+  }
   
-  .nav-home-icon svg {
-    width: clamp(20px, 2.8vw, 32px);
-    height: clamp(20px, 2.8vw, 32px);
+  .nav-menu {
+    gap: 40px;
+  }
+}
+
+/* Large Desktop (1200px - 1400px) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .navbar-container {
+    max-width: 1200px;
+    padding: 16px 32px;
+  }
+  
+  .nav-menu {
+    gap: 32px;
+  }
+}
+
+/* Medium Desktop (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .navbar-container {
+    padding: 14px 24px;
   }
   
   .logo img {
-    height: clamp(45px, 6.5vw, 85px);
+    height: 60px;
+  }
+  
+  .nav-menu {
+    gap: 28px;
   }
   
   .nav-menu li a {
-    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+    font-size: 1rem;
   }
   
   .btn-consultation {
-    font-size: clamp(0.85rem, 1.3vw, 1.15rem);
+    padding: 8px 18px;
+    font-size: 0.95rem;
   }
 }
 
-/* ULTRA HIGH-DPI DISPLAYS (3x+ pixel density) */
-@media only screen and (-webkit-min-device-pixel-ratio: 3),
-       only screen and (min--moz-device-pixel-ratio: 3),
-       only screen and (min-device-pixel-ratio: 3),
-       only screen and (min-resolution: 288dpi),
-       only screen and (min-resolution: 3dppx) {
-  
-  .nav-home-icon svg {
-    width: clamp(22px, 3vw, 35px);
-    height: clamp(22px, 3vw, 35px);
+/* Small Desktop/Large Tablet (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .navbar-container {
+    padding: 12px 20px;
   }
   
   .logo img {
-    height: clamp(50px, 7vw, 90px);
+    height: 55px;
+  }
+  
+  .nav-menu {
+    gap: 24px;
   }
   
   .nav-menu li a {
-    font-size: clamp(1rem, 1.7vw, 1.3rem);
-    font-weight: 650;
+    font-size: 0.95rem;
   }
   
   .btn-consultation {
-    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 }
 
-/* CONTAINER QUERIES for modern browsers */
-@container (min-width: 320px) {
+/* Tablet (600px - 767px) */
+@media (max-width: 767px) and (min-width: 600px) {
   .navbar-container {
-    container-type: inline-size;
+    padding: 10px 16px;
   }
-}
-
-/* VIEWPORT-BASED RESPONSIVE BREAKPOINTS */
-
-/* Extra Small Devices (phones, 320px-480px) */
-@media only screen and (min-width: 20em) and (max-width: 30em) {
-  .navbar-container {
-    padding: 1rem 1rem;
-    min-height: 3.5rem;
+  
+  .logo img {
+    height: 50px;
   }
   
   .mobile-menu-toggle {
@@ -205,13 +203,15 @@
     backdrop-filter: blur(12px);
     flex-direction: column;
     gap: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
   }
   
   .nav-menu.active {
-    max-height: 25rem;
+    max-height: 500px;
   }
   
   .nav-menu li {
@@ -221,9 +221,9 @@
   
   .nav-menu li a {
     display: block;
-    padding: 1rem;
+    padding: 16px 20px;
+    font-size: 1.1rem;
     text-align: center;
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
   }
   
   .btn-consultation {
@@ -231,12 +231,12 @@
     top: 100%;
     left: 0;
     right: 0;
-    padding: 1rem;
+    border-radius: 0;
+    padding: 16px 20px;
     text-align: center;
     transform: translateY(-100%);
     transition: transform 0.4s ease;
     margin: 0;
-    border-radius: 0;
   }
   
   .navbar-container:has(.nav-menu.active) .btn-consultation {
@@ -244,11 +244,19 @@
   }
 }
 
-/* Small Devices (phones, 480px-768px) */
-@media only screen and (min-width: 30em) and (max-width: 48em) {
+/* Mobile Large (480px - 599px) */
+@media (max-width: 599px) and (min-width: 480px) {
   .navbar-container {
-    padding: 1rem 1.5rem;
-    min-height: 4rem;
+    padding: 8px 12px;
+  }
+  
+  .logo img {
+    height: 45px;
+  }
+  
+  .nav-home-icon svg {
+    width: 20px;
+    height: 20px;
   }
   
   .mobile-menu-toggle {
@@ -270,14 +278,14 @@
   }
   
   .nav-menu.active {
-    max-height: 30rem;
+    max-height: 500px;
   }
   
   .nav-menu li a {
     display: block;
-    padding: 1.2rem;
+    padding: 14px 16px;
+    font-size: 1rem;
     text-align: center;
-    font-size: clamp(1rem, 3.5vw, 1.15rem);
   }
   
   .btn-consultation {
@@ -285,84 +293,76 @@
     top: 100%;
     left: 0;
     right: 0;
-    padding: 1.2rem;
+    padding: 14px 16px;
+    font-size: 0.9rem;
     text-align: center;
     transform: translateY(-100%);
     transition: transform 0.4s ease;
     margin: 0;
-    border-radius: 0;
   }
 }
 
-/* Medium Devices (tablets, 768px-992px) */
-@media only screen and (min-width: 48em) and (max-width: 62em) {
+/* Mobile Small (320px - 479px) */
+@media (max-width: 479px) {
   .navbar-container {
-    padding: 1rem 2rem;
-    min-height: 4.5rem;
-  }
-  
-  .nav-menu {
-    gap: clamp(20px, 2.5vw, 32px);
-  }
-  
-  .nav-menu li a {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-  }
-}
-
-/* Large Devices (desktops, 992px-1200px) */
-@media only screen and (min-width: 62em) and (max-width: 75em) {
-  .navbar-container {
-    padding: 1.2rem 2.5rem;
-    min-height: 5rem;
-  }
-  
-  .nav-menu {
-    gap: clamp(28px, 3vw, 40px);
-  }
-}
-
-/* Extra Large Devices (large desktops, 1200px+) */
-@media only screen and (min-width: 75em) {
-  .navbar-container {
-    max-width: 1400px;
-    padding: 1.5rem 3rem;
-    min-height: 5.5rem;
-  }
-  
-  .nav-menu {
-    gap: clamp(32px, 3.5vw, 50px);
-  }
-  
-  .nav-menu li a {
-    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-  }
-  
-  .btn-consultation {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    padding: clamp(12px, 2vw, 16px) clamp(20px, 3vw, 30px);
-  }
-}
-
-/* ORIENTATION-BASED OPTIMIZATIONS */
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  .navbar-container {
-    min-height: 3rem;
-    padding: 0.5rem 2rem;
+    padding: 6px 8px;
   }
   
   .logo img {
-    height: clamp(30px, 5vw, 45px);
+    height: 40px;
+  }
+  
+  .nav-home-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  
+  .nav-menu.active {
+    max-height: 500px;
   }
   
   .nav-menu li a {
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    display: block;
+    padding: 12px 12px;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  .btn-consultation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 12px;
+    font-size: 0.85rem;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    margin: 0;
   }
 }
 
-/* HAMBURGER ANIMATION - Enhanced for all pixel ratios */
+/* Hamburger Animation */
 .mobile-menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(clamp(4px, 1vw, 8px), clamp(4px, 1vw, 8px));
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
@@ -370,32 +370,5 @@
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(clamp(4px, 1vw, 8px), clamp(-4px, -1vw, -8px));
-}
-
-/* ACCESSIBILITY IMPROVEMENTS */
-@media (prefers-reduced-motion: reduce) {
-  .mobile-menu-toggle span,
-  .nav-menu,
-  .btn-consultation {
-    transition: none;
-  }
-}
-
-/* HIGH CONTRAST MODE SUPPORT */
-@media (prefers-contrast: high) {
-  .navbar {
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 2px solid #000;
-  }
-  
-  .nav-menu li a {
-    color: #000;
-  }
-  
-  .btn-consultation {
-    background-color: #000;
-    color: #fff;
-    border: 2px solid #fff;
-  }
+  transform: rotate(-45deg) translate(6px, -6px);
 }
