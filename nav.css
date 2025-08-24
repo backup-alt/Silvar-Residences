@@ -1,90 +1,87 @@
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
 .navbar {
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.nav-container {
-  display: flex;
-  background: transparent;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 24px;
+.navbar-container {
   max-width: 1200px;
-  margin: auto;
+  margin: -100 auto;
+  padding: 16px 32px;   /* balanced padding */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;     /* balanced height */
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #1a1a1a;
+.logo img {
+  height: 69px;         /* moderate logo size */
+  object-fit: contain;
+  display: block;
+  margin-left: 150px; 
+  position: relative;
+  top: 30px;
 }
-
 
 .nav-menu {
   display: flex;
-  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 69px;
+  margin-left: 500px; /* Add left margin to push nav links right */
 }
 
-.nav-menu a {
+
+.nav-menu li a {
+  color: #000000d9;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  position: relative;
+  font-weight: 620;     /* slightly bolder for clarity */
+  font-size: 1.1rem;
+  padding: 6px 0;
   transition: color 0.3s ease;
-  padding-top:10px;
 }
 
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #52434325;
-  transition: width 0.3s ease;
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+  color: #ffd700;       /* warm accent color */
+  outline: none;
 }
 
-.nav-menu a:hover::after {
-  width: 100%;
-  transition: width 0.3s ease;
-}
+.btn-consultation {
+  display: inline-block;
+  background-color: #d4913282;
+  color: #000;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642);
 
-.nav-menu a:hover {
-  color: #41823e;
-  font-size: 20px;
-  transition: all 0.3s ease;
-  transform: scale(1.05);
-}
-.highlight {
-  background-color: #41823e;
-  color: #fff !important;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
+  /* Add this to push the button to the right side */
+  margin-left: 1450px;
+  position: relative;
+  top: -35px; 
 
-.highlight:hover {
-  background-color: #56c368;
-  color: #1a1a1a !important;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  transform: scale(1.05);
 }
 
 
-.drop_menu {
-  display: none;
-  font-size: 1.6rem;
-  cursor: pointer;
+.btn-consultation:hover,
+.btn-consultation:focus {
+  background-color: #00000000;
+  color: #11100f;
+  outline: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -112,3 +109,4 @@ body {
   }
 
 }
+
