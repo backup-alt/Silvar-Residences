@@ -981,3 +981,244 @@ html, body {
   background: #555;
 }
 
+.email-signup {
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, #f8f6f0 0%, #ede8de 60%, #e6ddd1 100%);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  border-radius: clamp(20px, 3vw, 35px);
+  margin: clamp(3rem, 6vw, 5rem) auto;
+  max-width: 800px;
+  box-shadow: 0 12px 40px rgba(60, 60, 80, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.email-signup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.email-signup * {
+  position: relative;
+  z-index: 1;
+}
+
+.email-signup h3 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: #2c2520;
+  margin-bottom: 0.8rem;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.email-signup p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #5a5046;
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.email-input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.email-input {
+  width: 100%;
+  padding: clamp(14px, 2.5vw, 18px) clamp(16px, 3vw, 20px);
+  border: 2px solid rgba(198, 165, 100, 0.3);
+  border-radius: clamp(12px, 2vw, 16px);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  color: #2c2520;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.email-input::placeholder {
+  color: #8b7355;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.email-input:focus {
+  border-color: #c6a564;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(198, 165, 100, 0.15);
+  transform: translateY(-1px);
+}
+
+.email-input:focus::placeholder {
+  opacity: 0.5;
+}
+
+.signup-btn {
+  padding: clamp(14px, 2.5vw, 18px) clamp(24px, 4vw, 32px);
+  background: linear-gradient(135deg, #d1b36b 0%, #f0e6ce 100%);
+  color: #2c2520;
+  border: none;
+  border-radius: clamp(12px, 2vw, 16px);
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  font-weight: 700;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(209, 179, 107, 0.25);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #f5e5b2 0%, #c6a564 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(209, 179, 107, 0.35);
+}
+
+.signup-btn:hover::before {
+  opacity: 1;
+}
+
+.signup-btn:active {
+  transform: translateY(0);
+}
+
+.signup-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.signup-benefits {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 2.5rem);
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  color: #5a5046;
+  font-weight: 500;
+}
+
+.benefit-icon {
+  width: 16px;
+  height: 16px;
+  color: #c6a564;
+}
+
+.privacy-note {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+  color: #8b7355;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* RESPONSIVE MOBILE OPTIMIZATIONS */
+@media (max-width: 600px) {
+  .signup-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .email-input {
+    text-align: center;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 16px 24px;
+  }
+  
+  .signup-benefits {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+/* HIGH-DPI DISPLAY OPTIMIZATION */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .email-signup {
+    box-shadow: 0 12px 40px rgba(60, 60, 80, 0.1);
+  }
+  
+  .email-input, .signup-btn {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* ACCESSIBILITY IMPROVEMENTS */
+@media (prefers-reduced-motion: reduce) {
+  .email-input, .signup-btn {
+    transition: none;
+  }
+}
+
+/* DARK MODE SUPPORT */
+@media (prefers-color-scheme: dark) {
+  .email-signup {
+    background: linear-gradient(135deg, #2a2520 0%, #1f1c18 60%, #181512 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .email-signup h3 {
+    color: #f5f2ed;
+  }
+  
+  .email-signup p {
+    color: #c4b8a8;
+  }
+  
+  .email-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f2ed;
+    border-color: rgba(198, 165, 100, 0.4);
+  }
+  
+  .email-input::placeholder {
+    color: #a89579;
+  }
+}
+
