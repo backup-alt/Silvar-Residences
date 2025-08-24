@@ -1,0 +1,163 @@
+  body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+  background: radial-gradient(circle at 20% 30%, #2c3e50, #000000);
+       overflow-x: hidden;
+  
+}
+
+    .hero {
+      background-image: url('https://th.bing.com/th/id/R.a48e3b460bd5c14242497e0bd3155a12?rik=Ug2oHh6TlMoNeg&riu=http%3a%2f%2fwww.kadvacorp.com%2fwp-content%2fuploads%2f2015%2f02%2fHightech-Architecture-Style-Sustainable-Architecture-or-Eco-tech-Design-Style-9.jpg&ehk=M2kzkr7%2bR%2bEsmHdng909WZTcTd36P%2fvKgZwCAXRfOqU%3d&risl=&pid=ImgRaw&r=0');
+      background-size: cover;
+      background-position: center;
+      color: #f0ecec;
+      text-align: center;
+      padding: 90px 20px 60px 20px;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(60, 77, 104, 0.55);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 17px;
+      letter-spacing: 2px;
+      font-family: 'Architects Daughter', cursive, Arial, sans-serif;
+    }
+    .hero p {
+      font-size: 1.3em;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .container1{
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 0 20px;
+        float: center;
+        transition: background 0.5s;
+        z-index: 1;
+
+}
+    
+    .container2{
+      max-width: 700px;
+      margin:auto;
+      padding: 0 20px;
+      z-index: 1; 
+      transition: background 0.5s;
+    }
+
+    .section {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 36px;
+      background:  rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+      cursor: pointer;
+      transform: scale(1);
+      backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .section h2 {
+      margin-top: 0;
+      color: #e6e8eb;
+      font-size: 2em;
+      letter-spacing: 1px;
+    }
+
+    .why-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 7px;
+    }
+    .why-list li {
+      background: #56667a;
+      color: #fff;
+      padding: 13px 19px;
+      border-radius: 6px;
+      font-size: 1.05em;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+ 
+    .cta {
+      text-align: center;
+      margin: 55px 0;
+    }
+    .cta button {
+      background: #3c4d68;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 15px 42px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 14px rgba(60, 77, 104, 0.13);
+      transition: background 0.2s;
+      letter-spacing: 1px;
+    }
+    .cta button:hover { background: #272f39;
+    transform: scale(1.02);
+    transition: background 0.3s, transform 0.3s;
+    }
+    
+    @media (max-width:800px) {
+      .container, .section {
+       
+        padding: 14px;
+      }
+      
+       .why-list {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .hero {
+        padding: 60px 8px 30px 8px;
+      }
+     
+    }
+    
+    .section:hover{
+    filter: brightness(85%);
+     transition: background 0.5s;
+      transform: scale(1.02);
+ 
+    }
+    .section p{
+      font-size: 1.18em;
+      margin-bottom: 14px;
+      color: whitesmoke;
+    }
+    .section h2:hover{
+      color: rgb(177, 169, 169);
+      transition: color 0.5s;
+    }
+
+   .particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#ffffff22 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: drift 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
