@@ -1,24 +1,43 @@
-<link rel="stylesheet" href="nav.css">
-<header class="navbar">
-  <div class="navbar-container">
-    <div class="logo">
-        <img src="logo.png" alt="logo">
-    </div>
-    <ul class="nav-menu" id="navMenu">
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="about_us.html">About</a></li>
-        <li><a href="#values">Values</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#press">Press</a></li>
-        <li><a href="consult.html">Contact</a></li>
-    </ul>
-    <a href="consult.html" class="btn-consultation">Free Consultation</a>
-    <div class="drop_menu" onclick="toggleMenu()">☰</div>
-  </div>
-</header>
-<script>
-  function toggleMenu() {
-    document.getElementById('navMenu').classList.toggle('show');
-  }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="logo.png" alt="logo">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="#values">Values</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#press">Press</a></li>
+                <li><a href="consult.html">Contact</a></li>
+            </ul>
+            <a href="consult.html" class="btn-consultation">Free Consultation</a>
+            <div class="drop_menu" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <!-- Your page content goes here -->
+    <main style="margin-top: 120px; padding: 20px;">
+        <!-- Content to test the navbar -->
+        <h1>Welcome to Our Website</h1>
+        <p>This is sample content to show how the fixed navbar works.</p>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
