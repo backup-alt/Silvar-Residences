@@ -68,6 +68,13 @@ html, body {
   margin-left: 500px; /* Add left margin to push nav links right */
 }
 
+.nav-home-icon {
+  position: absolute;
+  top: 67px;
+  left: 400px;
+  z-index: 1001; /* Ensure it's above other content */
+}
+
 
 .nav-menu li a {
   color: #000000d9;
@@ -1064,6 +1071,7 @@ html, body {
 .signup-btn:hover {
   background: #555;
 }
+
 
 
 
