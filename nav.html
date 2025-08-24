@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="nav.css">
-<header class="dribbble-navbar">
-  <div class="nav-container">
+<header class="navbar">
+  <div class="navbar-container">
     <div class="logo">
         <img src="logo.png" alt="logo">
     </div>
-    <ul class="nav-menu">
+    <ul class="nav-menu" id="navMenu">
         <li><a href="projects.html">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="about_us.html">About</a></li>
@@ -13,6 +13,7 @@
         <li><a href="#press">Press</a></li>
         <li><a href="consult.html">Contact</a></li>
     </ul>
+    <a href="consult.html" class="btn-consultation">Free Consultation</a>
     <div class="drop_menu" onclick="toggleMenu()">☰</div>
   </div>
 </header>
@@ -20,5 +21,4 @@
   function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('show');
   }
-
 </script>
