@@ -716,6 +716,8 @@ html, body {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  border:none;
+  outline:none;
 
 }
 
@@ -1353,6 +1355,7 @@ html, body {
 .signup-btn:hover {
   background: #555;
 }
+
 
 
 
