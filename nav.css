@@ -123,27 +123,6 @@
 }
 
 /* Consultation Button */
-.btn-consultation {
-    display: inline-block;
-    background-color: #d4913282;
-    color: #000;
-    padding: clamp(6px, 1.2vw, 12px) clamp(12px, 2vw, 24px);
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: clamp(0.7rem, 1vw, 1rem);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642);
-}
-
-.btn-consultation:hover,
-.btn-consultation:focus {
-    background-color: #00000000;
-    color: #11100f;
-    outline: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-}
 
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
@@ -455,5 +434,6 @@
         display: none;
     }
 }
+
 
 
