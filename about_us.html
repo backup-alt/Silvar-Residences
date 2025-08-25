@@ -10,29 +10,16 @@
    <link rel="stylesheet" href="nav.css">
 </head>
 <body>
-  <header>
-       
-<header class="navbar">
-  <div class="nav-container">
-    <div class="logo">
-        <img src="" alt="logo">
-    </div>
-    <nav class="nav-menu" id="navMenu">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="About">About</a>
-      <a href="#Schedule a Consultancy" class="highlight">Schedule a Consultancy</a>
-    </nav>
-    <div class="drop_menu" onclick="toggleMenu()">☰</div>
-  </div>
-</header>
-<script>
-  function toggleMenu() {
-    document.getElementById('navMenu').classList.toggle('show');
-  }
-</script>
+ <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
+    <script>
+      // Load nav.html into the placeholder div
+      fetch('nav.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+        })
+        .catch(err => console.error('Failed to load navbar:', err));
+    </script>
   </header>
   <section class="hero">
     <div class="hero-content">
@@ -125,5 +112,6 @@
     </div>
   </footer>
 </html>
+
 
 
