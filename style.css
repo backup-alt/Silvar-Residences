@@ -8,22 +8,18 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 .slider-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
 }
+
 .slider-track {
   display: flex;
   height: 100vh;
   transition: transform 0.7s cubic-bezier(0.49, 0.28, 0.43, 1.02);
-}
-.slider-image {
-  min-width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  flex-shrink: 0;
 }
 
 .slide {
@@ -43,107 +39,21 @@ html, body {
   display: block;
 }
 
+/* CLEANED UP - Single slide-quote definition */
 .slide-quote {
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 850px;
-  /* Elegant cursive font */
-  font-family: 'Dancing Script', 'Great Vibes';
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  line-height: 1.24;
-  letter-spacing: 0.01em;
-  /* Elegant blurred background */
-  background: rgba(0, 0, 0, 0.197);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(4px);
-  border-radius: 50px 25px 50px 25px / 30px 50px 25px 50px; /* Asymmetrical, soft, modern */
-  padding: 26px 46px 22px 46px;
-  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.20), 0 0px 8px 0 rgba(255,255,255,0.14) inset;
-  text-shadow:
-    0 4px 24px rgba(0,0,0,0.50),
-    0 2px 10px rgba(0,0,0,0.23);
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Responsive tweaks for small screens */
-@media (max-width: 600px) {
-  .slide-quote {
-    font-size: 1.25rem;
-    padding: 10px 12px;
-    max-width: 96vw;
-  }
-}
-
-
-@media (max-width: 600px) {
-  .slide-quote {
-    font-size: 1.1rem;
-    padding: 10px 12px;
-    max-width: 95vw;
-  }
-}
-
-.slide-quote {
-  position: absolute;
   left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 850px;
-  font-family: 'Dancing Script', 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  line-height: 1.24;
-  letter-spacing: 0.01em;
+  width: 90vw;
+  max-width: 700px;
+  
   background: rgba(25, 24, 32, 0.20);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
   border-radius: 50px 25px 50px 25px / 30px 50px 25px 50px;
-  padding: 32px 44px 36px 44px; /* More bottom padding for button space */
+  padding: 38px 44px 40px 44px;
   box-shadow: 0 2px 24px 0 rgba(0,0,0,0.20), 0 0px 8px 0 rgba(255,255,255,0.14) inset;
-  text-shadow:
-    0 4px 24px rgba(0,0,0,0.50),
-    0 2px 10px rgba(0,0,0,0.23);
-  pointer-events: none;
-  user-select: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px; /* Ensures spacing between the quote and button */
-}
-
-.slide-quote span {
-  pointer-events: auto;
-  user-select: text;
-}
-
-.slide-quote {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 850px;
-
-  background: rgba(25, 24, 32, 0.20);
-  backdrop-filter: blur(10px);
-  border-radius: 50px 25px 50px 25px / 30px 50px 25px 50px;
-  padding: 32px 44px 36px 44px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;     /* Centers button & text horizontally */
-  gap: 24px;
-
+  
   color: #fff;
   font-family: 'Dancing Script', cursive;
   font-size: 2.5rem;
@@ -151,13 +61,15 @@ html, body {
   text-align: center;
   line-height: 1.24;
   letter-spacing: 0.01em;
-
+  text-shadow: 0 4px 24px rgba(0,0,0,0.50), 0 2px 10px rgba(0,0,0,0.23);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  
   pointer-events: none;
   user-select: none;
-
-  text-shadow:
-    0 4px 24px rgba(0,0,0,0.50),
-    0 2px 10px rgba(0,0,0,0.23);
 }
 
 .slide-quote span {
@@ -165,60 +77,7 @@ html, body {
   user-select: text;
 }
 
-.slide {
-  position: relative;
-  min-width: 100vw;
-  height: 100vh;
-  flex-shrink: 0;
-  display: flex; /* Key for centering the overlay */
-  align-items: center;
-  justify-content: center;
-}
-
-.slide-quote {
-  /* Center the overlay within the entire slide */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 90vw;
-  max-width: 700px;
-
-  background: rgba(25, 24, 32, 0.20);
-  backdrop-filter: blur(3px);
-  border-radius: 50px 25px 50px 25px / 30px 50px 25px 50px;
-  padding: 38px 44px 40px 44px;
-  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.20), 0 0px 8px 0 rgba(255,255,255,0.14) inset;
-
-  color: #fff;
-  font-family: 'Dancing Script';
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.24;
-  letter-spacing: 0.01em;
-  gap: 28px; /* Space between quote and button */
-  text-shadow:
-    0 4px 24px rgba(0,0,0,0.50),
-    0 2px 10px rgba(0,0,0,0.23);
-}
-
-.build-btn-row {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  position: relative;
-  bottom: -600px; /* Adds space between the quote and button */
-}
-
+/* FIXED - Removed problematic positioning */
 .build-now-btn {
   padding: 14px 36px;
   background: linear-gradient(90deg, #c6ac8e9f 30%, #eae0d5af 100%);
@@ -233,7 +92,9 @@ html, body {
   letter-spacing: 0.01em;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  pointer-events: auto; /* Make button clickable */
 }
+
 .build-now-btn:hover,
 .build-now-btn:focus {
   background: linear-gradient(90deg, #00000039 30%, #ffd90000 100%);
@@ -241,6 +102,15 @@ html, body {
   box-shadow: 0 4px 24px rgba(255, 255, 255, 0.652);
 }
 
+/* Responsive tweaks for small screens */
+@media (max-width: 600px) {
+  .slide-quote {
+    font-size: 1.25rem;
+    padding: 20px 16px;
+    max-width: 95vw;
+    gap: 20px;
+  }
+}
 
 .business-section {
   position: relative;
@@ -323,10 +193,10 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:10px;
+  height: 10px;
   background-color: transparent;
   padding: 7px;
-  margin-top:25px;
+  margin-top: 25px;
   margin-bottom: -20px;
 }
 
@@ -341,9 +211,8 @@ html, body {
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(6px);
-  border:none;
+  border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-
 }
 
 .about-btn:hover {
@@ -364,8 +233,8 @@ html, body {
 .image-buttons {
   display: flex;
   justify-content: center;
-  gap: 150px;            /* More space between buttons */
-  margin: 64px 0 64px 0; /* More space above and below the buttons */
+  gap: 150px;
+  margin: 64px 0 64px 0;
 }
 
 .img-button {
@@ -378,9 +247,7 @@ html, body {
   box-shadow: 0 10px 32px rgba(0,0,0,0.19);
   transition: box-shadow 0.3s ease;
   background: linear-gradient(140deg, #f4f1ee 0%, #efe6ce 80%, #e7dac3 100%);
-  /* ↑ Elegant gradient: warm light neutrals */
 }
-
 
 .img-button:hover {
   box-shadow: 0 18px 48px rgba(0,0,0,0.30);
@@ -457,7 +324,6 @@ html, body {
   z-index: 1;
 }
 
-
 .testimonials-carousel {
   position: relative;
   overflow: hidden;
@@ -471,7 +337,7 @@ html, body {
 }
 
 .testimonial-card {
-  flex: 0 0 calc((100% / 3) - 16px);  /* Show 3 cards with some gap */
+  flex: 0 0 calc((100% / 3) - 16px);
   background: #f9f9f9;
   padding: 28px 24px;
   border-radius: 18px;
@@ -526,7 +392,7 @@ html, body {
 /* Responsive */
 @media (max-width: 900px) {
   .testimonial-card {
-    flex: 0 0 calc((100% / 1) - 16px); /* Show 1 card at a time on narrow screens */
+    flex: 0 0 calc((100% / 1) - 16px);
   }
 }
 
@@ -616,138 +482,6 @@ html, body {
     width: 22px;
     height: 22px;
   }
-}
-
-.homepage-footer {
-  position: relative; /* Add this if you haven't already! */
-}
-
-.project-contact-section {
-  max-width: 470px;
-  margin: 80px auto;
-  padding: 44px 32px 40px 32px;
-  background: linear-gradient(115deg, #fbfbf5 0%, #e9e7ec 100%);
-  border-radius: 32px;
-  box-shadow: 0 12px 54px rgba(60,60,80,0.09);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-}
-
-.project-message h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.project-message p {
-  font-size: 1.07rem;
-  color: #444;
-  margin-bottom: 38px;
-}
-
-.form-progress-bar {
-  width: 92%;
-  height: 7px;
-  background: #eee;
-  border-radius: 8px;
-  margin: 0 auto 42px auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.form-progress-bar .progress {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #c6a564 0%, #e3d6b5 80%);
-  transition: width 0.32s cubic-bezier(.72,.01,.28,1.18);
-  border-radius: 8px;
-}
-
-.project-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-step {
-  display: none;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-.form-step.active {
-  display: flex;
-  animation: fadeIn 0.6s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-
-.project-contact-section {
-  max-width: 470px;
-  margin: 80px auto;
-  padding: 44px 32px 40px 32px;
-  background: linear-gradient(115deg, #fbfbf5 0%, #e9e7ec 100%);
-  border-radius: 32px;
-  box-shadow: 0 12px 54px rgba(60,60,80,0.09);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-}
-
-.project-message h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.project-message p {
-  font-size: 1.07rem;
-  color: #444;
-  margin-bottom: 38px;
-}
-
-.form-progress-bar {
-  width: 92%;
-  height: 7px;
-  background: #eee;
-  border-radius: 8px;
-  margin: 0 auto 42px auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.form-progress-bar .progress {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #c6a564 0%, #e3d6b5 80%);
-  transition: width 0.32s cubic-bezier(.72,.01,.28,1.18);
-  border-radius: 8px;
-}
-
-.project-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-step {
-  display: none;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-.form-step.active {
-  display: flex;
-  animation: fadeIn 0.6s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px);}
-  to { opacity: 1; transform: translateY(0);}
 }
 
 .project-contact-section {
@@ -870,7 +604,7 @@ html, body {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top:100px;
+  margin-top: 100px;
 }
 
 .works-heading {
@@ -889,14 +623,13 @@ html, body {
   color: #666;
 }
 
-/* Updated Works Grid - 2x2 Layout */
 .works-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  grid-template-rows: 1fr 1fr;    /* Two equal rows */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 2rem;
   margin: 3rem 0;
-  max-width: 800px; /* Optional: limit maximum width */
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -907,7 +640,7 @@ html, body {
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  aspect-ratio: 1; /* Makes items square */
+  aspect-ratio: 1;
 }
 
 .work-item:hover {
@@ -937,48 +670,11 @@ html, body {
   font-size: 1.5rem;
 }
 
-/* Responsive behavior for smaller screens */
 @media (max-width: 768px) {
   .works-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
-}
-
-
-.email-signup {
-  text-align: center;
-  background: #f8f8f8;
-  padding: 3rem 2rem;
-  border-radius: 10px;
-  margin: 3rem 0;
-}
-
-.signup-form {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.email-input {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 300px;
-}
-
-.signup-btn {
-  padding: 10px 20px;
-  background: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.signup-btn:hover {
-  background: #555;
 }
 
 .email-signup {
@@ -1155,7 +851,6 @@ html, body {
   line-height: 1.4;
 }
 
-/* RESPONSIVE MOBILE OPTIMIZATIONS */
 @media (max-width: 600px) {
   .signup-form {
     flex-direction: column;
@@ -1178,7 +873,6 @@ html, body {
   }
 }
 
-/* HIGH-DPI DISPLAY OPTIMIZATION */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   .email-signup {
     box-shadow: 0 12px 40px rgba(60, 60, 80, 0.1);
@@ -1189,14 +883,12 @@ html, body {
   }
 }
 
-/* ACCESSIBILITY IMPROVEMENTS */
 @media (prefers-reduced-motion: reduce) {
   .email-input, .signup-btn {
     transition: none;
   }
 }
 
-/* DARK MODE SUPPORT */
 @media (prefers-color-scheme: dark) {
   .email-signup {
     background: linear-gradient(135deg, #2a2520 0%, #1f1c18 60%, #181512 100%);
@@ -1221,4 +913,3 @@ html, body {
     color: #a89579;
   }
 }
-
