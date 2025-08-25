@@ -8,9 +8,9 @@
 /* Navbar container */
 .navbar {
     position: fixed;
-    width: 120%;
+    width: 100%;
     margin-bottom: 100px;
-    left: 100px;
+    left: 0px;
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -434,6 +434,7 @@
         display: none;
     }
 }
+
 
 
 
