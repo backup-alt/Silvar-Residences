@@ -48,7 +48,7 @@
   display: block;
   margin-left: 150px; 
   position: relative;
-  top: 30px;
+  top: 40px;
 }
 
 .nav-menu {
@@ -57,7 +57,8 @@
   margin: 0;
   padding: 0;
   gap: 69px;
-  margin-left: 500px; /* Add left margin to push nav links right */
+  margin-left: 500px;
+  margin-bottom: 20px;/* Add left margin to push nav links right */
 }
 
 
@@ -88,11 +89,9 @@
   white-space: nowrap;
   transition: background-color 0.3s ease, color 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642);
-
-  /* Add this to push the button to the right side */
   margin-left: 1450px;
   position: relative;
-  top: -35px; 
+  top: -55px; 
 
 }
 
@@ -130,6 +129,7 @@
   }
 
 }
+
 
 
 
