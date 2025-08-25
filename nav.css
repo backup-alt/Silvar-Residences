@@ -8,7 +8,7 @@
 /* Navbar container */
 .navbar {
     position: fixed;
-    width: 100%;
+    width: 120%;
     margin-bottom: 100px;
     left: 100px;
     backdrop-filter: blur(12px);
@@ -434,6 +434,7 @@
         display: none;
     }
 }
+
 
 
 
