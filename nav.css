@@ -1,3 +1,24 @@
+.nav-home-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #333; /* or your brand color */
+  vertical-align: middle;
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+.nav-home-icon:hover svg,
+.nav-home-icon:focus svg {
+  fill: #c6a564; /* accent color on hover/focus */
+  outline: none;
+}
+.nav-home-icon {
+  position: absolute;
+  top: 67px;
+  left: 400px;
+  z-index: 1001; /* Ensure it's above other content */
+}
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -109,4 +130,5 @@
   }
 
 }
+
 
