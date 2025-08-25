@@ -20,26 +20,26 @@
 }
 
 .navbar-container {
-    max-width: 1400px;
+    max-width: 1600px; /* Made wider for desktop */
     margin: 0 auto;
-    padding: 0 clamp(1rem, 3vw, 2rem);
+    padding: 0 clamp(1rem, 3vw, 3rem);
     min-height: 80px;
     
     /* CSS Grid Layout for responsive navigation */
     display: grid;
-    grid-template-columns: auto 1fr auto auto auto;
-    grid-template-areas: "home logo nav-menu consultation mobile-toggle";
+    grid-template-columns: auto auto 1fr auto auto;
+    grid-template-areas: "logo home nav-menu consultation mobile-toggle";
     align-items: center;
-    gap: clamp(1rem, 2vw, 2rem);
+    gap: clamp(1rem, 2vw, 3rem);
 }
 
 /* Grid item assignments */
-.nav-home-icon {
-    grid-area: home;
-}
-
 .logo {
     grid-area: logo;
+}
+
+.nav-home-icon {
+    grid-area: home;
 }
 
 .nav-menu {
@@ -55,7 +55,20 @@
     grid-area: mobile-toggle;
 }
 
-/* Home Icon */
+/* Logo - Now positioned first (leftmost) */
+.logo {
+    display: flex;
+    align-items: center;
+    order: 1; /* Ensure logo comes first */
+}
+
+.logo img {
+    height: clamp(45px, 6vw, 69px);
+    width: auto;
+    object-fit: contain;
+}
+
+/* Home Icon - Positioned after logo */
 .nav-home-icon {
     display: flex;
     align-items: center;
@@ -63,6 +76,7 @@
     padding: 8px;
     border-radius: 50%;
     transition: all 0.3s ease;
+    order: 2; /* Comes after logo */
 }
 
 .nav-home-icon svg {
@@ -81,32 +95,21 @@
     background: rgba(198, 165, 100, 0.1);
 }
 
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: clamp(40px, 6vw, 69px);
-    width: auto;
-    object-fit: contain;
-}
-
-/* Navigation Menu */
+/* Navigation Menu - Wider spacing for desktop */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: clamp(1.5rem, 3vw, 3rem);
+    gap: clamp(2rem, 4vw, 4.5rem); /* Much wider gaps for desktop */
     margin: 0;
     padding: 0;
+    order: 3;
 }
 
 .nav-menu li a {
     color: #000000d9;
     text-decoration: none;
-    font-weight: 600;
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 750; /* Restored original weight */
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     padding: 8px 12px;
     border-radius: 6px;
     transition: all 0.3s ease;
@@ -115,32 +118,33 @@
 
 .nav-menu li a:hover,
 .nav-menu li a:focus {
-    color: #c6a564;
-    background: rgba(198, 165, 100, 0.1);
+    color: #ffd700; /* Restored original hover color */
+    background: rgba(255, 215, 0, 0.1);
     outline: none;
 }
 
-/* Consultation Button */
+/* Consultation Button - Restored transparent design */
 .btn-consultation {
     display: inline-block;
-    background: linear-gradient(135deg, #d49132 0%, #f4e4c1 100%);
+    background-color: #d4913282; /* Restored original transparent background */
     color: #000;
-    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px);
+    padding: clamp(10px, 1.5vw, 14px) clamp(18px, 2.5vw, 28px);
     border-radius: 25px;
     font-weight: 600;
-    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
     text-decoration: none;
     white-space: nowrap;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642); /* Restored original shadow */
+    order: 4;
 }
 
 .btn-consultation:hover,
 .btn-consultation:focus {
-    background: linear-gradient(135deg, #f4e4c1 0%, #d49132 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background-color: #00000000; /* Restored original transparent hover */
+    color: #11100f;
     outline: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); /* Restored original hover shadow */
 }
 
 /* Mobile Menu Toggle (Hidden by default) */
@@ -154,6 +158,7 @@
     gap: 4px;
     border-radius: 6px;
     transition: background 0.3s ease;
+    order: 5;
 }
 
 .mobile-menu-toggle:hover {
@@ -182,53 +187,71 @@
 
 /* RESPONSIVE BREAKPOINTS */
 
-/* Large Desktop (1200px+) */
+/* Large Desktop (1200px+) - Extra wide spacing */
 @media (min-width: 1200px) {
     .navbar-container {
-        grid-template-columns: auto 1fr 2fr auto auto;
-        gap: 2rem;
+        max-width: 1800px; /* Even wider on large screens */
+        grid-template-columns: auto auto 1fr auto auto;
+        gap: 4rem; /* Extra wide gaps */
+        padding: 0 4rem;
+    }
+    
+    .nav-menu {
+        gap: 5rem; /* Maximum spacing for large screens */
+    }
+    
+    .btn-consultation {
+        padding: 12px 32px;
+        font-size: 1.05rem;
     }
 }
 
-/* Tablet Landscape (992px - 1199px) */
+/* Desktop (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
+    .navbar-container {
+        max-width: 1400px;
+        gap: 3rem;
+    }
+    
     .nav-menu {
-        gap: 1.5rem;
+        gap: 3.5rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 1rem;
+        padding: 8px 10px;
+    }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .navbar-container {
+        grid-template-columns: auto auto 1fr auto auto;
+        gap: 2rem;
+        max-width: 1200px;
+    }
+    
+    .nav-menu {
+        gap: 2rem;
     }
     
     .nav-menu li a {
         font-size: 0.95rem;
         padding: 6px 8px;
     }
-}
-
-/* Tablet Portrait & Small Laptop (768px - 991px) */
-@media (max-width: 991px) and (min-width: 768px) {
-    .navbar-container {
-        grid-template-columns: auto auto 1fr auto auto;
-        gap: 1rem;
-    }
-    
-    .nav-menu {
-        gap: 1rem;
-    }
-    
-    .nav-menu li a {
-        font-size: 0.9rem;
-        padding: 6px;
-    }
     
     .btn-consultation {
-        font-size: 0.85rem;
-        padding: 8px 16px;
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
 }
 
 /* Mobile Landscape (576px - 767px) */
 @media (max-width: 767px) and (min-width: 576px) {
     .navbar-container {
-        grid-template-columns: auto 1fr auto auto;
-        grid-template-areas: "home logo consultation mobile-toggle";
+        grid-template-columns: auto auto 1fr auto auto;
+        grid-template-areas: "logo home . consultation mobile-toggle";
+        gap: 1rem;
     }
     
     .mobile-menu-toggle {
@@ -262,21 +285,23 @@
         padding: 12px 16px;
         border-radius: 8px;
         text-align: center;
+        font-weight: 600;
     }
     
     .btn-consultation {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        font-size: 0.85rem;
+        padding: 8px 16px;
     }
 }
 
 /* Mobile Portrait (up to 575px) */
 @media (max-width: 575px) {
     .navbar-container {
-        grid-template-columns: auto 1fr auto;
-        grid-template-areas: "home logo mobile-toggle";
+        grid-template-columns: auto auto 1fr auto;
+        grid-template-areas: "logo home . mobile-toggle";
         padding: 0 1rem;
         min-height: 70px;
+        gap: 0.5rem;
     }
     
     .mobile-menu-toggle {
@@ -284,7 +309,7 @@
     }
     
     .btn-consultation {
-        display: none; /* Hide on very small screens or move to mobile menu */
+        display: none; /* Hide on very small screens */
     }
     
     .nav-menu {
@@ -311,6 +336,7 @@
         border-radius: 8px;
         text-align: center;
         font-size: 1rem;
+        font-weight: 600;
     }
     
     /* Add consultation button to mobile menu */
@@ -319,8 +345,6 @@
         display: block;
         margin-top: 1rem;
     }
-    
-    /* You can add a mobile consultation link inside the menu if needed */
 }
 
 /* Extra Small Devices (up to 400px) */
@@ -331,12 +355,12 @@
     }
     
     .logo img {
-        height: 35px;
+        height: 40px;
     }
     
     .nav-home-icon svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
 }
 
@@ -354,4 +378,3 @@
         animation: none !important;
     }
 }
-
