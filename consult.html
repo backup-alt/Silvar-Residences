@@ -5,16 +5,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<body>
   <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
-<script>
-    // Load nav.html into the placeholder div
-    fetch('nav.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('navbar-placeholder').innerHTML = html;
-      })
-      .catch(err => console.error('Failed to load navbar:', err));
+  <script>
+      // Load nav.html into the placeholder div
+      fetch('nav.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+        })
+        .catch(err => console.error('Failed to load navbar:', err));
   </script>
 </body>
 
@@ -49,6 +48,7 @@
     <script src="js/consult.js"></script>
   </form>
 </section>
+
 
 
 
