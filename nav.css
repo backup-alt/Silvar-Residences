@@ -64,7 +64,7 @@
 .nav-menu li a {
   color: #000000d9;
   text-decoration: none;
-  font-weight: 620;     /* slightly bolder for clarity */
+  font-weight: 750;     /* slightly bolder for clarity */
   font-size: 1.1rem;
   padding: 6px 0;
   transition: color 0.3s ease;
@@ -130,5 +130,6 @@
   }
 
 }
+
 
 
