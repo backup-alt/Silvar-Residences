@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Navbar container using CSS Grid */
+/* Navbar container */
 .navbar {
     position: fixed;
     width: 100%;
@@ -20,17 +20,19 @@
 }
 
 .navbar-container {
-    max-width: 1600px; /* Made wider for desktop */
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 clamp(1rem, 3vw, 3rem);
-    min-height: 80px;
+    padding: 0 clamp(0.5rem, 2vw, 3rem);
+    min-height: clamp(60px, 8vh, 80px);
     
-    /* CSS Grid Layout for responsive navigation */
+    /* Flexible grid that adapts to screen size */
     display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
-    grid-template-areas: "logo home nav-menu consultation mobile-toggle";
     align-items: center;
-    gap: clamp(1rem, 2vw, 3rem);
+    gap: clamp(0.5rem, 2vw, 2rem);
+    
+    /* Different grid layouts for different screen sizes */
+    grid-template-areas: "logo home nav-menu consultation mobile-toggle";
+    grid-template-columns: auto auto 1fr auto auto;
 }
 
 /* Grid item assignments */
@@ -44,7 +46,6 @@
 
 .nav-menu {
     grid-area: nav-menu;
-    justify-self: center;
 }
 
 .btn-consultation {
@@ -55,33 +56,31 @@
     grid-area: mobile-toggle;
 }
 
-/* Logo - Now positioned first (leftmost) */
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
-    order: 1; /* Ensure logo comes first */
 }
 
 .logo img {
-    height: clamp(45px, 6vw, 69px);
+    height: clamp(35px, 5vw, 69px);
     width: auto;
     object-fit: contain;
 }
 
-/* Home Icon - Positioned after logo */
+/* Home Icon */
 .nav-home-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: clamp(4px, 1vw, 8px);
     border-radius: 50%;
     transition: all 0.3s ease;
-    order: 2; /* Comes after logo */
 }
 
 .nav-home-icon svg {
-    width: clamp(20px, 3vw, 28px);
-    height: clamp(20px, 3vw, 28px);
+    width: clamp(18px, 2.5vw, 28px);
+    height: clamp(18px, 2.5vw, 28px);
     fill: #333;
     transition: fill 0.3s ease;
 }
@@ -95,22 +94,22 @@
     background: rgba(198, 165, 100, 0.1);
 }
 
-/* Navigation Menu - Wider spacing for desktop */
+/* Navigation Menu */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: clamp(2rem, 4vw, 4.5rem); /* Much wider gaps for desktop */
     margin: 0;
     padding: 0;
-    order: 3;
+    justify-self: center;
+    gap: clamp(1rem, 3vw, 4rem);
 }
 
 .nav-menu li a {
     color: #000000d9;
     text-decoration: none;
-    font-weight: 750; /* Restored original weight */
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    padding: 8px 12px;
+    font-weight: 750;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+    padding: clamp(4px, 1vw, 8px) clamp(6px, 1.5vw, 12px);
     border-radius: 6px;
     transition: all 0.3s ease;
     white-space: nowrap;
@@ -118,47 +117,45 @@
 
 .nav-menu li a:hover,
 .nav-menu li a:focus {
-    color: #ffd700; /* Restored original hover color */
+    color: #ffd700;
     background: rgba(255, 215, 0, 0.1);
     outline: none;
 }
 
-/* Consultation Button - Restored transparent design */
+/* Consultation Button */
 .btn-consultation {
     display: inline-block;
-    background-color: #d4913282; /* Restored original transparent background */
+    background-color: #d4913282;
     color: #000;
-    padding: clamp(10px, 1.5vw, 14px) clamp(18px, 2.5vw, 28px);
+    padding: clamp(6px, 1.2vw, 12px) clamp(12px, 2vw, 24px);
     border-radius: 25px;
     font-weight: 600;
-    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    font-size: clamp(0.7rem, 1vw, 1rem);
     text-decoration: none;
     white-space: nowrap;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642); /* Restored original shadow */
-    order: 4;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.642);
 }
 
 .btn-consultation:hover,
 .btn-consultation:focus {
-    background-color: #00000000; /* Restored original transparent hover */
+    background-color: #00000000;
     color: #11100f;
     outline: none;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); /* Restored original hover shadow */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Mobile Menu Toggle (Hidden by default) */
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
-    gap: 4px;
-    border-radius: 6px;
+    padding: 6px;
+    gap: 3px;
+    border-radius: 4px;
     transition: background 0.3s ease;
-    order: 5;
 }
 
 .mobile-menu-toggle:hover {
@@ -166,15 +163,15 @@
 }
 
 .hamburger-line {
-    width: 25px;
-    height: 3px;
+    width: clamp(20px, 3vw, 25px);
+    height: 2.5px;
     background: #333;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -182,53 +179,60 @@
 }
 
 .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* RESPONSIVE BREAKPOINTS */
 
-/* Large Desktop (1200px+) - Extra wide spacing */
-@media (min-width: 1200px) {
+/* Extra Large Desktop (1400px+) */
+@media (min-width: 1400px) {
     .navbar-container {
-        max-width: 1800px; /* Even wider on large screens */
-        grid-template-columns: auto auto 1fr auto auto;
-        gap: 4rem; /* Extra wide gaps */
+        max-width: 1600px;
         padding: 0 4rem;
-    }
-    
-    .nav-menu {
-        gap: 5rem; /* Maximum spacing for large screens */
-    }
-    
-    .btn-consultation {
-        padding: 12px 32px;
-        font-size: 1.05rem;
-    }
-}
-
-/* Desktop (992px - 1199px) */
-@media (max-width: 1199px) and (min-width: 992px) {
-    .navbar-container {
-        max-width: 1400px;
         gap: 3rem;
     }
     
     .nav-menu {
-        gap: 3.5rem;
+        gap: 4.5rem;
     }
     
-    .nav-menu li a {
+    .btn-consultation {
+        padding: 12px 28px;
         font-size: 1rem;
-        padding: 8px 10px;
+    }
+}
+
+/* Large Desktop (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .navbar-container {
+        max-width: 1400px;
+        padding: 0 3rem;
+        gap: 2.5rem;
+    }
+    
+    .nav-menu {
+        gap: 4rem;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .navbar-container {
+        max-width: 1200px;
+        padding: 0 2rem;
+        gap: 2rem;
+    }
+    
+    .nav-menu {
+        gap: 3rem;
     }
 }
 
 /* Tablet Landscape (768px - 991px) */
-@media (max-width: 991px) and (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .navbar-container {
-        grid-template-columns: auto auto 1fr auto auto;
-        gap: 2rem;
-        max-width: 1200px;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
     }
     
     .nav-menu {
@@ -236,56 +240,8 @@
     }
     
     .nav-menu li a {
-        font-size: 0.95rem;
-        padding: 6px 8px;
-    }
-    
-    .btn-consultation {
         font-size: 0.9rem;
-        padding: 10px 20px;
-    }
-}
-
-/* Mobile Landscape (576px - 767px) */
-@media (max-width: 767px) and (min-width: 576px) {
-    .navbar-container {
-        grid-template-columns: auto auto 1fr auto auto;
-        grid-template-areas: "logo home . consultation mobile-toggle";
-        gap: 1rem;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .nav-menu.show {
-        display: flex;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-    }
-    
-    .nav-menu li a {
-        display: block;
-        padding: 12px 16px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: 600;
+        padding: 6px 8px;
     }
     
     .btn-consultation {
@@ -294,22 +250,39 @@
     }
 }
 
-/* Mobile Portrait (up to 575px) */
-@media (max-width: 575px) {
+/* Tablet Portrait (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
     .navbar-container {
-        grid-template-columns: auto auto 1fr auto;
-        grid-template-areas: "logo home . mobile-toggle";
         padding: 0 1rem;
-        min-height: 70px;
-        gap: 0.5rem;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.85rem;
+        padding: 5px 6px;
+    }
+    
+    .btn-consultation {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Large Mobile (480px - 599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+    .navbar-container {
+        grid-template-areas: "logo home consultation mobile-toggle";
+        grid-template-columns: auto auto 1fr auto;
+        padding: 0 1rem;
+        gap: 0.8rem;
     }
     
     .mobile-menu-toggle {
         display: flex;
-    }
-    
-    .btn-consultation {
-        display: none; /* Hide on very small screens */
     }
     
     .nav-menu {
@@ -324,43 +297,129 @@
         padding: 1rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         border-top: 1px solid rgba(255, 255, 255, 0.3);
+        gap: 0;
     }
     
     .nav-menu.show {
         display: flex;
     }
     
-    .nav-menu li a {
-        display: block;
-        padding: 14px 16px;
-        border-radius: 8px;
-        text-align: center;
-        font-size: 1rem;
-        font-weight: 600;
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
     
-    /* Add consultation button to mobile menu */
-    .nav-menu::after {
-        content: '';
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-menu li a {
         display: block;
-        margin-top: 1rem;
+        padding: 12px 16px;
+        text-align: center;
+        font-size: 0.9rem;
+        border-radius: 0;
+    }
+    
+    .btn-consultation {
+        font-size: 0.75rem;
+        padding: 6px 10px;
     }
 }
 
-/* Extra Small Devices (up to 400px) */
-@media (max-width: 400px) {
+/* Small Mobile (up to 479px) */
+@media (max-width: 479px) {
     .navbar-container {
-        padding: 0 0.5rem;
-        min-height: 65px;
+        grid-template-areas: "logo home mobile-toggle";
+        grid-template-columns: auto auto 1fr;
+        padding: 0 0.8rem;
+        gap: 0.5rem;
+        min-height: 60px;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        justify-self: end;
+    }
+    
+    .btn-consultation {
+        display: none; /* Hide consultation button on very small screens */
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        gap: 0;
+    }
+    
+    .nav-menu.show {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-menu li a {
+        display: block;
+        padding: 14px 16px;
+        text-align: center;
+        font-size: 1rem;
+        border-radius: 0;
+        font-weight: 600;
+    }
+    
+    /* Add consultation link to mobile menu */
+    .nav-menu::after {
+        content: '';
+        display: block;
+        border-top: 2px solid rgba(198, 165, 100, 0.3);
+        margin-top: 1rem;
+        padding-top: 1rem;
     }
     
     .logo img {
-        height: 40px;
+        height: 35px;
     }
     
     .nav-home-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Extra Small Mobile (up to 360px) */
+@media (max-width: 360px) {
+    .navbar-container {
+        padding: 0 0.5rem;
+        min-height: 55px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .nav-home-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .nav-home-icon {
+        padding: 4px;
     }
 }
 
@@ -371,10 +430,28 @@
     }
 }
 
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .navbar-container {
+        min-height: 50px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+}
+
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
         animation: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar {
+        display: none;
     }
 }
