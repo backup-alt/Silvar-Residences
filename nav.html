@@ -65,57 +65,79 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Get all required elements
         const mobileToggle = document.querySelector('.mobile-menu-toggle');
         const mobileOverlay = document.querySelector('.mobile-menu-overlay');
         const navMenu = document.querySelector('.nav-menu');
         const navbar = document.querySelector('.navbar');
         const body = document.body;
         
-        // Make sure elements exist before adding event listeners
-        if (!mobileToggle || !mobileOverlay || !navMenu) {
-            console.error('Mobile menu elements not found');
+        // Debug: Check if elements exist
+        if (!mobileToggle) {
+            console.error('Mobile toggle button not found!');
+            return;
+        }
+        if (!mobileOverlay) {
+            console.error('Mobile overlay not found!');
             return;
         }
         
-        // Mobile menu toggle function
+        console.log('All elements found, setting up menu functionality...');
+        
+        // Toggle function
         function toggleMobileMenu() {
             const isActive = mobileToggle.classList.contains('active');
+            
+            console.log('Toggling menu, currently active:', isActive);
             
             if (isActive) {
                 // Close menu
                 mobileToggle.classList.remove('active');
                 mobileOverlay.classList.remove('active');
-                navMenu.classList.remove('show');
                 body.classList.remove('menu-open');
+                console.log('Menu closed');
             } else {
                 // Open menu
                 mobileToggle.classList.add('active');
                 mobileOverlay.classList.add('active');
-                navMenu.classList.add('show');
                 body.classList.add('menu-open');
+                console.log('Menu opened');
             }
         }
         
-        // Toggle menu when hamburger is clicked
+        // Add click event to hamburger button
         mobileToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Hamburger clicked!');
             toggleMobileMenu();
         });
         
-        // Close menu when clicking on mobile overlay
+        // Close menu when clicking on mobile links
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        console.log('Found', mobileLinks.length, 'mobile links');
+        
+        mobileLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                console.log('Mobile link clicked, closing menu');
+                toggleMobileMenu();
+            });
+        });
+        
+        // Close menu when clicking on overlay background
         mobileOverlay.addEventListener('click', function(e) {
             if (e.target === mobileOverlay) {
+                console.log('Clicked on overlay background, closing menu');
                 toggleMobileMenu();
             }
         });
         
-        // Close menu when clicking on mobile navigation links
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileToggle.classList.contains('active')) {
+                console.log('Escape key pressed, closing menu');
                 toggleMobileMenu();
-            });
+            }
         });
         
         // Close menu when clicking outside (optional)
@@ -124,13 +146,15 @@
                                      mobileOverlay.contains(e.target);
             
             if (!isClickInsideMenu && mobileToggle.classList.contains('active')) {
+                console.log('Clicked outside menu, closing');
                 toggleMobileMenu();
             }
         });
         
-        // Handle escape key to close menu
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileToggle.classList.contains('active')) {
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767 && mobileToggle.classList.contains('active')) {
+                console.log('Window resized to desktop, closing mobile menu');
                 toggleMobileMenu();
             }
         });
@@ -152,7 +176,7 @@
             // Hide/show navbar on scroll (desktop only)
             if (window.innerWidth > 767) {
                 clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
+                scrollTimeout = setTimeout(function() {
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         navbar.classList.add('nav-hidden');
                     } else {
@@ -163,17 +187,12 @@
             }
         });
         
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 767 && mobileToggle.classList.contains('active')) {
-                // Close mobile menu if window is resized to desktop
-                toggleMobileMenu();
-            }
-        });
+        console.log('Mobile menu setup complete!');
     });
     </script>
 
 </body>
 </html>
+
 
 
