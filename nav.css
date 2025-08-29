@@ -1,43 +1,3 @@
-/* Ensure mobile menu toggle is clickable */
-.mobile-menu-toggle {
-    position: relative;
-    z-index: 10001;
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* Ensure mobile overlay is properly positioned */
-.mobile-menu-overlay {
-    z-index: 9999;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Fix for iOS Safari */
-.mobile-menu-overlay.active {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
-}
-
-/* Prevent background scrolling when menu is open */
-body.menu-open {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-}
-
-/* Ensure menu content is scrollable if needed */
-.mobile-menu-content {
-    overflow-y: auto;
-    max-height: 100%;
-}
-
-
 /* Reset and base styles */
 * {
     margin: 0;
@@ -67,7 +27,12 @@ body {
     overflow-x: hidden;
 }
 
+/* FIXED: Single rule for menu-open state */
 body.menu-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -82,9 +47,12 @@ body.menu-open {
     background: rgba(255, 255, 255, 0.92);
     box-shadow: 0 8px 40px var(--shadow-light);
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    z-index: 10000;
+    z-index: 1000;
     transition: all 0.4s var(--transition-smooth);
     font-family: 'Inter', sans-serif;
+    /* ADDED: Hardware acceleration */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .navbar::before {
@@ -210,6 +178,13 @@ body.menu-open {
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
 }
 
+/* IMPROVED: Focus states for accessibility */
+.nav-home-icon:focus-visible {
+    outline: 2px solid var(--luxury-gold);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
 .icon-ripple {
     position: absolute;
     top: 50%;
@@ -277,6 +252,13 @@ body.menu-open {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
 }
 
+/* IMPROVED: Focus states */
+.nav-menu li a:focus-visible {
+    outline: 2px solid var(--luxury-gold);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
 /* Contact CTA Button */
 .contact-cta {
     background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%) !important;
@@ -300,6 +282,7 @@ body.menu-open {
     border-radius: 50px;
     opacity: 0;
     transition: opacity 0.3s var(--transition-smooth);
+    z-index: -1;
 }
 
 .contact-cta:hover {
@@ -315,7 +298,7 @@ body.menu-open {
     display: none;
 }
 
-/* Enhanced Mobile Menu Toggle */
+/* FIXED: Mobile Menu Toggle with proper z-index */
 .mobile-menu-toggle {
     grid-area: mobile-toggle;
     display: none;
@@ -329,11 +312,22 @@ body.menu-open {
     transition: all 0.3s var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    z-index: 1001;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .mobile-menu-toggle:hover {
     background: rgba(212, 175, 55, 0.1);
     transform: scale(1.05);
+}
+
+/* IMPROVED: Focus state for toggle */
+.mobile-menu-toggle:focus-visible {
+    outline: 2px solid var(--luxury-gold);
+    outline-offset: 2px;
+    border-radius: 8px;
 }
 
 .toggle-bg {
@@ -378,10 +372,10 @@ body.menu-open {
     background: var(--luxury-gold);
 }
 
-/* Mobile Menu Overlay */
+/* FIXED: Mobile Menu Overlay - Single system */
 .mobile-menu-overlay {
     position: fixed;
-    top: clamp(70px, 8vh, 85px);
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -392,7 +386,14 @@ body.menu-open {
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s var(--transition-smooth);
-    z-index: 9999;
+    z-index: 999;
+    /* ADDED: Better mobile support */
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: none;
 }
 
 .mobile-menu-overlay.active {
@@ -409,6 +410,9 @@ body.menu-open {
     min-height: 100%;
     padding: 2rem;
     gap: 2rem;
+    overflow-y: auto;
+    max-height: 100%;
+    touch-action: auto;
 }
 
 .mobile-nav-link {
@@ -440,15 +444,18 @@ body.menu-open {
     transition: left 0.6s var(--transition-smooth);
 }
 
-.mobile-nav-link:hover::before {
+.mobile-nav-link:hover::before,
+.mobile-nav-link:focus::before {
     left: 100%;
 }
 
-.mobile-nav-link:hover {
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
     color: var(--luxury-gold-dark);
     background: rgba(212, 175, 55, 0.1);
     transform: scale(1.05) translateY(-2px);
     box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    outline: none;
 }
 
 .mobile-contact-cta {
@@ -459,7 +466,8 @@ body.menu-open {
     box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
-.mobile-contact-cta:hover {
+.mobile-contact-cta:hover,
+.mobile-contact-cta:focus {
     background: linear-gradient(135deg, var(--luxury-gold-dark) 0%, var(--luxury-gold) 100%) !important;
     color: var(--luxury-white) !important;
 }
@@ -542,7 +550,7 @@ body.menu-open {
     }
 }
 
-/* Tablet Portrait & Mobile (below 768px) */
+/* FIXED: Mobile (below 768px) - Single menu system */
 @media (max-width: 767px) {
     .navbar-container {
         grid-template-areas: "logo mobile-toggle";
@@ -560,47 +568,7 @@ body.menu-open {
         display: flex;
     }
     
-    /* Traditional mobile menu for smaller screens */
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.96);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 1.5rem;
-        box-shadow: 0 8px 30px var(--shadow-medium);
-        border-top: 1px solid rgba(212, 175, 55, 0.2);
-        gap: 0;
-    }
-    
-    .nav-menu.show {
-        display: flex;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-    }
-    
-    .nav-menu li:last-child {
-        border-bottom: none;
-    }
-    
-    .nav-menu li a {
-        display: block;
-        padding: 16px 20px;
-        text-align: center;
-        font-size: 1rem;
-        border-radius: 0;
-        font-weight: 500;
-    }
-    
-    .mobile-menu-overlay {
-        top: 70px;
-    }
+    /* REMOVED: Conflicting dropdown menu styles */
 }
 
 /* Small Mobile (up to 480px) */
@@ -649,6 +617,10 @@ body.menu-open {
     .mobile-menu-toggle:hover .toggle-bg {
         transform: none !important;
     }
+    
+    .navbar {
+        will-change: auto;
+    }
 }
 
 /* High contrast mode */
@@ -662,6 +634,10 @@ body.menu-open {
     .nav-home-icon svg {
         color: var(--luxury-dark);
         stroke: var(--luxury-dark);
+    }
+    
+    .mobile-menu-overlay {
+        background: var(--luxury-white);
     }
 }
 
@@ -689,4 +665,3 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
-
