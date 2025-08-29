@@ -8,6 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <head>
+        <style>
+            /* FOUC Prevention - Hide mobile menu until fully loaded */
+            .mobile-menu-overlay { 
+                display: none !important; 
+            }
+            
+            /* Show loading state */
+            body { 
+                visibility: hidden; 
+            }
+        </style>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luxury Navigation</title>
+        <link rel="stylesheet" href="nav.css">
+    </head>
+
     <nav class="navbar">
         <div class="navbar-container">
             <!-- Logo -->
@@ -193,6 +212,7 @@
 
 </body>
 </html>
+
 
 
 
