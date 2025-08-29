@@ -64,66 +64,116 @@
     </nav>
 
     <script>
-        // Enhanced mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileOverlay = document.querySelector('.mobile-menu-overlay');
-            const navMenu = document.querySelector('.nav-menu');
-            const navbar = document.querySelector('.navbar');
-            const body = document.body;
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+        const navMenu = document.querySelector('.nav-menu');
+        const navbar = document.querySelector('.navbar');
+        const body = document.body;
+        
+        // Make sure elements exist before adding event listeners
+        if (!mobileToggle || !mobileOverlay || !navMenu) {
+            console.error('Mobile menu elements not found');
+            return;
+        }
+        
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const isActive = mobileToggle.classList.contains('active');
             
-            // Mobile menu toggle
-            mobileToggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                mobileToggle.classList.toggle('active');
-                mobileOverlay.classList.toggle('active');
-                navMenu.classList.toggle('show');
-                body.classList.toggle('menu-open');
-            });
-            
-            // Close menu when clicking on mobile links
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    navMenu.classList.remove('show');
-                    body.classList.remove('menu-open');
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!mobileToggle.contains(e.target) && !mobileOverlay.contains(e.target)) {
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    navMenu.classList.remove('show');
-                    body.classList.remove('menu-open');
-                }
-            });
-
-            // Scroll effect for navbar
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                // Hide/show navbar on scroll
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    navbar.classList.add('nav-hidden');
-                } else {
-                    navbar.classList.remove('nav-hidden');
-                }
-                
-                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            if (isActive) {
+                // Close menu
+                mobileToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                navMenu.classList.remove('show');
+                body.classList.remove('menu-open');
+            } else {
+                // Open menu
+                mobileToggle.classList.add('active');
+                mobileOverlay.classList.add('active');
+                navMenu.classList.add('show');
+                body.classList.add('menu-open');
+            }
+        }
+        
+        // Toggle menu when hamburger is clicked
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+        
+        // Close menu when clicking on mobile overlay
+        mobileOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileOverlay) {
+                toggleMobileMenu();
+            }
+        });
+        
+        // Close menu when clicking on mobile navigation links
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                toggleMobileMenu();
             });
         });
+        
+        // Close menu when clicking outside (optional)
+        document.addEventListener('click', function(e) {
+            const isClickInsideMenu = mobileToggle.contains(e.target) || 
+                                     mobileOverlay.contains(e.target);
+            
+            if (!isClickInsideMenu && mobileToggle.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+        
+        // Handle escape key to close menu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileToggle.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+        
+        // Enhanced scroll effect for navbar
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add scrolled class for styling
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Hide/show navbar on scroll (desktop only)
+            if (window.innerWidth > 767) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        navbar.classList.add('nav-hidden');
+                    } else {
+                        navbar.classList.remove('nav-hidden');
+                    }
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                }, 100);
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767 && mobileToggle.classList.contains('active')) {
+                // Close mobile menu if window is resized to desktop
+                toggleMobileMenu();
+            }
+        });
+    });
     </script>
+
 </body>
 </html>
+
 
