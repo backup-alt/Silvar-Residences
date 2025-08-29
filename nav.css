@@ -1,3 +1,9 @@
+/* FOUC Prevention - Must be at the very top of CSS file */
+.mobile-menu-overlay { opacity: 0 !important; visibility: hidden !important; transform: translateY(-100%) !important; }
+
+/* Rest of your CSS below... */
+
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -665,3 +671,4 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
