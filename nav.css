@@ -1,3 +1,43 @@
+/* Ensure mobile menu toggle is clickable */
+.mobile-menu-toggle {
+    position: relative;
+    z-index: 10001;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Ensure mobile overlay is properly positioned */
+.mobile-menu-overlay {
+    z-index: 9999;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for iOS Safari */
+.mobile-menu-overlay.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+}
+
+/* Prevent background scrolling when menu is open */
+body.menu-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Ensure menu content is scrollable if needed */
+.mobile-menu-content {
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -649,3 +689,4 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
