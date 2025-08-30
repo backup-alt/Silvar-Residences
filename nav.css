@@ -19,14 +19,14 @@
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE TRANSPARENT BACKGROUND */
-    backdrop-filter: blur(15px) !important; /* BLUR EFFECT FOR TRANSPARENCY */
-    -webkit-backdrop-filter: blur(15px) !important; /* SAFARI SUPPORT */
-    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important; /* SUBTLE SHADOW */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important;
     z-index: 999999 !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     transition: all 0.3s ease !important;
+    isolation: isolate !important;
 }
 
 /* ENHANCED BLUR ON SCROLL (Optional) */
@@ -64,7 +64,7 @@
     width: auto !important;
     object-fit: contain !important;
     transition: all 0.4s var(--transition-smooth) !important;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) !important; /* ENHANCED SHADOW FOR VISIBILITY */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) !important;
     position: relative !important;
     z-index: 2 !important;
     margin: 0 !important;
@@ -73,7 +73,7 @@
 
 .logo:hover img {
     transform: scale(1.08) translateY(-2px) !important;
-    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4)) !important; /* ENHANCED GLOW */
+    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4)) !important;
 }
 
 .logo-glow {
@@ -82,7 +82,7 @@
     left: 50% !important;
     width: 80px !important;
     height: 80px !important;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%) !important; /* ENHANCED GLOW */
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%) !important;
     border-radius: 50% !important;
     transform: translate(-50%, -50%) scale(0) !important;
     transition: transform 0.4s var(--transition-smooth) !important;
@@ -95,9 +95,7 @@
 }
 
 .logo:focus {
-    outline: 2px solid rgba(212, 175, 55, 0.8) !important;
-    outline-offset: 2px !important;
-    border-radius: 8px !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 /* CENTERED DESKTOP MENU */
@@ -112,41 +110,46 @@
     padding: 0 !important;
 }
 
-/* ENHANCED NAVIGATION LINKS FOR VISIBILITY */
+/* CLEAN NAVIGATION LINKS - NO BORDERS */
 .nav-link-unique {
     color: #2c3e50 !important;
     text-decoration: none !important;
-    font-weight: 600 !important; /* INCREASED WEIGHT FOR VISIBILITY */
+    font-weight: 600 !important;
     padding: 0.5rem 1rem !important;
     border-radius: 8px !important;
     transition: all 0.3s ease !important;
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE BACKGROUND */
-    backdrop-filter: blur(10px) !important; /* INDIVIDUAL BLUR */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important; /* TEXT SHADOW FOR READABILITY */
+    border: none !important; /* REMOVED BORDER */
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 .nav-link-unique:hover {
     color: #3498db !important;
-    background: rgba(255, 255, 255, 0.2) !important; /* MORE VISIBLE ON HOVER */
+    background: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
     transform: translateY(-2px) !important;
-    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+    border: none !important; /* NO BORDER ON HOVER */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1) !important;
+}
+
+.nav-link-unique:focus {
+    outline: none !important; /* NO FOCUS OUTLINE */
 }
 
 .nav-home-unique svg {
     width: 18px !important;
     height: 18px !important;
-    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important; /* ICON VISIBILITY */
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important;
 }
 
-/* CONTACT BUTTON - ENHANCED */
+/* CONTACT BUTTON - CLEAN */
 .nav-contact-unique {
     background: linear-gradient(135deg, #3498db, #2980b9) !important;
     color: white !important;
@@ -154,9 +157,10 @@
     padding: 0.75rem 1.5rem !important;
     border-radius: 25px !important;
     margin-left: 1rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* ENHANCED BORDER */
+    border: none !important; /* REMOVED BORDER */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
-    backdrop-filter: none !important; /* NO BLUR FOR SOLID BUTTON */
+    backdrop-filter: none !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 .nav-contact-unique:hover {
@@ -166,39 +170,52 @@
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
 }
 
-/* HAMBURGER - ENHANCED FOR VISIBILITY */
+.nav-contact-unique:focus {
+    outline: none !important; /* NO FOCUS OUTLINE */
+}
+
+/* HAMBURGER - CLEAN NO BORDERS */
 .nav-hamburger-unique {
     grid-area: hamburger !important;
     display: none !important;
     flex-direction: column !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE BACKGROUND */
-    backdrop-filter: blur(10px) !important; /* BLUR FOR VISIBILITY */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
+    border: none !important; /* REMOVED BORDER */
     cursor: pointer !important;
     padding: 12px !important;
     gap: 4px !important;
     border-radius: 8px !important;
     position: relative !important;
-    z-index: 1000000 !important;
+    z-index: 1000001 !important;
     width: 48px !important;
     height: 48px !important;
     justify-content: center !important;
     align-items: center !important;
     transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+    isolation: isolate !important;
+    transform: translateZ(0) !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 .nav-hamburger-unique:hover {
     background: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+    border: none !important; /* NO BORDER ON HOVER */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1) !important;
 }
 
 .nav-hamburger-unique:focus {
-    outline: 2px solid #3498db !important;
-    outline-offset: 2px !important;
+    outline: none !important; /* NO FOCUS OUTLINE */
+}
+
+.nav-hamburger-unique * {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1000002 !important;
 }
 
 .nav-bar-unique {
@@ -208,7 +225,7 @@
     transition: all 0.3s ease !important;
     border-radius: 2px !important;
     display: block !important;
-    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important; /* ENHANCED VISIBILITY */
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important;
 }
 
 /* HAMBURGER ACTIVE STATE */
@@ -227,23 +244,23 @@
     background: #3498db !important;
 }
 
-/* MOBILE OVERLAY - ENHANCED BLUR */
+/* MOBILE OVERLAY */
 .nav-mobile-overlay-unique {
     position: fixed !important;
     top: 70px !important;
     left: 0 !important;
     width: 100% !important;
     height: calc(100vh - 70px) !important;
-    background: rgba(255, 255, 255, 0.9) !important; /* MORE OPAQUE */
-    backdrop-filter: blur(25px) !important; /* STRONGER BLUR */
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(25px) !important;
     -webkit-backdrop-filter: blur(25px) !important;
     transform: translateX(-100%) !important;
     opacity: 0 !important;
     visibility: hidden !important;
     transition: all 0.4s ease !important;
-    z-index: 999998 !important;
+    z-index: 999999 !important;
     overflow: hidden !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    isolation: isolate !important;
 }
 
 .nav-mobile-overlay-unique.nav-active-unique {
@@ -266,7 +283,7 @@
     color: #2c3e50 !important;
     text-decoration: none !important;
     font-size: 1.3rem !important;
-    font-weight: 600 !important; /* ENHANCED WEIGHT */
+    font-weight: 600 !important;
     padding: 1rem 2rem !important;
     border-radius: 12px !important;
     transition: all 0.3s ease !important;
@@ -275,19 +292,24 @@
     gap: 0.75rem !important;
     min-width: 200px !important;
     justify-content: center !important;
-    background: rgba(255, 255, 255, 0.2) !important; /* MORE VISIBLE */
+    background: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: none !important; /* REMOVED BORDER */
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 .nav-mobile-link-unique:hover {
     background: rgba(52, 152, 219, 0.2) !important;
     color: #3498db !important;
     transform: scale(1.05) !important;
-    border: 1px solid rgba(52, 152, 219, 0.4) !important;
+    border: none !important; /* NO BORDER ON HOVER */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15) !important;
+}
+
+.nav-mobile-link-unique:focus {
+    outline: none !important; /* NO FOCUS OUTLINE */
 }
 
 .nav-mobile-link-unique svg {
@@ -301,14 +323,19 @@
     color: white !important;
     font-weight: 600 !important;
     margin-top: 1rem !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: none !important; /* REMOVED BORDER */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
+    outline: none !important; /* REMOVED OUTLINE */
 }
 
 .nav-mobile-contact-unique:hover {
     background: linear-gradient(135deg, #2980b9, #1e6fa8) !important;
     color: white !important;
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
+}
+
+.nav-mobile-contact-unique:focus {
+    outline: none !important; /* NO FOCUS OUTLINE */
 }
 
 /* BODY SCROLL LOCK */
@@ -354,34 +381,3 @@ body.nav-menu-open-unique {
         padding: 0.75rem 1.5rem !important;
     }
 }
-
-/* FIX: Hamburger Click Issues with Blur */
-.nav-hamburger-unique {
-    pointer-events: auto !important;
-    z-index: 1000001 !important;
-    position: relative !important;
-    isolation: isolate !important; /* Creates new stacking context */
-    transform: translateZ(0) !important; /* Force hardware acceleration */
-}
-
-/* FIX: Ensure hamburger is always above blur elements */
-.nav-hamburger-unique * {
-    pointer-events: auto !important;
-    position: relative !important;
-    z-index: 1000002 !important;
-}
-
-/* FIX: Mobile overlay z-index */
-.nav-mobile-overlay-unique {
-    z-index: 999999 !important;
-    isolation: isolate !important;
-}
-
-/* FIX: Prevent backdrop-filter from blocking clicks */
-.nav-wrapper-unique {
-    isolation: isolate !important;
-}
-
-/* DEBUG: Temporary red outline to see hamburger area */
-/* Uncomment to debug: */
-/* .nav-hamburger-unique { outline: 2px solid red !important; } */
