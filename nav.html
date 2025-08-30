@@ -35,12 +35,13 @@
                 </ul>
             </div>
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" id="navMenu>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <div class="toggle-bg"></div>
             </button>
+             <div class="drop_menu" onclick="toggleMenu()"></div>
         </div>
         <!-- Mobile Menu Overlay -->
         <div class="mobile-menu-overlay">
@@ -101,8 +102,11 @@
             console.error('Elements not found!');
         }
     });
-        
+        function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('show');
+  }
     </script>
 </body>
 </html>
+
 
