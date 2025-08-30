@@ -26,6 +26,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
+/* FIXED: Container Grid Layout */
 .nav-container-unique {
     max-width: 1200px !important;
     margin: 0 auto !important;
@@ -33,11 +34,13 @@
     height: 70px !important;
     display: grid !important;
     grid-template-columns: auto 1fr auto !important;
+    grid-template-areas: "logo nav hamburger" !important;
     align-items: center !important;
 }
 
-/* Logo */
+/* FIXED: Logo Positioning */
 .logo {
+    grid-area: logo !important;
     display: flex !important;
     align-items: center !important;
     position: relative !important;
@@ -49,22 +52,26 @@
     width: auto !important;
     transition: transform 0.3s ease !important;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1)) !important;
+    position: relative !important;
+    z-index: 2 !important;
 }
 
 .logo:hover img {
-    transform: scale(1.05) translateY(-1px) !important;
+    transform: scale(1.08) translateY(-2px) !important;
+    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4)) !important;
 }
 
 .logo-glow {
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
-    width: 70px !important;
-    height: 70px !important;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%) !important;
+    width: 80px !important;
+    height: 80px !important;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%) !important;
     border-radius: 50% !important;
     transform: translate(-50%, -50%) scale(0) !important;
-    transition: transform 0.3s ease !important;
+    transition: transform 0.4s var(--transition-smooth) !important;
+    z-index: 1 !important;
     pointer-events: none !important;
 }
 
@@ -72,8 +79,9 @@
     transform: translate(-50%, -50%) scale(1) !important;
 }
 
-/* Desktop Menu */
+/* FIXED: Desktop Menu Positioning */
 .nav-desktop-menu-unique {
+    grid-area: nav !important;
     display: flex !important;
     list-style: none !important;
     gap: 3rem !important;
@@ -117,7 +125,7 @@
     height: 18px !important;
 }
 
-/* Contact Button */
+/* FIXED: Contact Button Hover Text Color */
 .nav-contact-unique {
     background: linear-gradient(135deg, var(--primary-blue), #2980b9) !important;
     color: white !important;
@@ -131,16 +139,19 @@
 }
 
 .nav-contact-unique:hover {
+    background: linear-gradient(135deg, #2980b9, #1e6fa8) !important;
+    color: #1a237e !important; /* Dark navy blue text on hover */
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgb(3, 23, 36) !important;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
 }
 
 .nav-contact-unique::after {
     display: none !important;
 }
 
-/* Hamburger Menu */
+/* FIXED: Hamburger Positioning */
 .nav-hamburger-unique {
+    grid-area: hamburger !important;
     display: none !important;
     flex-direction: column !important;
     background: none !important;
@@ -150,6 +161,8 @@
     gap: 4px !important;
     z-index: 1000001 !important;
     transition: transform 0.3s ease !important;
+    justify-self: end !important;
+    pointer-events: auto !important;
 }
 
 .nav-hamburger-unique:hover {
@@ -231,6 +244,7 @@
     height: 20px !important;
 }
 
+/* FIXED: Mobile Contact Button Hover */
 .nav-mobile-contact-unique {
     background: linear-gradient(135deg, var(--primary-blue), #2980b9) !important;
     color: white !important;
@@ -239,9 +253,16 @@
     border-radius: 25px !important;
     margin-top: 1rem !important;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Responsive */
+.nav-mobile-contact-unique:hover {
+    background: linear-gradient(135deg, #2980b9, #1e6fa8) !important;
+    color: #1a237e !important; /* Dark navy blue text on hover */
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
+}
+
+/* FIXED: Responsive Grid Layout */
 @media (max-width: 768px) {
     .nav-desktop-menu-unique {
         display: none !important;
@@ -253,6 +274,8 @@
     
     .nav-container-unique {
         padding: 0 1rem !important;
+        grid-template-areas: "logo . hamburger" !important;
+        grid-template-columns: auto 1fr auto !important;
     }
 }
 
@@ -260,6 +283,8 @@
     .nav-container-unique {
         height: 60px !important;
         padding: 0 0.8rem !important;
+        grid-template-areas: "logo . hamburger" !important;
+        grid-template-columns: auto 1fr auto !important;
     }
     
     .nav-mobile-overlay-unique {
