@@ -6,8 +6,8 @@
         console.log('DOM loaded, initializing navigation...');
         
         // Get elements
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = document.getElementById('main-nav-hamburger');
+        const mobileMenu = document.getElementById('main-nav-mobile-menu');
         const body = document.body;
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
