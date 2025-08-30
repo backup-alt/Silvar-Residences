@@ -1,322 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Luxury Nav - Single File Test</title>
-<style>
-/* === Luxury nav CSS (complete) === */
-:root{
-  --luxury-gold:#d4af37;
-  --luxury-gold-light:#f4e5a1;
-  --luxury-gold-dark:#b8941f;
-  --luxury-charcoal:#2c2c2c;
-  --shadow-light:rgba(0,0,0,0.08);
-  --transition-smooth:cubic-bezier(0.4,0,0.2,1);
-  font-synthesis: none;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.6;overflow-x:hidden;}
-/* body menu-lock applied by script */
-body.menu-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
-/* navbar */
-.navbar{position:fixed;inset:0 0 auto 0;height:auto;top:0;left:0;width:100%;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,0.92);box-shadow:0 8px 40px var(--shadow-light);border-bottom:1px solid rgba(212,175,55,0.15);z-index:1000;transition:all .4s var(--transition-smooth);transform:translateZ(0);will-change:transform}
-.navbar::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(212,175,55,0.03) 0%, rgba(255,255,255,0.05) 50%, rgba(212,175,55,0.03) 100%);pointer-events:none}
-.navbar-container{max-width:1400px;margin:0 auto;display:grid;grid-template-areas:"logo . nav-content . mobile-toggle";grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:clamp(1rem,3vw,3rem);padding:0 clamp(1rem,3vw,3rem);min-height:clamp(70px,8vh,85px);position:relative}
-
-/* logo */
-.logo{grid-area:logo;display:flex;align-items:center;gap:.75rem;cursor:pointer}
-.logo svg{height:clamp(45px,5vw,65px);width:auto;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.08));transition:all .4s var(--transition-smooth);z-index:2}
-.logo-glow{position:absolute;top:50%;left:50%;width:80px;height:80px;border-radius:50%;transform:translate(-50%,-50%) scale(0);background:radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%);transition:transform .4s var(--transition-smooth);z-index:1}
-.logo:hover .logo-glow{transform:translate(-50%,-50%) scale(1)}
-
-/* nav content */
-.nav-content{grid-area:nav-content;display:flex;align-items:center;justify-content:center;gap:clamp(.8rem,2vw,1.5rem)}
-.nav-home-icon{display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.5vw,12px);border-radius:50%;transition:all .4s var(--transition-smooth);order:-1;position:relative;overflow:hidden;text-decoration:none}
-.nav-home-icon svg{width:clamp(20px,2.5vw,28px);height:clamp(20px,2.5vw,28px);stroke:var(--luxury-charcoal);transition:all .3s var(--transition-smooth);z-index:2}
-.nav-home-icon:hover svg{stroke:var(--luxury-gold);transform:scale(1.1)}
-.icon-ripple{position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(212,175,55,0.28);border-radius:50%;transform:translate(-50%,-50%);transition:all .6s ease-out}
-.nav-home-icon:hover .icon-ripple{width:60px;height:60px;opacity:0}
-
-/* nav menu desktop */
-.nav-menu{display:flex;list-style:none;gap:clamp(1.5rem,4vw,4rem)}
-.nav-menu a{color:var(--luxury-charcoal);text-decoration:none;font-weight:500;font-size:clamp(.9rem,1.1vw,1.05rem);padding:clamp(8px,1.2vw,12px) clamp(12px,1.5vw,16px);border-radius:8px;transition:all .3s var(--transition-smooth);white-space:nowrap;position:relative;letter-spacing:.3px;overflow:hidden}
-.nav-menu a::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.1),transparent);transition:left .5s var(--transition-smooth)}
-.nav-menu a:hover::before{left:100%}
-.nav-menu a:hover{color:var(--luxury-gold-dark);background:rgba(212,175,55,0.08);transform:translateY(-1px);box-shadow:0 4px 15px rgba(212,175,55,0.15)}
-
-.contact-cta{background:linear-gradient(135deg,var(--luxury-gold) 0%,var(--luxury-gold-light) 100%);color:#fff;font-weight:600;padding:clamp(10px,1.5vw,14px) clamp(20px,2.5vw,28px);border-radius:50px;box-shadow:0 6px 20px rgba(212,175,55,0.3);position:relative;}
-
-/* mobile toggle */
-.mobile-menu-toggle{grid-area:mobile-toggle;display:none;flex-direction:column;background:none;border:0;padding:10px;gap:4px;border-radius:8px;cursor:pointer;transition:all .3s var(--transition-smooth);position:relative;overflow:hidden;z-index:1001;user-select:none}
-.mobile-menu-toggle .hamburger-line{width:clamp(22px,3vw,26px);height:3px;background:var(--luxury-charcoal);border-radius:3px;transition:all .4s var(--transition-smooth)}
-.mobile-menu-toggle.active .hamburger-line:nth-child(1){transform:rotate(45deg) translate(6px,7px);background:var(--luxury-gold)}
-.mobile-menu-toggle.active .hamburger-line:nth-child(2){opacity:0;transform:translateX(-20px)}
-.mobile-menu-toggle.active .hamburger-line:nth-child(3){transform:rotate(-45deg) translate(6px,-7px);background:var(--luxury-gold)}
-
-.toggle-bg{position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(212,175,55,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:all .3s var(--transition-smooth)}
-.mobile-menu-toggle:hover .toggle-bg{width:50px;height:50px}
-
-/* mobile overlay (hidden by default - NO !important) */
-.mobile-menu-overlay{position:fixed;inset:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);transform:translateY(-100%);opacity:0;visibility:hidden;transition:all .45s var(--transition-smooth);z-index:1002;height:100vh;width:100vw;overflow:hidden;touch-action:none}
-.mobile-menu-overlay.active{transform:translateY(0);opacity:1;visibility:visible}
-.mobile-menu-content{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding:2rem;gap:2rem;overflow-y:auto;max-height:100%}
-.mobile-nav-link{text-decoration:none;color:var(--luxury-charcoal);font-size:clamp(1.2rem,4vw,1.8rem);font-weight:500;padding:1rem 2rem;border-radius:12px;transition:all .4s var(--transition-smooth);display:flex;align-items:center;gap:1rem;min-width:200px;justify-content:center;position:relative;overflow:hidden}
-.mobile-nav-link:hover{color:var(--luxury-gold-dark);background:rgba(212,175,55,0.1);transform:scale(1.05) translateY(-2px);box-shadow:0 8px 25px rgba(212,175,55,0.2)}
-
-/* responsive */
-@media(min-width:768px){ .mobile-menu-toggle{display:none} }
-@media(max-width:767px){
-  .navbar-container{grid-template-areas:"logo mobile-toggle";grid-template-columns:1fr auto;padding:0 1rem;gap:1rem;min-height:70px}
-  .nav-content{display:none}
-  .mobile-menu-toggle{display:flex}
-}
-main{padding-top:120px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Navigation</title>
+    <link rel="stylesheet" href="nav.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
 <body>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luxury Navigation</title>
+        <link rel="stylesheet" href="nav.css">
+    </head>
 
-<nav class="navbar" role="navigation" aria-label="Main">
-  <div class="navbar-container">
-    <div class="logo" role="img" aria-label="Brand logo">
-      <!-- inline SVG logo so no external file required -->
-      <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#f4e5a1"/>
-          </linearGradient>
-        </defs>
-        <rect rx="10" width="200" height="60" fill="transparent"/>
-        <text x="14" y="40" font-family="Playfair, serif" font-size="30" fill="url(#g)">Luxury</text>
-      </svg>
-      <div class="logo-glow" aria-hidden="true"></div>
-    </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="images/logo.png" alt="Brand Logo" />
+                <div class="logo-glow"></div>
+            </div>
 
-    <div class="nav-content">
-      <a href="index.html" class="nav-home-icon" aria-label="Home">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9,22 9,12 15,12 15,22"/>
-        </svg>
-        <div class="icon-ripple" aria-hidden="true"></div>
-      </a>
+            <!-- Centered Navigation Content -->
+            <div class="nav-content">
+                <!-- Home Icon -->
+                <a href="index.html" class="nav-home-icon" aria-label="Home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                    <div class="icon-ripple"></div>
+                </a>
 
-      <ul class="nav-menu" role="menubar">
-        <li><a href="projects.html" role="menuitem">Projects</a></li>
-        <li><a href="#services" role="menuitem">Services</a></li>
-        <li><a href="about_us.html" role="menuitem">About</a></li>
-        <li><a href="consult.html" role="menuitem" class="contact-cta">Contact</a></li>
-      </ul>
-    </div>
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="consult.html" class="contact-cta">Contact</a></li>
+                </ul>
+            </div>
 
-    <button id="mobileToggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileOverlay">
-      <span class="hamburger-line" aria-hidden="true"></span>
-      <span class="hamburger-line" aria-hidden="true"></span>
-      <span class="hamburger-line" aria-hidden="true"></span>
-      <div class="toggle-bg" aria-hidden="true"></div>
-    </button>
-  </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <div class="toggle-bg"></div>
+            </button>
+        </div>
 
-  <div id="mobileOverlay" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Mobile navigation">
-    <div class="mobile-menu-content">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="projects.html" class="mobile-nav-link">Projects</a>
-      <a href="#services" class="mobile-nav-link">Services</a>
-      <a href="about_us.html" class="mobile-nav-link">About</a>
-      <a href="consult.html" class="mobile-nav-link mobile-contact-cta">Contact</a>
-    </div>
-  </div>
-</nav>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu-content">
+                <a href="index.html" class="mobile-nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="projects.html" class="mobile-nav-link">Projects</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="about.html" class="mobile-nav-link">About</a>
+                <a href="contact.html" class="mobile-nav-link mobile-contact-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<main>
-  <section style="padding:2rem">
-    <h1>Luxury Nav Test Page</h1>
-    <p>Resize window to mobile width (<768px) or open on your phone. Use DevTools console for diagnostics.</p>
-    <p style="height:1000px"></p>
-  </section>
-</main>
-
-<script>
-(function navTroubleshooter(){
-  console.clear();
-  console.log('%cNAV TROUBLESHOOTER START', 'background:#222;color:#ffd700;padding:6px;border-radius:4px');
-
-  const out = msg => console.log('%c' + msg, 'color:#222');
-  const err = msg => console.error('%c' + msg, 'color:#ff6666');
-
-  // Basic presence checks
-  const toggle = document.getElementById('mobileToggle');
-  const overlay = document.getElementById('mobileOverlay');
-  out('toggle present: ' + !!toggle);
-  out('overlay present: ' + !!overlay);
-  out('document.readyState: ' + document.readyState);
-  out('head count: ' + document.getElementsByTagName('head').length);
-  out('html count: ' + document.getElementsByTagName('html').length);
-
-  // Collect existing listeners (Chrome getEventListeners if available)
-  try{
-    if (typeof getEventListeners === 'function') {
-      out('getEventListeners available (Chrome). See toggle listeners below:');
-      console.log(getEventListeners(toggle || window));
-    } else {
-      out('getEventListeners unavailable in this browser.');
-    }
-  } catch(e){ console.warn(e); }
-
-  // List CSS rules that mention .mobile-menu-overlay across all stylesheets
-  const rulesFound = [];
-  [...document.styleSheets].forEach((ss, si) => {
-    try {
-      [...ss.cssRules].forEach((r, ri) => {
-        try {
-          if (r.cssText && r.cssText.includes('.mobile-menu-overlay')) {
-            rulesFound.push({sheet: ss.href || ('inline#' + si), rule: r.cssText});
-          }
-        } catch(e){ /* ignore */ }
-      });
-    } catch(e) {
-      // cross-origin stylesheet blocks access
-      rulesFound.push({sheet: ss.href || ('inline#' + si), rule: '[ACCESS DENIED - CORS]' });
-    }
-  });
-  out('Stylesheet rules that reference .mobile-menu-overlay: ' + rulesFound.length);
-  console.table(rulesFound.slice(0, 50));
-
-  // Detect any !important usage in rulesFound text
-  const importantRules = rulesFound.filter(x => typeof x.rule === 'string' && x.rule.includes('!important'));
-  if (importantRules.length) {
-    err('Found rules using !important affecting .mobile-menu-overlay (these can block normal toggling). See table above.');
-  } else {
-    out('No !important found in discovered rules (or stylesheets were inaccessible due to CORS).');
-  }
-
-  // Compute styles and stacking order
-  if (overlay) {
-    const cs = getComputedStyle(overlay);
-    console.log('Computed overlay styles:', {
-      visibility: cs.visibility,
-      opacity: cs.opacity,
-      transform: cs.transform,
-      pointerEvents: cs.pointerEvents,
-      zIndex: cs.zIndex
+    <script>
+    console.log('Script loaded');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM ready');
+        
+        const hamburger = document.querySelector('.mobile-menu-toggle');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        
+        console.log('Hamburger element:', hamburger);
+        console.log('Overlay element:', overlay);
+        
+        if (hamburger && overlay) {
+            console.log('Both elements found - adding click listener');
+            
+            hamburger.onclick = function() {
+                console.log('CLICKED! Menu should toggle now');
+                
+                overlay.style.display = 'flex';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100vh';
+                overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                overlay.style.zIndex = '9999';
+                overlay.style.justifyContent = 'center';
+                overlay.style.alignItems = 'center';
+                
+                console.log('Menu opened with inline styles');
+            };
+            
+            overlay.onclick = function() {
+                overlay.style.display = 'none';
+                console.log('Menu closed');
+            };
+            
+        } else {
+            console.error('Elements not found!');
+        }
     });
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-      const ncs = getComputedStyle(navbar);
-      console.log('Computed navbar z-index:', ncs.zIndex);
-    }
-  }
+    </script>
 
-  // Check if overlay is visually covered at its center
-  function topAtOverlayCenter() {
-    if (!overlay) return null;
-    const rect = overlay.getBoundingClientRect();
-    const cx = Math.max(rect.left + rect.width/2, 1);
-    const cy = Math.max(rect.top + rect.height/2, 1);
-    const topElem = document.elementFromPoint(cx, cy);
-    return {topElem, cx, cy, rect};
-  }
-  const coverInfo = topAtOverlayCenter();
-  if (coverInfo) {
-    console.log('Element on top at overlay center:', coverInfo.topElem);
-  }
 
-  // Are there duplicate IDs?
-  const allToggles = document.querySelectorAll('#mobileToggle');
-  const allOverlays = document.querySelectorAll('#mobileOverlay');
-  out('mobileToggle instances: ' + allToggles.length);
-  out('mobileOverlay instances: ' + allOverlays.length);
-
-  // Detect event listeners by monkey test: attach a temporary listener and see if click triggers existing preventDefault or stops propagation
-  function testClickBehavior(){
-    if (!toggle) return 'no-toggle';
-    let blocked = false;
-    function temp(e) { blocked = blocked || e.defaultPrevented; }
-    toggle.addEventListener('click', temp, {once:true});
-    // programmatic click (this still triggers handlers)
-    try {
-      toggle.click();
-    } catch(e) {
-      console.warn('toggle.click() threw', e);
-    }
-    // small delay to allow handlers
-    return new Promise(resolve => setTimeout(()=> resolve(blocked), 120));
-  }
-
-  // Force-show overlay (RESCUE) by applying inline styles. This ignores CSS specificity and !important.
-  function forceShowOverlay() {
-    if (!overlay) return false;
-    // store old inline style
-    overlay.__nav_old_style = overlay.getAttribute('style') || '';
-    overlay.style.setProperty('display','block','important');
-    overlay.style.setProperty('opacity','1','important');
-    overlay.style.setProperty('visibility','visible','important');
-    overlay.style.setProperty('transform','translateY(0)','important');
-    overlay.style.setProperty('z-index','99999','important');
-    overlay.style.setProperty('pointer-events','auto','important');
-    overlay.classList.add('active');
-    return true;
-  }
-  function restoreOverlay() {
-    if (!overlay) return false;
-    const old = overlay.__nav_old_style || '';
-    if (old === '') overlay.removeAttribute('style');
-    else overlay.setAttribute('style', old);
-    overlay.classList.remove('active');
-    return true;
-  }
-
-  // Run tests sequentially
-  (async function run(){
-    const clickBlocked = await testClickBehavior();
-    out('Programmatic click detected. DefaultPrevented on that click? ' + clickBlocked);
-
-    if (overlay) {
-      out('Trying forceShowOverlay() — this will visually force the menu open even if CSS is blocking it.');
-      const ok = forceShowOverlay();
-      await new Promise(r=>setTimeout(r,200));
-      const cs = getComputedStyle(overlay);
-      console.log('After force show computed:', {
-        visibility: cs.visibility, opacity: cs.opacity, transform: cs.transform, zIndex: cs.zIndex, pointerEvents: cs.pointerEvents
-      });
-      // check if visually above navbar
-      const topNow = topAtOverlayCenter();
-      console.log('Element on top at overlay center after forceShow:', topNow.topElem);
-
-      // If overlay appears, add a temporary close button so user can test links
-      if (ok) {
-        let tempClose = document.createElement('button');
-        tempClose.textContent = 'Close (temp)';
-        tempClose.style.position = 'fixed';
-        tempClose.style.top = '12px';
-        tempClose.style.right = '12px';
-        tempClose.style.zIndex = '100000';
-        tempClose.style.padding = '8px 12px';
-        tempClose.style.background = '#222';
-        tempClose.style.color = '#ffd700';
-        tempClose.style.border = 'none';
-        tempClose.style.borderRadius = '6px';
-        tempClose.id = '__nav_temp_close';
-        document.body.appendChild(tempClose);
-        tempClose.addEventListener('click', function(){
-          restoreOverlay();
-          tempClose.remove();
-          console.log('Overlay restored to old inline style.');
-        });
-        out('Temporary close button placed top-right (id: __nav_temp_close). Use it to restore overlay.');
-      }
-    } else {
-      err('Overlay element not found; forceShowOverlay skipped.');
-    }
-
-    // Print final guidance summary
-    console.log('%cNAV TROUBLESHOOTER DONE', 'background:#222;color:#ffd700;padding:6px;border-radius:4px');
-    console.log('If the overlay became visible after forceShowOverlay: the issue is CSS specificity (look for !important or higher specificity rules printed above) or another element covering the overlay. If overlay did NOT appear, JS might be removing it, or overlay element is missing/malformed.');
-    console.log('Next steps (if visible after force): inspect the rules shown earlier, search for "!important" or other stylesheets that override .mobile-menu-overlay. If not visible after force, paste the console output starting from "NAV TROUBLESHOOTER START" here and I will pinpoint the exact failing cause.');
-  })();
-
-})();
-</script>
 </body>
 </html>
-
