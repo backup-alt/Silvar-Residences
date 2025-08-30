@@ -1,114 +1,130 @@
-// Replace your current script.js with this version:
+// BULLETPROOF NAVIGATION - Completely isolated
 (function() {
-    // Your entire navigation code wrapped in IIFE
-    document.addEventListener('DOMContentLoaded', function() {
-            document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, initializing navigation...');
+    'use strict';
+    
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNavigation);
+    } else {
+        initNavigation();
+    }
+    
+    function initNavigation() {
+        console.log('🍔 Bulletproof Navigation Starting...');
         
-        // Get elements
-        const hamburger = document.getElementById('main-nav-hamburger');
-        const mobileMenu = document.getElementById('main-nav-mobile-menu');
+        // Get elements with unique selectors
+        const hamburger = document.getElementById('navHamburgerUnique');
+        const mobileOverlay = document.getElementById('navMobileOverlayUnique');
+        const mobileLinks = document.querySelectorAll('.nav-mobile-link-unique');
         const body = document.body;
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    
-        // Debug: Check if elements exist
-        console.log('Hamburger element found:', !!hamburger);
-        console.log('Mobile menu element found:', !!mobileMenu);
-    
-        // Check if elements exist
-        if (!hamburger || !mobileMenu) {
-            console.error('Navigation elements not found');
+        
+        // Verify elements exist
+        if (!hamburger || !mobileOverlay) {
+            console.error('❌ Navigation elements not found');
             return;
         }
-    
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            const isOpen = mobileMenu.classList.contains('active');
-            console.log('Toggling menu. Currently open:', isOpen);
+        
+        console.log('✅ Navigation elements found');
+        
+        // State management
+        let isMenuOpen = false;
+        
+        // Toggle function
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            console.log('🔄 Menu toggle:', isMenuOpen ? 'OPENING' : 'CLOSING');
             
-            if (isOpen) {
-                closeMobileMenu();
+            if (isMenuOpen) {
+                hamburger.classList.add('nav-active-unique');
+                mobileOverlay.classList.add('nav-active-unique');
+                body.classList.add('nav-menu-open-unique');
+                hamburger.setAttribute('aria-expanded', 'true');
             } else {
-                openMobileMenu();
+                hamburger.classList.remove('nav-active-unique');
+                mobileOverlay.classList.remove('nav-active-unique');
+                body.classList.remove('nav-menu-open-unique');
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         }
-    
-        // Open mobile menu
-        function openMobileMenu() {
-            console.log('Opening mobile menu...');
-            hamburger.classList.add('active');
-            mobileMenu.classList.add('active');
-            body.classList.add('menu-open');
+        
+        // Close menu function
+        function closeMenu() {
+            if (isMenuOpen) {
+                isMenuOpen = false;
+                hamburger.classList.remove('nav-active-unique');
+                mobileOverlay.classList.remove('nav-active-unique');
+                body.classList.remove('nav-menu-open-unique');
+                hamburger.setAttribute('aria-expanded', 'false');
+                console.log('📱 Menu closed');
+            }
         }
-    
-        // Close mobile menu
-        function closeMobileMenu() {
-            console.log('Closing mobile menu...');
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            body.classList.remove('menu-open');
-        }
-    
-        // Hamburger click event - WITH DEBUGGING
+        
+        // Event listeners
         hamburger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Hamburger clicked successfully!');
-            toggleMobileMenu();
+            console.log('🖱️ Hamburger clicked!');
+            toggleMenu();
         });
-    
-        // Debug: Add visual feedback when hamburger is clicked
-        hamburger.addEventListener('mousedown', function() {
-            console.log('Hamburger mouse down detected');
+        
+        // Visual feedback on touch
+        hamburger.addEventListener('touchstart', function() {
             this.style.background = 'rgba(52, 152, 219, 0.2)';
-        });
-    
-        hamburger.addEventListener('mouseup', function() {
-            console.log('Hamburger mouse up detected');
-            setTimeout(() => {
-                this.style.background = '';
+        }, { passive: true });
+        
+        hamburger.addEventListener('touchend', function() {
+            const self = this;
+            setTimeout(function() {
+                self.style.background = '';
             }, 150);
-        });
-    
-        // Close menu when clicking on mobile nav links
-        mobileNavLinks.forEach(link => {
+        }, { passive: true });
+        
+        // Close on mobile link clicks
+        mobileLinks.forEach(function(link) {
             link.addEventListener('click', function() {
-                console.log('Mobile link clicked - closing menu');
-                closeMobileMenu();
+                console.log('🔗 Mobile link clicked');
+                closeMenu();
             });
         });
-    
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                if (mobileMenu.classList.contains('active')) {
-                    console.log('Clicked outside - closing menu');
-                    closeMobileMenu();
-                }
-            }
-        });
-    
-        // Close menu on escape key
+        
+        // Close on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                console.log('Escape key pressed - closing menu');
-                closeMobileMenu();
+            if (e.key === 'Escape' && isMenuOpen) {
+                console.log('⌨️ Escape key pressed');
+                closeMenu();
             }
         });
-    
+        
+        // Close on outside click
+        document.addEventListener('click', function(e) {
+            if (isMenuOpen && 
+                !hamburger.contains(e.target) && 
+                !mobileOverlay.contains(e.target)) {
+                console.log('🖱️ Outside click detected');
+                closeMenu();
+            }
+        });
+        
         // Handle window resize
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
-                console.log('Window resized - closing menu');
-                closeMobileMenu();
+            if (window.innerWidth > 768 && isMenuOpen) {
+                console.log('📱 Window resized - closing menu');
+                closeMenu();
             }
         });
-    
-        console.log('Navigation initialized successfully!');
-    });
-    
-        });
-    })();
-
-
-// Wait for DOM to load
+        
+        // Set initial aria state
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+        
+        console.log('🎉 Bulletproof Navigation Ready!');
+        
+        // Test function - remove after confirming it works
+        window.testNavigation = function() {
+            console.log('🧪 Testing navigation...');
+            console.log('Hamburger element:', hamburger);
+            console.log('Mobile overlay:', mobileOverlay);
+            console.log('Current menu state:', isMenuOpen);
+        };
+    }
+})();
