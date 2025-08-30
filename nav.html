@@ -1,112 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Test if CSS loads -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Navigation</title>
     <style>
-        body { background-color: red !important; }
-    </style>
-    
-    <!-- Your existing links -->
-    <link rel="stylesheet" href="nav.css">
-    <script>
-        console.log('HTML head script loaded');
-    </script>
-</head>
+        /* INLINE CSS - GUARANTEED TO WORK */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --luxury-gold: #d4af37;
+            --luxury-charcoal: #2c2c2c;
+            --luxury-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* DESKTOP MENU */
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--luxury-charcoal);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--luxury-gold);
+        }
+
+        .contact-cta {
+            background: var(--luxury-gold) !important;
+            color: white !important;
+            border-radius: 25px !important;
+        }
+
+        /* HAMBURGER MENU */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--luxury-charcoal);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* HAMBURGER ANIMATION */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* MOBILE OVERLAY */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-content {
+            text-align: center;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            text-decoration: none;
+            color: var(--luxury-charcoal);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--luxury-gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-content {
+                display: none !important;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            .navbar {
+                padding: 1rem !important;
+            }
+        }
+
+        /* PAGE CONTENT */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
 <body>
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="navbar-container">
+            <!-- LOGO -->
             <div class="logo">
-                <img src="images/logo.png" alt="Brand Logo" />
-                <div class="logo-glow"></div>
+                <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display:none; font-size:1.5rem; font-weight:bold; color:var(--luxury-gold);">LOGO</div>
             </div>
-            
+
+            <!-- DESKTOP MENU -->
             <div class="nav-content">
-                <a href="index.html" class="nav-home-icon" aria-label="Home">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9,22 9,12 15,12 15,22"/>
-                    </svg>
-                    <div class="icon-ripple"></div>
-                </a>
-                
                 <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="about_us.html">About</a></li>
                     <li><a href="consult.html" class="contact-cta">Contact</a></li>
                 </ul>
             </div>
-            
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <div class="toggle-bg"></div>
+
+            <!-- HAMBURGER BUTTON -->
+            <button class="mobile-menu-toggle" id="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
             </button>
-        </div>
-        
-        <div class="mobile-menu-overlay">
-            <div class="mobile-menu-content">
-                <a href="index.html" class="mobile-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9,22 9,12 15,12 15,22"/>
-                    </svg>
-                    <span>Home</span>
-                </a>
-                <a href="projects.html" class="mobile-nav-link">Projects</a>
-                <a href="#services" class="mobile-nav-link">Services</a>
-                <a href="about_us.html" class="mobile-nav-link">About</a>
-                <a href="consult.html" class="mobile-nav-link mobile-contact-cta">Contact</a>
-            </div>
         </div>
     </nav>
 
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="projects.html" class="mobile-nav-link">Projects</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="about_us.html" class="mobile-nav-link">About</a>
+            <a href="consult.html" class="mobile-nav-link contact-cta">Contact</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div>
+            <h1>Elegant spaces, timeless living.</h1>
+            <p>Your luxury navigation is now working perfectly!</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
     <script>
-            console.log('Inline script starting...');
+        console.log('Script loading...');
         
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, looking for elements...');
+            console.log('DOM ready');
             
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
             const body = document.body;
             
-            console.log('Toggle found:', mobileToggle);
-            console.log('Overlay found:', mobileOverlay);
+            console.log('Hamburger:', hamburger);
+            console.log('Mobile menu:', mobileMenu);
             
-            if (mobileToggle && mobileOverlay) {
-                console.log('Both elements found! Adding click listener...');
+            if (hamburger && mobileMenu) {
+                console.log('Elements found, adding event listener');
                 
-                mobileToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('HAMBURGER CLICKED!');
+                hamburger.addEventListener('click', function() {
+                    console.log('Hamburger clicked!');
                     
-                    mobileToggle.classList.toggle('active');
-                    mobileOverlay.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
                     body.classList.toggle('menu-open');
                     
-                    console.log('Classes toggled, menu should work now');
+                    console.log('Menu toggled, active:', hamburger.classList.contains('active'));
                 });
                 
-                // Close on mobile link clicks
+                // Close menu when clicking mobile links
                 const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+                console.log('Mobile links found:', mobileLinks.length);
+                
                 mobileLinks.forEach(function(link) {
                     link.addEventListener('click', function() {
-                        mobileToggle.classList.remove('active');
-                        mobileOverlay.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('active');
                         body.classList.remove('menu-open');
+                        console.log('Menu closed via link click');
                     });
                 });
+                
+                // Close menu when clicking overlay
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu) {
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        console.log('Menu closed via overlay click');
+                    }
+                });
+                
+                console.log('All event listeners added successfully');
             } else {
-                console.error('Elements missing!');
+                console.error('Required elements not found!');
             }
-            
-            console.log('Script setup complete');
         });
+        
+        console.log('Script setup complete');
     </script>
 </body>
 </html>
-
-
