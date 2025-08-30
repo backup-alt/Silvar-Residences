@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self';">
     <title>Luxury Navigation</title>
     <link rel="stylesheet" href="nav.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -42,8 +41,7 @@
                 <span class="hamburger-line"></span>
                 <div class="toggle-bg"></div>
             </button>
-          
-       
+        </div>
         <!-- Mobile Menu Overlay -->
         <div class="mobile-menu-overlay">
             <div class="mobile-menu-content">
@@ -60,50 +58,52 @@
                 <a href="contact.html" class="mobile-nav-link mobile-contact-cta">Contact</a>
             </div>
         </div>
-         <div class="drop_menu" onclick="toggleMenu()">☰</div>
     </nav>
-
+    <div class="drop_menu" onclick="toggleMenu()">☰</div>
     <script>
+    console.log('Script loaded');
+    
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM ready');
+        
         const hamburger = document.querySelector('.mobile-menu-toggle');
         const overlay = document.querySelector('.mobile-menu-overlay');
-        const body = document.body;
+        
+        console.log('Hamburger element:', hamburger);
+        console.log('Overlay element:', overlay);
         
         if (hamburger && overlay) {
-            hamburger.addEventListener('click', function() {
-                // Toggle active states
-                hamburger.classList.toggle('active');
-                overlay.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
+            console.log('Both elements found - adding click listener');
             
-            // Close menu when clicking overlay
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    hamburger.classList.remove('active');
-                    overlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                }
-            });
+            hamburger.onclick = function() {
+                console.log('CLICKED! Menu should toggle now');
+                
+                overlay.style.display = 'flex';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100vh';
+                overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                overlay.style.zIndex = '9999';
+                overlay.style.justifyContent = 'center';
+                overlay.style.alignItems = 'center';
+                
+                console.log('Menu opened with inline styles');
+            };
             
-            // Close menu when clicking nav links
-            const navLinks = overlay.querySelectorAll('.mobile-nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    overlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                });
-            });
+            overlay.onclick = function() {
+                overlay.style.display = 'none';
+                console.log('Menu closed');
+            };
+            
+        } else {
+            console.error('Elements not found!');
         }
     });
-        function toggleMenu() {
+         function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('show');
   }
     </script>
 </body>
 </html>
-
-
-
-
