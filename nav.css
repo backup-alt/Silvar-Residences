@@ -249,6 +249,12 @@ body.menu-open {
     display: block;
   }
 }
+.drop_menu {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
 .nav-menu li a::before {
     content: '';
     position: absolute;
@@ -684,5 +690,6 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
 
 
