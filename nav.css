@@ -1,3 +1,18 @@
+/* FOUC Prevention - Only when NOT active */
+.mobile-menu-overlay:not(.active) { 
+    opacity: 0 !important; 
+    visibility: hidden !important; 
+    transform: translateY(-100%) !important; 
+}
+
+/* Allow active state to override */
+.mobile-menu-overlay.active { 
+    opacity: 1 !important; 
+    visibility: visible !important; 
+    transform: translateY(0) !important; 
+}
+
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -665,5 +680,6 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
 
 
