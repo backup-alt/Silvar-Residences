@@ -13,21 +13,31 @@
     box-sizing: border-box !important;
 }
 
-/* FULLY TRANSPARENT NAVIGATION WRAPPER */
+/* TRANSPARENT NAVIGATION WRAPPER WITH BLUR */
 .nav-wrapper-unique {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    background: transparent !important; /* FULLY TRANSPARENT */
-    backdrop-filter: none !important; /* NO BLUR */
-    box-shadow: none !important; /* NO SHADOW */
-    border: none !important; /* NO BORDER */
+    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE TRANSPARENT BACKGROUND */
+    backdrop-filter: blur(15px) !important; /* BLUR EFFECT FOR TRANSPARENCY */
+    -webkit-backdrop-filter: blur(15px) !important; /* SAFARI SUPPORT */
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05) !important; /* SUBTLE SHADOW */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
     z-index: 999999 !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    transition: all 0.3s ease !important;
 }
 
-/* CONTAINER WITH CENTERED LAYOUT - TRANSPARENT */
+/* ENHANCED BLUR ON SCROLL (Optional) */
+.nav-wrapper-unique.scrolled {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* CONTAINER WITH CENTERED LAYOUT */
 .nav-container-unique {
     max-width: 1200px !important;
     margin: 0 auto !important;
@@ -38,17 +48,15 @@
     grid-template-areas: "logo nav hamburger" !important;
     align-items: center !important;
     position: relative !important;
-    background: transparent !important; /* TRANSPARENT CONTAINER */
 }
 
-/* LOGO POSITIONED LEFT - TRANSPARENT */
+/* LOGO POSITIONED LEFT */
 .logo {
     grid-area: logo !important;
     display: flex !important;
     align-items: center !important;
     position: relative !important;
     cursor: pointer !important;
-    background: transparent !important; /* TRANSPARENT LOGO AREA */
 }
 
 .logo img {
@@ -56,7 +64,7 @@
     width: auto !important;
     object-fit: contain !important;
     transition: all 0.4s var(--transition-smooth) !important;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2)) !important; /* ENHANCED SHADOW FOR VISIBILITY */
     position: relative !important;
     z-index: 2 !important;
     margin: 0 !important;
@@ -65,7 +73,7 @@
 
 .logo:hover img {
     transform: scale(1.08) translateY(-2px) !important;
-    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.3)) !important;
+    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.4)) !important; /* ENHANCED GLOW */
 }
 
 .logo-glow {
@@ -74,7 +82,7 @@
     left: 50% !important;
     width: 80px !important;
     height: 80px !important;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%) !important; /* ENHANCED GLOW */
     border-radius: 50% !important;
     transform: translate(-50%, -50%) scale(0) !important;
     transition: transform 0.4s var(--transition-smooth) !important;
@@ -87,12 +95,12 @@
 }
 
 .logo:focus {
-    outline: 2px solid rgba(212, 175, 55, 0.6) !important;
+    outline: 2px solid rgba(212, 175, 55, 0.8) !important;
     outline-offset: 2px !important;
     border-radius: 8px !important;
 }
 
-/* CENTERED DESKTOP MENU - TRANSPARENT */
+/* CENTERED DESKTOP MENU */
 .nav-desktop-menu-unique {
     grid-area: nav !important;
     display: flex !important;
@@ -102,37 +110,43 @@
     justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: transparent !important; /* TRANSPARENT MENU CONTAINER */
 }
 
-/* TRANSPARENT NAVIGATION LINKS */
+/* ENHANCED NAVIGATION LINKS FOR VISIBILITY */
 .nav-link-unique {
     color: #2c3e50 !important;
     text-decoration: none !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important; /* INCREASED WEIGHT FOR VISIBILITY */
     padding: 0.5rem 1rem !important;
     border-radius: 8px !important;
     transition: all 0.3s ease !important;
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
-    background: transparent !important; /* FULLY TRANSPARENT LINKS */
-    backdrop-filter: none !important; /* NO BLUR ON LINKS */
-    border: none !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE BACKGROUND */
+    backdrop-filter: blur(10px) !important; /* INDIVIDUAL BLUR */
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important; /* TEXT SHADOW FOR READABILITY */
 }
 
 .nav-link-unique:hover {
     color: #3498db !important;
-    background: rgba(52, 152, 219, 0.1) !important; /* SUBTLE HOVER EFFECT */
+    background: rgba(255, 255, 255, 0.2) !important; /* MORE VISIBLE ON HOVER */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     transform: translateY(-2px) !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1) !important;
 }
 
 .nav-home-unique svg {
     width: 18px !important;
     height: 18px !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important; /* ICON VISIBILITY */
 }
 
-/* CONTACT BUTTON - KEEPS ITS GRADIENT */
+/* CONTACT BUTTON - ENHANCED */
 .nav-contact-unique {
     background: linear-gradient(135deg, #3498db, #2980b9) !important;
     color: white !important;
@@ -140,22 +154,27 @@
     padding: 0.75rem 1.5rem !important;
     border-radius: 25px !important;
     margin-left: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* ENHANCED BORDER */
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
+    backdrop-filter: none !important; /* NO BLUR FOR SOLID BUTTON */
 }
 
 .nav-contact-unique:hover {
     background: linear-gradient(135deg, #2980b9, #1e6fa8) !important;
     color: white !important;
     transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
 }
 
-/* HAMBURGER - TRANSPARENT */
+/* HAMBURGER - ENHANCED FOR VISIBILITY */
 .nav-hamburger-unique {
     grid-area: hamburger !important;
     display: none !important;
     flex-direction: column !important;
-    background: transparent !important; /* TRANSPARENT HAMBURGER */
-    backdrop-filter: none !important; /* NO BLUR */
-    border: none !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* SUBTLE BACKGROUND */
+    backdrop-filter: blur(10px) !important; /* BLUR FOR VISIBILITY */
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* SUBTLE BORDER */
     cursor: pointer !important;
     padding: 12px !important;
     gap: 4px !important;
@@ -170,7 +189,11 @@
 }
 
 .nav-hamburger-unique:hover {
-    background: rgba(52, 152, 219, 0.1) !important; /* SUBTLE HOVER */
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1) !important;
 }
 
 .nav-hamburger-unique:focus {
@@ -185,6 +208,7 @@
     transition: all 0.3s ease !important;
     border-radius: 2px !important;
     display: block !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important; /* ENHANCED VISIBILITY */
 }
 
 /* HAMBURGER ACTIVE STATE */
@@ -203,21 +227,23 @@
     background: #3498db !important;
 }
 
-/* MOBILE OVERLAY - SEMI-TRANSPARENT FOR READABILITY */
+/* MOBILE OVERLAY - ENHANCED BLUR */
 .nav-mobile-overlay-unique {
     position: fixed !important;
     top: 70px !important;
     left: 0 !important;
     width: 100% !important;
     height: calc(100vh - 70px) !important;
-    background: rgba(255, 255, 255, 0.95) !important; /* Keep semi-transparent for readability */
-    backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.9) !important; /* MORE OPAQUE */
+    backdrop-filter: blur(25px) !important; /* STRONGER BLUR */
+    -webkit-backdrop-filter: blur(25px) !important;
     transform: translateX(-100%) !important;
     opacity: 0 !important;
     visibility: hidden !important;
     transition: all 0.4s ease !important;
     z-index: 999998 !important;
     overflow: hidden !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 .nav-mobile-overlay-unique.nav-active-unique {
@@ -240,7 +266,7 @@
     color: #2c3e50 !important;
     text-decoration: none !important;
     font-size: 1.3rem !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important; /* ENHANCED WEIGHT */
     padding: 1rem 2rem !important;
     border-radius: 12px !important;
     transition: all 0.3s ease !important;
@@ -249,19 +275,25 @@
     gap: 0.75rem !important;
     min-width: 200px !important;
     justify-content: center !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* MORE VISIBLE */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
 
 .nav-mobile-link-unique:hover {
-    background: rgba(52, 152, 219, 0.1) !important;
+    background: rgba(52, 152, 219, 0.2) !important;
     color: #3498db !important;
     transform: scale(1.05) !important;
+    border: 1px solid rgba(52, 152, 219, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15) !important;
 }
 
 .nav-mobile-link-unique svg {
     width: 20px !important;
     height: 20px !important;
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.5)) !important;
 }
 
 .nav-mobile-contact-unique {
@@ -269,11 +301,14 @@
     color: white !important;
     font-weight: 600 !important;
     margin-top: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
 }
 
 .nav-mobile-contact-unique:hover {
     background: linear-gradient(135deg, #2980b9, #1e6fa8) !important;
     color: white !important;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
 }
 
 /* BODY SCROLL LOCK */
