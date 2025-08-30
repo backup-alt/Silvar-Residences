@@ -69,7 +69,7 @@
             </div>
         </div>
     </nav>
-
+    <div class="drop_menu" onclick="toggleMenu()">☰</div>
     <script>
     console.log('Script loaded');
     
@@ -111,8 +111,12 @@
             console.error('Elements not found!');
         }
     });
+         function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('show');
+  }
     </script>
 
 
 </body>
 </html>
+
