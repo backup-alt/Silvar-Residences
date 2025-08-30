@@ -246,6 +246,27 @@ body.menu-open {
     background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
     transition: left 0.5s var(--transition-smooth);
 }
+.drop_menu {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+@media  {
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .mobile-menu-toggle.show {
+    display: flex;
+  }
+
+  .drop_menu{
+    display: block;
+  }
 
 .nav-menu li a:hover::before {
     left: 100%;
@@ -671,3 +692,4 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
