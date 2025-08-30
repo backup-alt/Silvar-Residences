@@ -131,14 +131,14 @@ body {
 
 /* FIXED: Hamburger Menu - HIGHEST Z-INDEX AND PROPER POSITIONING */
 .hamburger {
-    display: none;
+    display: none !important;
     flex-direction: column;
-    cursor: pointer;
+    cursor: pointer !important;
     padding: 0.75rem; /* INCREASED PADDING FOR BETTER TOUCH TARGET */
     border-radius: 5px;
     transition: all 0.3s ease;
-    position: relative; /* EXPLICIT POSITIONING */
-    z-index: 10003; /* HIGHEST Z-INDEX - ABOVE EVERYTHING */
+    position: relative !important; /* EXPLICIT POSITIONING */
+    z-index: 10003 !important; /* HIGHEST Z-INDEX - ABOVE EVERYTHING */
     background: transparent; /* ENSURE NO BACKGROUND INTERFERENCE */
     border: none; /* NO BORDER */
     outline: none; /* NO OUTLINE */
@@ -198,13 +198,13 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9999; /* LOWER THAN HAMBURGER BUTTON */
+    z-index: 9999 !important; /* LOWER THAN HAMBURGER BUTTON */
 }
 
 .mobile-menu.active {
-    transform: translateX(0);
-    opacity: 1;
-    visibility: visible;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .mobile-nav {
@@ -296,7 +296,7 @@ body.menu-open {
     }
     
     .hamburger {
-        display: flex; /* SHOW HAMBURGER */
+        display: flex !important; /* SHOW HAMBURGER */
     }
     
     .nav-brand h2 {
@@ -367,3 +367,4 @@ html {
 
 /* DEBUG: Temporary red border to see hamburger area (REMOVE AFTER TESTING) */
 /* .hamburger { border: 2px solid red !important; } */
+
