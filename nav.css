@@ -1,3 +1,45 @@
+/* Enhanced Logo */
+.logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.logo img {
+    height: clamp(45px, 5vw, 65px);
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s var(--transition-smooth);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+    position: relative;
+    z-index: 2;
+}
+
+.logo:hover img {
+    transform: scale(1.08) translateY(-2px);
+    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.3));
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s var(--transition-smooth);
+    z-index: 1;
+}
+
+.logo:hover .logo-glow {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
 /* RESET - Scoped to navigation only */
 .nav-wrapper-unique,
 .nav-wrapper-unique *,
@@ -260,3 +302,4 @@ body.nav-menu-open-unique {
         padding: 0.75rem 1.5rem !important;
     }
 }
+
