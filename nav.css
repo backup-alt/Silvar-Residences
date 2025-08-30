@@ -1,9 +1,6 @@
 /* FOUC Prevention - Must be at the very top of CSS file */
 .mobile-menu-overlay { opacity: 0 !important; visibility: hidden !important; transform: translateY(-100%) !important; }
 
-/* Rest of your CSS below... */
-
-
 /* Reset and base styles */
 * {
     margin: 0;
@@ -56,7 +53,6 @@ body.menu-open {
     z-index: 1000;
     transition: all 0.4s var(--transition-smooth);
     font-family: 'Inter', sans-serif;
-    /* ADDED: Hardware acceleration */
     transform: translateZ(0);
     will-change: transform;
 }
@@ -184,7 +180,6 @@ body.menu-open {
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
 }
 
-/* IMPROVED: Focus states for accessibility */
 .nav-home-icon:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -246,27 +241,6 @@ body.menu-open {
     background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
     transition: left 0.5s var(--transition-smooth);
 }
-.drop_menu {
-  display: none;
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-@media  {
-  .mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    z-index: 1000;
-  }
-
-  .mobile-menu-toggle.show {
-    display: flex;
-  }
-
-  .drop_menu{
-    display: block;
-  }
 
 .nav-menu li a:hover::before {
     left: 100%;
@@ -279,7 +253,6 @@ body.menu-open {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
 }
 
-/* IMPROVED: Focus states */
 .nav-menu li a:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -325,7 +298,7 @@ body.menu-open {
     display: none;
 }
 
-/* FIXED: Mobile Menu Toggle with proper z-index */
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
     grid-area: mobile-toggle;
     display: none;
@@ -350,7 +323,6 @@ body.menu-open {
     transform: scale(1.05);
 }
 
-/* IMPROVED: Focus state for toggle */
 .mobile-menu-toggle:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -399,7 +371,7 @@ body.menu-open {
     background: var(--luxury-gold);
 }
 
-/* FIXED: Mobile Menu Overlay - Single system */
+/* Mobile Menu Overlay */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -414,7 +386,6 @@ body.menu-open {
     visibility: hidden;
     transition: all 0.5s var(--transition-smooth);
     z-index: 999;
-    /* ADDED: Better mobile support */
     height: 100vh;
     height: 100dvh;
     width: 100vw;
@@ -499,85 +470,7 @@ body.menu-open {
     color: var(--luxury-white) !important;
 }
 
-/* Responsive Design - Enhanced Breakpoints */
-
-/* Extra Large Desktop (1400px+) */
-@media (min-width: 1400px) {
-    .navbar-container {
-        max-width: 1600px;
-        padding: 0 4rem;
-        gap: 4rem;
-    }
-    
-    .nav-content {
-        gap: 2rem;
-    }
-    
-    .nav-menu {
-        gap: 5rem;
-    }
-}
-
-/* Large Desktop (1200px - 1399px) */
-@media (min-width: 1200px) and (max-width: 1399px) {
-    .navbar-container {
-        max-width: 1400px;
-        padding: 0 3rem;
-        gap: 3rem;
-    }
-    
-    .nav-content {
-        gap: 1.5rem;
-    }
-    
-    .nav-menu {
-        gap: 4rem;
-    }
-}
-
-/* Desktop (992px - 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .navbar-container {
-        max-width: 1200px;
-        padding: 0 2rem;
-        gap: 2rem;
-    }
-    
-    .nav-content {
-        gap: 1.2rem;
-    }
-    
-    .nav-menu {
-        gap: 3rem;
-    }
-}
-
-/* Tablet Landscape (768px - 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-    .navbar-container {
-        padding: 0 1.5rem;
-        gap: 1.5rem;
-    }
-    
-    .nav-content {
-        gap: 1rem;
-    }
-    
-    .nav-menu {
-        gap: 2rem;
-    }
-    
-    .nav-menu li a {
-        font-size: 0.95rem;
-        padding: 8px 12px;
-    }
-    
-    .contact-cta {
-        padding: 8px 16px !important;
-    }
-}
-
-/* FIXED: Mobile (below 768px) - Single menu system */
+/* Responsive Design */
 @media (max-width: 767px) {
     .navbar-container {
         grid-template-areas: "logo mobile-toggle";
@@ -594,11 +487,8 @@ body.menu-open {
     .mobile-menu-toggle {
         display: flex;
     }
-    
-    /* REMOVED: Conflicting dropdown menu styles */
 }
 
-/* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
     .navbar-container {
         padding: 0 0.8rem;
@@ -621,7 +511,6 @@ body.menu-open {
     }
 }
 
-/* Extra Small Mobile (up to 360px) */
 @media (max-width: 360px) {
     .navbar-container {
         padding: 0 0.6rem;
@@ -633,7 +522,7 @@ body.menu-open {
     }
 }
 
-/* Accessibility & Performance */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
@@ -650,7 +539,6 @@ body.menu-open {
     }
 }
 
-/* High contrast mode */
 @media (prefers-contrast: high) {
     .navbar {
         background: var(--luxury-white);
@@ -668,14 +556,12 @@ body.menu-open {
     }
 }
 
-/* Print styles */
 @media print {
     .navbar {
         display: none;
     }
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
     :root {
         --luxury-charcoal: #e5e5e5;
@@ -692,4 +578,3 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
-
