@@ -229,7 +229,26 @@ body.menu-open {
     letter-spacing: 0.3px;
     overflow: hidden;
 }
+.nav-menu a::after {
+    content:'';
+    position: absolute;
+}
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+       position: absolute;
+       z-index: 1000;
+        }
 
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .drop_menu{
+    display: block;
+  }
+}
 .nav-menu li a::before {
     content: '';
     position: absolute;
@@ -665,4 +684,5 @@ body.menu-open {
         background: rgba(26, 26, 26, 0.96);
     }
 }
+
 
