@@ -1,3 +1,9 @@
+/* FOUC Prevention - Must be at the very top of CSS file */
+.mobile-menu-overlay { opacity: 0 !important; visibility: hidden !important; transform: translateY(-100%) !important; }
+
+/* Rest of your CSS below... */
+
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -27,6 +33,7 @@ body {
     overflow-x: hidden;
 }
 
+/* FIXED: Single rule for menu-open state */
 body.menu-open {
     position: fixed;
     top: 0;
@@ -49,6 +56,7 @@ body.menu-open {
     z-index: 1000;
     transition: all 0.4s var(--transition-smooth);
     font-family: 'Inter', sans-serif;
+    /* ADDED: Hardware acceleration */
     transform: translateZ(0);
     will-change: transform;
 }
@@ -67,6 +75,7 @@ body.menu-open {
     pointer-events: none;
 }
 
+/* Scroll effects */
 .navbar.scrolled {
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 12px 50px var(--shadow-medium);
@@ -82,6 +91,7 @@ body.menu-open {
     margin: 0 auto;
     padding: 0 clamp(1rem, 3vw, 3rem);
     min-height: clamp(70px, 8vh, 85px);
+    
     display: grid;
     align-items: center;
     gap: clamp(1rem, 3vw, 3rem);
@@ -174,6 +184,7 @@ body.menu-open {
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
 }
 
+/* IMPROVED: Focus states for accessibility */
 .nav-home-icon:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -247,6 +258,7 @@ body.menu-open {
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
 }
 
+/* IMPROVED: Focus states */
 .nav-menu li a:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -292,7 +304,7 @@ body.menu-open {
     display: none;
 }
 
-/* Mobile Menu Toggle */
+/* FIXED: Mobile Menu Toggle with proper z-index */
 .mobile-menu-toggle {
     grid-area: mobile-toggle;
     display: none;
@@ -317,6 +329,7 @@ body.menu-open {
     transform: scale(1.05);
 }
 
+/* IMPROVED: Focus state for toggle */
 .mobile-menu-toggle:focus-visible {
     outline: 2px solid var(--luxury-gold);
     outline-offset: 2px;
@@ -365,7 +378,7 @@ body.menu-open {
     background: var(--luxury-gold);
 }
 
-/* Mobile Menu Overlay */
+/* FIXED: Mobile Menu Overlay - Single system */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -380,6 +393,7 @@ body.menu-open {
     visibility: hidden;
     transition: all 0.5s var(--transition-smooth);
     z-index: 999;
+    /* ADDED: Better mobile support */
     height: 100vh;
     height: 100dvh;
     width: 100vw;
@@ -464,53 +478,85 @@ body.menu-open {
     color: var(--luxury-white) !important;
 }
 
-/* Responsive Design */
+/* Responsive Design - Enhanced Breakpoints */
+
+/* Extra Large Desktop (1400px+) */
 @media (min-width: 1400px) {
     .navbar-container {
         max-width: 1600px;
         padding: 0 4rem;
         gap: 4rem;
     }
-    .nav-content { gap: 2rem; }
-    .nav-menu { gap: 5rem; }
+    
+    .nav-content {
+        gap: 2rem;
+    }
+    
+    .nav-menu {
+        gap: 5rem;
+    }
 }
 
+/* Large Desktop (1200px - 1399px) */
 @media (min-width: 1200px) and (max-width: 1399px) {
     .navbar-container {
         max-width: 1400px;
         padding: 0 3rem;
         gap: 3rem;
     }
-    .nav-content { gap: 1.5rem; }
-    .nav-menu { gap: 4rem; }
+    
+    .nav-content {
+        gap: 1.5rem;
+    }
+    
+    .nav-menu {
+        gap: 4rem;
+    }
 }
 
+/* Desktop (992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
     .navbar-container {
         max-width: 1200px;
         padding: 0 2rem;
         gap: 2rem;
     }
-    .nav-content { gap: 1.2rem; }
-    .nav-menu { gap: 3rem; }
+    
+    .nav-content {
+        gap: 1.2rem;
+    }
+    
+    .nav-menu {
+        gap: 3rem;
+    }
 }
 
+/* Tablet Landscape (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
     .navbar-container {
         padding: 0 1.5rem;
         gap: 1.5rem;
     }
-    .nav-content { gap: 1rem; }
-    .nav-menu { gap: 2rem; }
+    
+    .nav-content {
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 2rem;
+    }
+    
     .nav-menu li a {
         font-size: 0.95rem;
         padding: 8px 12px;
     }
+    
     .contact-cta {
         padding: 8px 16px !important;
     }
 }
 
+/* FIXED: Mobile (below 768px) - Single menu system */
 @media (max-width: 767px) {
     .navbar-container {
         grid-template-areas: "logo mobile-toggle";
@@ -519,38 +565,48 @@ body.menu-open {
         gap: 1rem;
         min-height: 70px;
     }
+    
     .nav-content {
         display: none;
     }
+    
     .mobile-menu-toggle {
-        display: flex !important;
+        display: flex;
     }
+    
+    /* REMOVED: Conflicting dropdown menu styles */
 }
 
+/* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
     .navbar-container {
         padding: 0 0.8rem;
         min-height: 65px;
     }
+    
     .logo img {
         height: 40px;
     }
+    
     .mobile-nav-link {
         font-size: 1.1rem;
         min-width: 180px;
         padding: 0.8rem 1.5rem;
     }
+    
     .mobile-menu-content {
         gap: 1.5rem;
         padding: 1.5rem;
     }
 }
 
+/* Extra Small Mobile (up to 360px) */
 @media (max-width: 360px) {
     .navbar-container {
         padding: 0 0.6rem;
         min-height: 60px;
     }
+    
     .logo img {
         height: 35px;
     }
@@ -562,46 +618,55 @@ body.menu-open {
         transition: none !important;
         animation: none !important;
     }
+    
     .nav-home-icon:hover .icon-ripple,
     .mobile-menu-toggle:hover .toggle-bg {
         transform: none !important;
     }
+    
     .navbar {
         will-change: auto;
     }
 }
 
+/* High contrast mode */
 @media (prefers-contrast: high) {
     .navbar {
         background: var(--luxury-white);
         border-bottom: 2px solid var(--luxury-dark);
     }
+    
     .nav-menu li a,
     .nav-home-icon svg {
         color: var(--luxury-dark);
         stroke: var(--luxury-dark);
     }
+    
     .mobile-menu-overlay {
         background: var(--luxury-white);
     }
 }
 
+/* Print styles */
 @media print {
     .navbar {
         display: none;
     }
 }
 
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
     :root {
         --luxury-charcoal: #e5e5e5;
         --luxury-white: #1a1a1a;
         --luxury-cream: #2c2c2c;
     }
+    
     .navbar {
         background: rgba(26, 26, 26, 0.92);
         border-bottom-color: rgba(212, 175, 55, 0.3);
     }
+    
     .mobile-menu-overlay {
         background: rgba(26, 26, 26, 0.96);
     }
