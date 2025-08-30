@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Luxury Navigation</title>
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="nav.css" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Fix favicon 404 error -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="navbar-container">
             <!-- Logo -->
-            <div class="logo">
+            <div class="logo" role="img" aria-label="Brand logo">
                 <img src="images/logo.png" alt="Brand Logo" />
-                <div class="logo-glow"></div>
+                <div class="logo-glow" aria-hidden="true"></div>
             </div>
-            <!-- Centered Navigation Content -->
+
+            <!-- Centered Navigation Content (desktop) -->
             <div class="nav-content">
                 <!-- Home Icon -->
                 <a href="index.html" class="nav-home-icon" aria-label="Home">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                         <polyline points="9,22 9,12 15,12 15,22"/>
                     </svg>
-                    <div class="icon-ripple"></div>
+                    <div class="icon-ripple" aria-hidden="true"></div>
                 </a>
-                <!-- Navigation Menu -->
-                <ul class="nav-menu">
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="about_us.html">About</a></li>
-                    <li><a href="consult.html" class="contact-cta">Contact</a></li>
+
+                <!-- Navigation Menu (hidden on mobile via CSS) -->
+                <ul class="nav-menu" role="menubar" aria-hidden="false">
+                    <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
+                    <li role="none"><a role="menuitem" href="#services">Services</a></li>
+                    <li role="none"><a role="menuitem" href="about_us.html">About</a></li>
+                    <li role="none"><a role="menuitem" href="consult.html" class="contact-cta">Contact</a></li>
                 </ul>
             </div>
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <div class="toggle-bg"></div>
+
+            <!-- Mobile Menu Toggle (hamburger) -->
+            <button
+                id="mobileToggle"
+                class="mobile-menu-toggle"
+                aria-label="Toggle mobile menu"
+                aria-expanded="false"
+                aria-controls="mobileOverlay"
+            >
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <div class="toggle-bg" aria-hidden="true"></div>
             </button>
         </div>
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobileOverlay">
+
+        <!-- Mobile Menu Overlay (hidden by default) -->
+        <div
+            id="mobileOverlay"
+            class="mobile-menu-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-hidden="true"
+            aria-label="Mobile navigation"
+        >
             <div class="mobile-menu-content">
                 <a href="index.html" class="mobile-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                         <polyline points="9,22 9,12 15,12 15,22"/>
                     </svg>
@@ -61,83 +77,170 @@
         </div>
     </nav>
 
-    <!-- FIXED JAVASCRIPT -->
+    <!-- (Optional) Page content placeholder for testing -->
+    <main style="padding-top:120px;">
+        <section style="padding:2rem;">
+            <h1>Page Content</h1>
+            <p>Scroll this page and test the mobile menu. The script will preserve your scroll position on open/close.</p>
+            <p style="height:1200px;">Tall content to allow scrolling on mobile (for testing).</p>
+        </section>
+    </main>
+
+    <!-- IMPROVED SCRIPT: accessibility, scroll lock, focus-trap, resize/orientation handling -->
     <script>
-    console.log('Script starting...');
-    
-    // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM is ready');
-        
-        // Get elements by ID for reliability
+    document.addEventListener('DOMContentLoaded', function () {
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileOverlay = document.getElementById('mobileOverlay');
         const body = document.body;
-        
-        console.log('Toggle element:', mobileToggle);
-        console.log('Overlay element:', mobileOverlay);
-        
-        if (mobileToggle && mobileOverlay) {
-            console.log('Elements found successfully');
-            
-            // Add click event
-            mobileToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('3HL CLICKED!');
-                
-                // Toggle active states
-                const isActive = mobileToggle.classList.contains('active');
-                console.log('Currently active:', isActive);
-                
-                if (isActive) {
-                    // Close menu
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                    console.log('Menu closed');
-                } else {
-                    // Open menu
-                    mobileToggle.classList.add('active');
-                    mobileOverlay.classList.add('active');
-                    body.classList.add('menu-open');
-                    console.log('Menu opened');
-                }
-            });
-            
-            // Close menu when clicking mobile links
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-            console.log('Found', mobileLinks.length, 'mobile links');
-            
-            mobileLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                    console.log('Menu closed via link click');
-                });
-            });
-            
-            // Close menu when clicking overlay
-            mobileOverlay.addEventListener('click', function(e) {
-                if (e.target === mobileOverlay) {
-                    mobileToggle.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    body.classList.remove('menu-open');
-                    console.log('Menu closed via overlay click');
-                }
-            });
-            
-            console.log('All event listeners added successfully');
-            
-        } else {
-            console.error('Required elements not found!');
-            console.error('Toggle:', mobileToggle);
-            console.error('Overlay:', mobileOverlay);
+        const MOBILE_BREAKPOINT = 768; // px (matches CSS)
+        let lastScrollY = 0;
+        let focusableElements = [];
+        let firstFocusable = null;
+        let lastFocusable = null;
+        let focusTrapHandler = null;
+
+        if (!mobileToggle || !mobileOverlay) {
+            console.error('Mobile toggle or overlay not found.');
+            return;
         }
+
+        // helper to set aria-expanded & overlay aria-hidden
+        function setAria(open) {
+            mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            mobileOverlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+
+        function saveScrollAndLock() {
+            lastScrollY = Math.max(window.scrollY || window.pageYOffset, 0);
+            body.style.top = `-${lastScrollY}px`;
+            body.classList.add('menu-open');
+        }
+
+        function restoreScrollAndUnlock() {
+            body.classList.remove('menu-open');
+            body.style.top = '';
+            window.scrollTo(0, lastScrollY);
+        }
+
+        function openMenu() {
+            mobileToggle.classList.add('active');
+            mobileOverlay.classList.add('active');
+            setAria(true);
+            saveScrollAndLock();
+            setupFocusTrap();
+
+            // focus first focusable inside overlay
+            if (firstFocusable) firstFocusable.focus();
+        }
+
+        function closeMenu() {
+            mobileToggle.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            setAria(false);
+            teardownFocusTrap();
+            restoreScrollAndUnlock();
+
+            // restore focus to toggle so keyboard users know where they are
+            mobileToggle.focus();
+        }
+
+        function toggleMenu() {
+            if (mobileToggle.classList.contains('active')) closeMenu();
+            else openMenu();
+        }
+
+        // Get focusable elements within overlay
+        function getFocusableElements(container) {
+            const selector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+            return Array.from(container.querySelectorAll(selector)).filter(el => el.offsetParent !== null);
+        }
+
+        function setupFocusTrap() {
+            focusableElements = getFocusableElements(mobileOverlay);
+            if (focusableElements.length === 0) return;
+            firstFocusable = focusableElements[0];
+            lastFocusable = focusableElements[focusableElements.length - 1];
+
+            focusTrapHandler = function (e) {
+                if (e.key === 'Tab') {
+                    if (focusableElements.length === 1) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                        return;
+                    }
+                    if (e.shiftKey && document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeMenu();
+                }
+            };
+
+            document.addEventListener('keydown', focusTrapHandler);
+        }
+
+        function teardownFocusTrap() {
+            if (focusTrapHandler) {
+                document.removeEventListener('keydown', focusTrapHandler);
+                focusTrapHandler = null;
+            }
+        }
+
+        // Events
+        mobileToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleMenu();
+        });
+
+        // Close when clicking mobile links
+        const mobileLinks = mobileOverlay.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                // close menu; let default nav happen
+                closeMenu();
+            });
+        });
+
+        // Close on overlay background click (not when clicking content)
+        mobileOverlay.addEventListener('click', function (e) {
+            if (e.target === mobileOverlay) closeMenu();
+        });
+
+        // Ensure Escape closes even if focus is outside overlay
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                e.preventDefault();
+                closeMenu();
+            }
+        });
+
+        // Close if viewport grows beyond MOBILE_BREAKPOINT
+        let resizeTimeout = null;
+        window.addEventListener('resize', function () {
+            if (resizeTimeout) clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                if (window.innerWidth >= MOBILE_BREAKPOINT && mobileOverlay.classList.contains('active')) {
+                    closeMenu();
+                }
+            }, 150);
+        });
+
+        window.addEventListener('orientationchange', function () {
+            if (mobileOverlay.classList.contains('active')) {
+                setTimeout(function () {
+                    if (window.innerWidth >= MOBILE_BREAKPOINT) closeMenu();
+                }, 250);
+            }
+        });
+
+        // Start with aria states consistent
+        setAria(false);
     });
-    
-    console.log('Script setup complete');
     </script>
 </body>
 </html>
-
