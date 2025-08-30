@@ -3,9 +3,45 @@
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced Logo - Matches Your CSS */
+/* RESET - Scoped to navigation only */
+.nav-wrapper-unique,
+.nav-wrapper-unique *,
+.nav-wrapper-unique *::before,
+.nav-wrapper-unique *::after {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* TRANSPARENT NAVIGATION WRAPPER */
+.nav-wrapper-unique {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: transparent !important; /* CHANGED: Fully transparent */
+    backdrop-filter: none !important; /* CHANGED: Removed blur */
+    box-shadow: none !important; /* CHANGED: Removed shadow */
+    z-index: 999999 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* CONTAINER WITH CENTERED LAYOUT */
+.nav-container-unique {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+    height: 70px !important;
+    display: grid !important; /* CHANGED: Using grid for better control */
+    grid-template-columns: auto 1fr auto !important; /* CHANGED: Logo | Center Space | Hamburger */
+    grid-template-areas: "logo nav hamburger" !important; /* CHANGED: Layout areas */
+    align-items: center !important;
+    position: relative !important;
+}
+
+/* LOGO POSITIONED LEFT */
 .logo {
-    grid-area: logo;
+    grid-area: logo !important; /* CHANGED: Positioned in logo area */
     display: flex !important;
     align-items: center !important;
     position: relative !important;
@@ -47,69 +83,20 @@
     transform: translate(-50%, -50%) scale(1) !important;
 }
 
-/* Make logo clickable and navigate to index.html */
-.logo {
-    text-decoration: none !important;
-}
-
 .logo:focus {
     outline: 2px solid rgba(212, 175, 55, 0.6) !important;
     outline-offset: 2px !important;
     border-radius: 8px !important;
 }
 
-
-
-/* RESET - Scoped to navigation only */
-.nav-wrapper-unique,
-.nav-wrapper-unique *,
-.nav-wrapper-unique *::before,
-.nav-wrapper-unique *::after {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-/* NAVIGATION WRAPPER */
-.nav-wrapper-unique {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
-    z-index: 999999 !important;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-}
-
-/* CONTAINER */
-.nav-container-unique {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 2rem !important;
-    height: 70px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    position: relative !important;
-}
-
-/* LOGO */
-.nav-logo-unique h2 {
-    color: #2c3e50 !important;
-    font-size: 1.8rem !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    text-decoration: none !important;
-}
-
-/* DESKTOP MENU */
+/* CENTERED DESKTOP MENU */
 .nav-desktop-menu-unique {
+    grid-area: nav !important; /* CHANGED: Positioned in nav area */
     display: flex !important;
     list-style: none !important;
     gap: 2rem !important;
     align-items: center !important;
+    justify-content: center !important; /* CHANGED: Centered the navigation links */
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -124,11 +111,14 @@
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent background */
+    backdrop-filter: blur(10px) !important; /* CHANGED: Individual link blur */
 }
 
 .nav-link-unique:hover {
     color: #3498db !important;
-    background: rgba(52, 152, 219, 0.1) !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* CHANGED: More visible on hover */
+    backdrop-filter: blur(15px) !important; /* CHANGED: Enhanced blur on hover */
     transform: translateY(-2px) !important;
 }
 
@@ -144,6 +134,7 @@
     padding: 0.75rem 1.5rem !important;
     border-radius: 25px !important;
     margin-left: 1rem !important;
+    backdrop-filter: none !important; /* CHANGED: No blur for contact button */
 }
 
 .nav-contact-unique:hover {
@@ -152,11 +143,13 @@
     transform: translateY(-3px) !important;
 }
 
-/* HAMBURGER BUTTON */
+/* HAMBURGER POSITIONED RIGHT */
 .nav-hamburger-unique {
+    grid-area: hamburger !important; /* CHANGED: Positioned in hamburger area */
     display: none !important;
     flex-direction: column !important;
-    background: transparent !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent background */
+    backdrop-filter: blur(10px) !important; /* CHANGED: Added blur */
     border: none !important;
     cursor: pointer !important;
     padding: 12px !important;
@@ -168,11 +161,12 @@
     height: 48px !important;
     justify-content: center !important;
     align-items: center !important;
-    transition: background 0.3s ease !important;
+    transition: all 0.3s ease !important;
 }
 
 .nav-hamburger-unique:hover {
-    background: rgba(52, 152, 219, 0.1) !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* CHANGED: More visible on hover */
+    backdrop-filter: blur(15px) !important;
 }
 
 .nav-hamburger-unique:focus {
@@ -205,14 +199,14 @@
     background: #3498db !important;
 }
 
-/* MOBILE OVERLAY */
+/* MOBILE OVERLAY WITH TRANSPARENCY */
 .nav-mobile-overlay-unique {
     position: fixed !important;
     top: 70px !important;
     left: 0 !important;
     width: 100% !important;
     height: calc(100vh - 70px) !important;
-    background: rgba(255, 255, 255, 0.98) !important;
+    background: rgba(255, 255, 255, 0.95) !important; /* CHANGED: More opaque for readability */
     backdrop-filter: blur(20px) !important;
     transform: translateX(-100%) !important;
     opacity: 0 !important;
@@ -251,6 +245,8 @@
     gap: 0.75rem !important;
     min-width: 200px !important;
     justify-content: center !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent */
+    backdrop-filter: blur(10px) !important;
 }
 
 .nav-mobile-link-unique:hover {
@@ -295,6 +291,7 @@ body.nav-menu-open-unique {
     
     .nav-container-unique {
         padding: 0 1rem !important;
+        grid-template-areas: "logo . hamburger" !important; /* CHANGED: Remove nav area on mobile */
     }
 }
 
@@ -313,14 +310,8 @@ body.nav-menu-open-unique {
         height: calc(100vh - 60px) !important;
     }
     
-    .nav-logo-unique h2 {
-        font-size: 1.4rem !important;
-    }
-    
     .nav-mobile-link-unique {
         font-size: 1.1rem !important;
         padding: 0.75rem 1.5rem !important;
     }
 }
-
-
