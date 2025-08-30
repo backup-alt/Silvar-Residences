@@ -1,43 +1,63 @@
-/* Enhanced Logo */
+/* CSS Variables for Logo Effects */
+:root {
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced Logo - Matches Your CSS */
 .logo {
     grid-area: logo;
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+    cursor: pointer !important;
 }
 
 .logo img {
-    height: clamp(45px, 5vw, 65px);
-    width: auto;
-    object-fit: contain;
-    transition: all 0.4s var(--transition-smooth);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
-    position: relative;
-    z-index: 2;
+    height: clamp(45px, 5vw, 65px) !important;
+    width: auto !important;
+    object-fit: contain !important;
+    transition: all 0.4s var(--transition-smooth) !important;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1)) !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .logo:hover img {
-    transform: scale(1.08) translateY(-2px);
-    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.3));
+    transform: scale(1.08) translateY(-2px) !important;
+    filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.3)) !important;
 }
 
 .logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.4s var(--transition-smooth);
-    z-index: 1;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 80px !important;
+    height: 80px !important;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%) !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) scale(0) !important;
+    transition: transform 0.4s var(--transition-smooth) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
 }
 
 .logo:hover .logo-glow {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) !important;
 }
+
+/* Make logo clickable and navigate to index.html */
+.logo {
+    text-decoration: none !important;
+}
+
+.logo:focus {
+    outline: 2px solid rgba(212, 175, 55, 0.6) !important;
+    outline-offset: 2px !important;
+    border-radius: 8px !important;
+}
+
 
 
 /* RESET - Scoped to navigation only */
@@ -302,4 +322,5 @@ body.nav-menu-open-unique {
         padding: 0.75rem 1.5rem !important;
     }
 }
+
 
