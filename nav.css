@@ -13,39 +13,42 @@
     box-sizing: border-box !important;
 }
 
-/* TRANSPARENT NAVIGATION WRAPPER */
+/* FULLY TRANSPARENT NAVIGATION WRAPPER */
 .nav-wrapper-unique {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    background: transparent !important; /* CHANGED: Fully transparent */
-    backdrop-filter: none !important; /* CHANGED: Removed blur */
-    box-shadow: none !important; /* CHANGED: Removed shadow */
+    background: transparent !important; /* FULLY TRANSPARENT */
+    backdrop-filter: none !important; /* NO BLUR */
+    box-shadow: none !important; /* NO SHADOW */
+    border: none !important; /* NO BORDER */
     z-index: 999999 !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
-/* CONTAINER WITH CENTERED LAYOUT */
+/* CONTAINER WITH CENTERED LAYOUT - TRANSPARENT */
 .nav-container-unique {
     max-width: 1200px !important;
     margin: 0 auto !important;
     padding: 0 2rem !important;
     height: 70px !important;
-    display: grid !important; /* CHANGED: Using grid for better control */
-    grid-template-columns: auto 1fr auto !important; /* CHANGED: Logo | Center Space | Hamburger */
-    grid-template-areas: "logo nav hamburger" !important; /* CHANGED: Layout areas */
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    grid-template-areas: "logo nav hamburger" !important;
     align-items: center !important;
     position: relative !important;
+    background: transparent !important; /* TRANSPARENT CONTAINER */
 }
 
-/* LOGO POSITIONED LEFT */
+/* LOGO POSITIONED LEFT - TRANSPARENT */
 .logo {
-    grid-area: logo !important; /* CHANGED: Positioned in logo area */
+    grid-area: logo !important;
     display: flex !important;
     align-items: center !important;
     position: relative !important;
     cursor: pointer !important;
+    background: transparent !important; /* TRANSPARENT LOGO AREA */
 }
 
 .logo img {
@@ -89,18 +92,20 @@
     border-radius: 8px !important;
 }
 
-/* CENTERED DESKTOP MENU */
+/* CENTERED DESKTOP MENU - TRANSPARENT */
 .nav-desktop-menu-unique {
-    grid-area: nav !important; /* CHANGED: Positioned in nav area */
+    grid-area: nav !important;
     display: flex !important;
     list-style: none !important;
     gap: 2rem !important;
     align-items: center !important;
-    justify-content: center !important; /* CHANGED: Centered the navigation links */
+    justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
+    background: transparent !important; /* TRANSPARENT MENU CONTAINER */
 }
 
+/* TRANSPARENT NAVIGATION LINKS */
 .nav-link-unique {
     color: #2c3e50 !important;
     text-decoration: none !important;
@@ -111,14 +116,14 @@
     display: flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent background */
-    backdrop-filter: blur(10px) !important; /* CHANGED: Individual link blur */
+    background: transparent !important; /* FULLY TRANSPARENT LINKS */
+    backdrop-filter: none !important; /* NO BLUR ON LINKS */
+    border: none !important;
 }
 
 .nav-link-unique:hover {
     color: #3498db !important;
-    background: rgba(255, 255, 255, 0.2) !important; /* CHANGED: More visible on hover */
-    backdrop-filter: blur(15px) !important; /* CHANGED: Enhanced blur on hover */
+    background: rgba(52, 152, 219, 0.1) !important; /* SUBTLE HOVER EFFECT */
     transform: translateY(-2px) !important;
 }
 
@@ -127,6 +132,7 @@
     height: 18px !important;
 }
 
+/* CONTACT BUTTON - KEEPS ITS GRADIENT */
 .nav-contact-unique {
     background: linear-gradient(135deg, #3498db, #2980b9) !important;
     color: white !important;
@@ -134,7 +140,6 @@
     padding: 0.75rem 1.5rem !important;
     border-radius: 25px !important;
     margin-left: 1rem !important;
-    backdrop-filter: none !important; /* CHANGED: No blur for contact button */
 }
 
 .nav-contact-unique:hover {
@@ -143,13 +148,13 @@
     transform: translateY(-3px) !important;
 }
 
-/* HAMBURGER POSITIONED RIGHT */
+/* HAMBURGER - TRANSPARENT */
 .nav-hamburger-unique {
-    grid-area: hamburger !important; /* CHANGED: Positioned in hamburger area */
+    grid-area: hamburger !important;
     display: none !important;
     flex-direction: column !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent background */
-    backdrop-filter: blur(10px) !important; /* CHANGED: Added blur */
+    background: transparent !important; /* TRANSPARENT HAMBURGER */
+    backdrop-filter: none !important; /* NO BLUR */
     border: none !important;
     cursor: pointer !important;
     padding: 12px !important;
@@ -165,8 +170,7 @@
 }
 
 .nav-hamburger-unique:hover {
-    background: rgba(255, 255, 255, 0.2) !important; /* CHANGED: More visible on hover */
-    backdrop-filter: blur(15px) !important;
+    background: rgba(52, 152, 219, 0.1) !important; /* SUBTLE HOVER */
 }
 
 .nav-hamburger-unique:focus {
@@ -199,14 +203,14 @@
     background: #3498db !important;
 }
 
-/* MOBILE OVERLAY WITH TRANSPARENCY */
+/* MOBILE OVERLAY - SEMI-TRANSPARENT FOR READABILITY */
 .nav-mobile-overlay-unique {
     position: fixed !important;
     top: 70px !important;
     left: 0 !important;
     width: 100% !important;
     height: calc(100vh - 70px) !important;
-    background: rgba(255, 255, 255, 0.95) !important; /* CHANGED: More opaque for readability */
+    background: rgba(255, 255, 255, 0.95) !important; /* Keep semi-transparent for readability */
     backdrop-filter: blur(20px) !important;
     transform: translateX(-100%) !important;
     opacity: 0 !important;
@@ -245,7 +249,7 @@
     gap: 0.75rem !important;
     min-width: 200px !important;
     justify-content: center !important;
-    background: rgba(255, 255, 255, 0.1) !important; /* CHANGED: Semi-transparent */
+    background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
 }
 
@@ -291,7 +295,7 @@ body.nav-menu-open-unique {
     
     .nav-container-unique {
         padding: 0 1rem !important;
-        grid-template-areas: "logo . hamburger" !important; /* CHANGED: Remove nav area on mobile */
+        grid-template-areas: "logo . hamburger" !important;
     }
 }
 
