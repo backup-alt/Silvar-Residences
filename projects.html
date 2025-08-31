@@ -8,59 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#" class="nav-brand">
-                    <span class="logo-text">BuildCraft</span>
-                </a>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <div class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link active">Projects</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link">About</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link">Services</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
-                </div>
-            </div>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation will be loaded here -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- Hero Section with Quote and Button Above Banner -->
+    <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <div class="hero-quote">
-                    <h1 class="hero-title">"Dreams Don't Work Unless You Do"</h1>
-                    <p class="hero-subtitle">Transform your vision into reality with our expert craftsmanship</p>
-                </div>
-                <button class="build-now-btn" id="buildNowBtn">
-                    <span class="btn-icon">+</span>
-                    <span class="btn-text">Build Now</span>
-                </button>
+        <div class="hero-content">
+            <div class="hero-quote">
+                <h1 class="hero-title">"Dreams Don't Work Unless You Do"</h1>
+                <p class="hero-subtitle">Transform your vision into reality with our expert craftsmanship</p>
             </div>
-        </div>
-        <div class="hero-banner">
-            <img src="project.jpg" alt="Our Projects" class="banner-image">
+            <button class="build-now-btn" id="buildNowBtn">
+                <span class="btn-icon">+</span>
+                <span class="btn-text">Build Now</span>
+            </button>
         </div>
     </section>
 
-    <!-- Additional Content Sections -->
+    <!-- Additional Content -->
     <main class="main-content">
         <section class="projects-intro">
             <div class="container">
@@ -73,6 +38,23 @@
         </section>
     </main>
 
-    <script src="js/projects.js"></script>
+    <script src="projects.js"></script>
+    <script>
+        // Load nav.html and initialize the hamburger menu
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-placeholder').innerHTML = html;
+                
+                // Initialize hamburger menu AFTER content is loaded
+                if (window.initNavigation) {
+                    window.initNavigation();
+                } else {
+                    console.error('❌ initNavigation function not found');
+                }
+            })
+            .catch(err => console.error('❌ Failed to load navbar:', err));
+    </script>
+
 </body>
 </html>
