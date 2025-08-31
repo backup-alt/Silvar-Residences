@@ -3,47 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Page</title>
+    <title>Projects - Build Your Legacy</title>
     <link rel="stylesheet" href="projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-        
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>More than a House. A Legacy</h1>
-            <h2>Bring your dream to real</h2>
-            <button>+ Build Now</button>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#" class="nav-brand">
+                    <span class="logo-text">BuildCraft</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link active">Projects</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Services</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Quote and Button Above Banner -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <div class="hero-quote">
+                    <h1 class="hero-title">"Dreams Don't Work Unless You Do"</h1>
+                    <p class="hero-subtitle">Transform your vision into reality with our expert craftsmanship</p>
+                </div>
+                <button class="build-now-btn" id="buildNowBtn">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Build Now</span>
+                </button>
+            </div>
+        </div>
+        <div class="hero-banner">
+            <img src="project.jpg" alt="Our Projects" class="banner-image">
         </div>
     </section>
-    
-    <main class="content">
-        <section class="step-guide">
-            Step-by-step guide with a flow map (placeholder content).
-        </section>
-        <section class="message-section">
-            Best wishes for your new home. May this home last forever within you.
+
+    <!-- Additional Content Sections -->
+    <main class="main-content">
+        <section class="projects-intro">
+            <div class="container">
+                <h2 class="section-title">Where Vision Meets Reality</h2>
+                <p class="section-description">
+                    Every project tells a story of dedication, innovation, and the pursuit of excellence. 
+                    Discover how we turn architectural dreams into tangible masterpieces.
+                </p>
+            </div>
         </section>
     </main>
+
     <script src="js/projects.js"></script>
-    <script src="nav.js"></script>
-    <script>
-        // Load nav.html and initialize the hamburger menu
-        fetch('nav.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-placeholder').innerHTML = html;
-                
-                // Initialize hamburger menu AFTER content is loaded
-                if (window.initNavigation) {
-                    window.initNavigation();
-                } else {
-                    console.error('❌ initNavigation function not found');
-                }
-            })
-            .catch(err => console.error('❌ Failed to load navbar:', err));
-    </script>
 </body>
 </html>
-
