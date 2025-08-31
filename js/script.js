@@ -1,21 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const track = document.querySelector('.slider-track');
-  const slides = document.querySelectorAll('.slider-image');
-  let currentIndex = 0;
-  const total = slides.length;
+// Add this to your existing JavaScript file for enhanced mobile experience
+function optimizeSliderForDevice() {
+    const slider = document.querySelector('.slider-track');
+    const isMobile = window.innerWidth <= 768;
+    const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+    
+    if (slider) {
+        if (isMobile) {
+            // Slower animation on mobile
+            slider.style.animationDuration = '28s';
+        } else if (isTablet) {
+            // Medium speed on tablet
+            slider.style.animationDuration = '24s';
+        } else {
+            // Normal speed on desktop
+            slider.style.animationDuration = '21s';
+        }
+    }
+}
 
-  function updateSlider() {
-    track.style.transform = `translateX(-${currentIndex * 100}vw)`;
-  }
+// Call on load and resize
+window.addEventListener('load', optimizeSliderForDevice);
+window.addEventListener('resize', debounce(optimizeSliderForDevice, 250));
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % total;
-    updateSlider();
-  }
+// Debounce function to prevent excessive calls
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
-  updateSlider(); // Initial position
-  setInterval(nextSlide, 3000); // Change slide every 3 seconds
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.testimonials-track');
@@ -95,4 +114,5 @@ document.addEventListener('DOMContentLoaded', () => {
     track.style.transform = `translateX(${-newCardWidth * currentIndex}px)`;
   });
 });
+
 
