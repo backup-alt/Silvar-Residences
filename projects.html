@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Build Your Legacy</title>
     <link rel="stylesheet" href="projects.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation will be loaded here -->
@@ -23,40 +24,258 @@
                 <span class="btn-text">Build Now</span>
             </button>
         </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
     </section>
 
-    <!-- Additional Content -->
-    <main class="main-content">
-        <section class="projects-intro">
-            <div class="container">
-                <h2 class="section-title">Where Vision Meets Reality</h2>
-                <p class="section-description">
-                    Every project tells a story of dedication, innovation, and the pursuit of excellence. 
-                    Discover how we turn architectural dreams into tangible masterpieces.
-                </p>
+    <!-- Stats Counter Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-count="150">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item" data-count="98">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Client Satisfaction %</div>
+                </div>
+                <div class="stat-item" data-count="8">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item" data-count="24">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Interactive Process Timeline -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Proven Process</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-step="1">
+                    <div class="timeline-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Ideation</h3>
+                        <p>We brainstorm and conceptualize your vision into actionable plans</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="2">
+                    <div class="timeline-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Design</h3>
+                        <p>Creating detailed blueprints and 3D visualizations of your project</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="3">
+                    <div class="timeline-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Construction</h3>
+                        <p>Expert craftsmen bring your vision to life with precision</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="4">
+                    <div class="timeline-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Delivery</h3>
+                        <p>Final walkthrough and handing over your dream project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Carousel -->
+    <section class="featured-projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-carousel">
+                <div class="project-card active" data-project="1">
+                    <div class="project-image">
+                        <div class="placeholder-img">Modern Villa</div>
+                        <div class="project-overlay">
+                            <button class="view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Luxury Modern Villa</h3>
+                        <p>Contemporary design meets comfort</p>
+                        <div class="project-tags">
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Interior</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-project="2">
+                    <div class="project-image">
+                        <div class="placeholder-img">Office Complex</div>
+                        <div class="project-overlay">
+                            <button class="view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Corporate Headquarters</h3>
+                        <p>Innovative workspace solutions</p>
+                        <div class="project-tags">
+                            <span class="tag">Commercial</span>
+                            <span class="tag">Sustainable</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-project="3">
+                    <div class="project-image">
+                        <div class="placeholder-img">Residential Complex</div>
+                        <div class="project-overlay">
+                            <button class="view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Eco-Friendly Homes</h3>
+                        <p>Sustainable living redefined</p>
+                        <div class="project-tags">
+                            <span class="tag">Eco-Friendly</span>
+                            <span class="tag">Smart Home</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">What We Build</h2>
+            <div class="services-grid">
+                <div class="service-card" data-service="residential">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Residential</h3>
+                    <p>Custom homes that reflect your lifestyle</p>
+                    <ul class="service-features">
+                        <li>Custom Architecture</li>
+                        <li>Interior Design</li>
+                        <li>Smart Home Integration</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-service="commercial">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Commercial</h3>
+                    <p>Innovative spaces for modern businesses</p>
+                    <ul class="service-features">
+                        <li>Office Buildings</li>
+                        <li>Retail Spaces</li>
+                        <li>Co-working Areas</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-service="renovation">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Renovation</h3>
+                    <p>Transform existing spaces into dreams</p>
+                    <ul class="service-features">
+                        <li>Kitchen Remodeling</li>
+                        <li>Bathroom Upgrades</li>
+                        <li>Full Home Makeovers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Absolutely phenomenal work! They turned our vision into reality and exceeded every expectation. The attention to detail is remarkable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>Homeowner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Professional, reliable, and creative. Our office renovation was completed on time and within budget. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span>Business Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Build Your Dream?</h2>
+                <p>Let's turn your vision into reality. Get a free consultation today.</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn primary">Start Your Project</button>
+                    <button class="cta-btn secondary">View Portfolio</button>
+                </div>
+            </div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+    </section>
 
     <script src="projects.js"></script>
-    <script src="nav.js"></script>
-    <script>
-        // Load nav.html and initialize the hamburger menu
-        fetch('nav.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar-placeholder').innerHTML = html;
-                
-                // Initialize hamburger menu AFTER content is loaded
-                if (window.initNavigation) {
-                    window.initNavigation();
-                } else {
-                    console.error('❌ initNavigation function not found');
-                }
-            })
-            .catch(err => console.error('❌ Failed to load navbar:', err));
-    </script>
-
 </body>
 </html>
-
