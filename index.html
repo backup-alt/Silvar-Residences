@@ -8,15 +8,7 @@
 </head>
 <body>
   <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
-<script>
-    // Load nav.html into the placeholder div
-    fetch('nav.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('navbar-placeholder').innerHTML = html;
-      })
-      .catch(err => console.error('Failed to load navbar:', err));
-  </script>
+
 
   <div class="slider-container">
     <div class="slider-track">
@@ -198,8 +190,26 @@
 
   <script src="js/script.js"></script>
   <script src="nav.js"></script>
+  <script>
+      // Load nav.html and initialize the hamburger menu
+      fetch('nav.html')
+          .then(response => response.text())
+          .then(html => {
+              document.getElementById('navbar-placeholder').innerHTML = html;
+              
+              // Initialize hamburger menu AFTER content is loaded
+              if (window.initNavigation) {
+                  window.initNavigation();
+              } else {
+                  console.error('❌ initNavigation function not found');
+              }
+          })
+          .catch(err => console.error('❌ Failed to load navbar:', err));
+  </script>
+
 </body>
 </html>
+
 
 
 
