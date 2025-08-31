@@ -1,88 +1,94 @@
-// DOM Content Loaded
+// Load navbar from nav.html
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Navigation functionality
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const buildNowBtn = document.getElementById('buildNowBtn');
-    
-    // Mobile navigation toggle
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking on nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+    // Import navigation bar
+    fetch('nav.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
             
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add active class to clicked link
-            this.classList.add('active');
+            // After navbar is loaded, initialize navigation functionality
+            initializeNavigation();
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+            // Fallback if nav.html is not available
+            createFallbackNav();
         });
-    });
     
-    // Smooth scrolling navbar background on scroll
-    let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
+    // Initialize other functionality
+    initializeBuildButton();
+    initializeScrollEffects();
+});
+
+function initializeNavigation() {
+    // Navigation functionality after navbar is loaded
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-    
-    // Build Now button functionality
-    buildNowBtn.addEventListener('click', function() {
-        // Add click animation
-        this.style.transform = 'translateY(-3px) scale(0.95)';
-        
-        setTimeout(() => {
-            this.style.transform = 'translateY(-3px) scale(1)';
-        }, 150);
-        
-        // Add your custom functionality here
-        console.log('Build Now button clicked!');
-        
-        // Example: Show a modal or redirect
-        // You can add actual functionality like:
-        // window.location.href = '/contact';
-        // or show a contact form modal
-        showBuildModal();
-    });
-    
-    // Example modal function (you can customize this)
-    function showBuildModal() {
-        alert('Ready to build your dream project? Contact us to get started!');
-        // Replace with actual modal or form functionality
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
     }
     
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const heroContent = document.querySelector('.hero-content');
-        const bannerImage = document.querySelector('.banner-image');
-        
-        if (heroContent && bannerImage) {
-            const rate = scrolled * -0.5;
-            heroContent.style.transform = `translateY(${rate}px)`;
-            bannerImage.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-    });
+    if (navLinks.length > 0) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (navMenu) navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+}
+
+function createFallbackNav() {
+    // Fallback navigation if nav.html fails to load
+    const fallbackNav = `
+        <nav style="position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <div style="font-size: 1.5rem; font-weight: 700; color: #2c3e50;">BuildCraft</div>
+            <div style="display: flex; gap: 2rem;">
+                <a href="#" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Home</a>
+                <a href="#" style="text-decoration: none; color: #3498db; font-weight: 500;">Projects</a>
+                <a href="#" style="text-decoration: none; color: #2c3e50; font-weight: 500;">About</a>
+                <a href="#" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Contact</a>
+            </div>
+        </nav>
+    `;
+    document.getElementById('navbar-placeholder').innerHTML = fallbackNav;
+}
+
+function initializeBuildButton() {
+    const buildNowBtn = document.getElementById('buildNowBtn');
     
-    // Add loading animation to elements
+    if (buildNowBtn) {
+        buildNowBtn.addEventListener('click', function() {
+            // Add click animation
+            this.style.transform = 'translateY(-3px) scale(0.95)';
+            
+            setTimeout(() => {
+                this.style.transform = 'translateY(-3px) scale(1)';
+            }, 150);
+            
+            console.log('Build Now button clicked!');
+            
+            // Add your functionality here
+            alert('Ready to build your dream project? Contact us to get started!');
+        });
+        
+        buildNowBtn.addEventListener('mouseenter', function() {
+            console.log('Build Now button hovered');
+        });
+    }
+}
+
+function initializeScrollEffects() {
+    // Scroll-based animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -104,38 +110,4 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'all 0.6s ease-out';
         observer.observe(el);
     });
-    
-    // Button hover sound effect (optional)
-    buildNowBtn.addEventListener('mouseenter', function() {
-        // You can add a subtle sound effect here if desired
-        console.log('Build Now button hovered');
-    });
-    
-    // Keyboard accessibility
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-    
-    // Performance optimization - debounced scroll
-    let scrollTimeout;
-    function debounce(func, wait) {
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(scrollTimeout);
-                func(...args);
-            };
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(later, wait);
-        };
-    }
-    
-    // Apply debouncing to scroll events
-    const debouncedScrollHandler = debounce(function() {
-        // Additional scroll-based functionality can be added here
-    }, 10);
-    
-    window.addEventListener('scroll', debouncedScrollHandler);
-});
+}
