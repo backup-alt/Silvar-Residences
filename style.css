@@ -15,7 +15,7 @@ html, body {
     overflow-x: auto;
     display: flex;
     scroll-behavior: smooth;
-    scroll-padding: 0 1rem;
+    scroll-padding: 0;
     -webkit-overflow-scrolling: touch;
     height: 100vh;
     position: relative;
@@ -29,50 +29,69 @@ html, body {
 
 .slide {
     scroll-snap-align: center;
-    flex: 0 0 100%;
+    flex: 0 0 100vw; /* Full viewport width */
     position: relative;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .slider-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center; /* Ensures perfect centering */
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-    filter: brightness(0.7) contrast(1.1);
+    filter: brightness(0.85) contrast(1.1) saturate(1.1);
 }
 
 .slide-quote {
     position: relative;
     z-index: 2;
     color: #ffffff;
-    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    font-size: clamp(1.8rem, 4vw, 3.8rem);
     font-weight: 700;
     text-align: center;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    max-width: 90%;
-    line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    max-width: 85%;
+    line-height: 1.25;
     letter-spacing: -0.02em;
-    padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    
+    /* Elegant glass morphism background */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    
+    /* Additional styling for elegance */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    transform: translateZ(0); /* Hardware acceleration */
+    will-change: transform;
 }
 
-/* Hide scrollbar for webkit browsers */
+/* Enhanced glass effect on hover */
+.slide-quote:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px) translateZ(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar completely */
 .slider-container::-webkit-scrollbar {
     display: none;
+    width: 0;
+    height: 0;
 }
 
-/* Hide scrollbar for Firefox */
 .slider-container {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -81,78 +100,140 @@ html, body {
 /* Tablet Responsive */
 @media screen and (max-width: 1024px) {
     .slider-container {
-        height: 80vh;
+        height: 85vh;
     }
     
     .slide-quote {
-        font-size: clamp(1.3rem, 3.5vw, 2.8rem);
-        padding: 1.2rem 1.8rem;
-        max-width: 85%;
+        font-size: clamp(1.6rem, 3.8vw, 3.2rem);
+        padding: 1.8rem 2.5rem;
+        max-width: 88%;
         line-height: 1.3;
+        border-radius: 18px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 }
 
 /* Mobile Portrait */
 @media screen and (max-width: 768px) {
     .slider-container {
-        height: 70vh;
+        height: 75vh;
         min-height: 500px;
     }
     
+    .slide {
+        flex: 0 0 100vw; /* Ensure full width on mobile */
+    }
+    
     .slide-quote {
-        font-size: clamp(1.2rem, 4.5vw, 2.5rem);
-        padding: 1.2rem 1.5rem;
-        max-width: 90%;
-        line-height: 1.25;
+        font-size: clamp(1.4rem, 4.5vw, 2.8rem);
+        padding: 1.5rem 2rem;
+        max-width: 92%;
+        line-height: 1.3;
+        border-radius: 16px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
     .slider-container {
-        height: 60vh;
-        min-height: 400px;
+        height: 65vh;
+        min-height: 450px;
     }
     
     .slide-quote {
-        font-size: clamp(1rem, 5vw, 2rem);
-        padding: 1rem 1.2rem;
+        font-size: clamp(1.2rem, 5vw, 2.4rem);
+        padding: 1.2rem 1.8rem;
         max-width: 95%;
-        line-height: 1.3;
-        border-radius: 8px;
-        backdrop-filter: blur(8px);
+        line-height: 1.35;
+        border-radius: 14px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     }
     
     .slider-image {
-        filter: brightness(0.6) contrast(1.2);
+        filter: brightness(0.8) contrast(1.15) saturate(1.1);
     }
 }
 
 /* Extra Small Devices */
 @media screen and (max-width: 360px) {
     .slider-container {
-        height: 55vh;
-        min-height: 350px;
+        height: 60vh;
+        min-height: 400px;
     }
     
     .slide-quote {
-        font-size: clamp(0.9rem, 5.5vw, 1.8rem);
-        padding: 0.8rem 1rem;
+        font-size: clamp(1.1rem, 5.5vw, 2.1rem);
+        padding: 1rem 1.5rem;
         max-width: 98%;
-        line-height: 1.35;
+        line-height: 1.4;
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 }
 
 /* Large Screens */
 @media screen and (min-width: 1440px) {
     .slide-quote {
-        font-size: clamp(2rem, 3vw, 4rem);
-        padding: 2rem 3rem;
+        font-size: clamp(2.2rem, 3.5vw, 4.5rem);
+        padding: 2.5rem 4rem;
         max-width: 80%;
-        border-radius: 20px;
+        border-radius: 25px;
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        background: rgba(255, 255, 255, 0.12);
     }
 }
 
+/* Ultra Wide Screens */
+@media screen and (min-width: 1920px) {
+    .slide-quote {
+        font-size: clamp(2.8rem, 3vw, 5rem);
+        padding: 3rem 5rem;
+        max-width: 75%;
+        border-radius: 30px;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .slide-quote {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Accessibility - Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .slide-quote {
+        transition: none;
+        transform: none;
+    }
+    
+    .slide-quote:hover {
+        transform: none;
+    }
+}
+
+/* Performance optimizations for smooth scrolling */
+.slider-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.slide {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
 
 
 .business-section {
@@ -956,5 +1037,6 @@ html, body {
     color: #a89579;
   }
 }
+
 
 
