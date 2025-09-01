@@ -145,9 +145,26 @@
         <!-- Link footer CSS directly in main page -->
         <link rel="stylesheet" href="footer.css">
     </head>
-  <div id="footer-placeholder"></div>
-  <script src="include-footer.js"></script>
+  
+<!-- Footer will load here -->
+    <div id="footer-placeholder"></div>
 
+    <!-- Load footer JavaScript -->
+  <script src="footer.js"></script>
+    
+    <!-- Script to include footer.html -->
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          fetch('footer.html')
+              .then(response => response.text())
+              .then(html => {
+                  document.getElementById('footer-placeholder').innerHTML = html;
+              })
+              .catch(error => {
+                  console.error('Footer loading failed:', error);
+              });
+      });
+  </script>  
   <script src="js/script.js"></script>
   <script src="nav.js"></script>
   <script>
@@ -169,3 +186,4 @@
 
 </body>
 </html>
+
