@@ -1,46 +1,107 @@
-<!-- Navigation Styles -->
-<link rel="stylesheet" href="nav.css">
+<!-- Link to Footer CSS -->
+<link rel="stylesheet" href="footer.css">
 
-<nav class="navbar">
-    <div class="nav-container">
-        <!-- Logo/Brand -->
-        <div class="nav-logo">
-            <a href="#" class="nav-brand">
-                <img src="images/logo.png" alt="Silvaré Residences" class="logo-img">
-                <span class="brand-text">Silvaré</span>
-            </a>
+<footer class="elegant-footer">
+    <div class="footer-container">
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <img src="images/logo.png" alt="Silvaré Residences Logo" class="footer-logo">
+                </div>
+                <div class="brand-info">
+                    <h2 class="brand-name">Silvaré Residences</h2>
+                    <p class="brand-tagline">Where luxury meets legacy</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Toll Free</span>
+                        <a href="tel:+1-800-SILVARE" class="contact-value">1-800-SILVARE</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:info@silvareresidences.com" class="contact-value">info@silvareresidences.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#residential">Residential</a></li>
+                        <li><a href="#commercial">Commercial</a></li>
+                        <li><a href="#renovation">Renovation</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Mobile Menu Toggle Button -->
-        <div class="nav-toggle" id="nav-toggle">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </div>
+        <!-- Divider -->
+        <div class="footer-divider"></div>
 
-        <!-- Navigation Menu -->
-        <div class="nav-menu" id="nav-menu">
-            <div class="nav-item">
-                <a href="#home" class="nav-link">Home</a>
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2025</span> Silvaré Residences. All rights reserved.</p>
             </div>
-            <div class="nav-item">
-                <a href="#projects" class="nav-link active">Projects</a>
-            </div>
-            <div class="nav-item">
-                <a href="#services" class="nav-link">Services</a>
-            </div>
-            <div class="nav-item">
-                <a href="#about" class="nav-link">About</a>
-            </div>
-            <div class="nav-item">
-                <a href="#contact" class="nav-link contact-btn">Contact</a>
+            <div class="footer-legal">
+                <a href="#privacy">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#terms">Terms of Service</a>
             </div>
         </div>
-
-        <!-- Mobile Overlay -->
-        <div class="nav-overlay" id="nav-overlay"></div>
     </div>
-</nav>
 
-<!-- Navigation JavaScript -->
-<script src="nav.js"></script>
+    <!-- Decorative Elements -->
+    <div class="footer-decoration">
+        <div class="decoration-shape shape-1"></div>
+        <div class="decoration-shape shape-2"></div>
+        <div class="decoration-shape shape-3"></div>
+    </div>
+</footer>
+
+<!-- Link to Footer JavaScript -->
+<script src="footer.js"></script>
