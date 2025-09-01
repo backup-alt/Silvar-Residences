@@ -140,15 +140,13 @@
       <button class="carousel-arrow right-arrow" aria-label="Next testimonials">&#10095;</button>
     </div>
   </section>
-  <script src="footer.js"></script>
-  <script>
-      // Load footer HTML
-      fetch('footer.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('footer-placeholder').innerHTML = data;
-          });
-  </script>
+    <link rel="stylesheet" href="footer.css">
+    <div id="footer-content"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-content').innerHTML = data);
+    </script>
   <script src="js/script.js"></script>
   <script src="nav.js"></script>
   <script>
@@ -170,6 +168,7 @@
 
 </body>
 </html>
+
 
 
 
