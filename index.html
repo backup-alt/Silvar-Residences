@@ -141,14 +141,11 @@
     </div>
   </section>
     <link rel="stylesheet" href="footer.css">
-    <div id="footer-content"></div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div id="footer"></div>
     <script>
-    $(document).ready(function() {
-        $('#navbar-placeholder').load('nav.html');
-        $('#footer-placeholder').load('footer.html');
-    });
+    fetch('footer.html').then(r=>r.text()).then(d=>document.getElementById('footer').innerHTML=d);
     </script>
+
 
   <script src="js/script.js"></script>
   <script src="nav.js"></script>
@@ -171,6 +168,7 @@
 
 </body>
 </html>
+
 
 
 
