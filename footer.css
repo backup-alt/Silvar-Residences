@@ -8,14 +8,16 @@
 
 /* Footer Container */
 .elegant-footer {
-  background: rgba(28, 28, 28, 0.6); /* Semi-transparent dark */
-  backdrop-filter: blur(10px);       /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(28, 28, 28, 0.5);   /* Semi-transparent glass */
+  backdrop-filter: blur(15px);         /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(15px);
   color: #f0f0f0;
-  padding: 50px 20px 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 50px 30px 30px;
+  border-radius: 30px 30px 0 0;       /* Curvy top edges */
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+  margin-top: 20px;
   font-size: 14px;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
 }
 
 /* Center the footer content */
@@ -42,15 +44,20 @@
 }
 
 .footer-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 20px;                  /* Rounded logo */
   border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1);                /* Fun hover effect */
 }
 
 .brand-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -58,6 +65,7 @@
 .brand-tagline {
   font-size: 13px;
   color: #dddddd;
+  font-style: italic;
 }
 
 /* Contact Info */
@@ -75,7 +83,7 @@
 }
 
 .contact-item i {
-  font-size: 18px;
+  font-size: 20px;
   color: #f39c12;
 }
 
@@ -104,6 +112,7 @@
 .link-column h4 {
   margin-bottom: 10px;
   font-size: 16px;
+  color: #fff;
 }
 
 .link-column ul {
@@ -122,7 +131,7 @@
 
 .link-column a:hover {
   color: #f39c12;
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 /* Social Media */
@@ -146,16 +155,17 @@
   justify-content: center;
   background: rgba(255,255,255,0.1);
   color: #f0f0f0;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;                  /* Round icons */
   text-decoration: none;
   transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .social-icons a:hover {
   background: #f39c12;
-  transform: scale(1.1);
+  transform: scale(1.2);
   color: #fff;
 }
 
@@ -163,6 +173,7 @@
 .footer-divider {
   border-top: 1px solid rgba(255,255,255,0.2);
   margin: 20px 0;
+  border-radius: 50%;
 }
 
 /* Footer Bottom */
@@ -173,6 +184,7 @@
   font-size: 12px;
   color: #cccccc;
   gap: 10px;
+  border-radius: 20px;
 }
 
 .footer-bottom a {
