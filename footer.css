@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,21 +6,25 @@
   font-family: 'Arial', sans-serif;
 }
 
-/* Footer container */
+/* Footer Container */
 .elegant-footer {
-  background-color: #1c1c1c; /* Dark background */
-  color: #f0f0f0;           /* Light text */
+  background: rgba(28, 28, 28, 0.6); /* Semi-transparent dark */
+  backdrop-filter: blur(10px);       /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  color: #f0f0f0;
   padding: 50px 20px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 14px;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
 }
 
-/* Main footer content */
+/* Center the footer content */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Footer Content Layout */
+/* Footer layout */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
@@ -41,6 +45,8 @@
   width: 60px;
   height: 60px;
   object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .brand-name {
@@ -51,7 +57,7 @@
 
 .brand-tagline {
   font-size: 13px;
-  color: #bbbbbb;
+  color: #dddddd;
 }
 
 /* Contact Info */
@@ -76,10 +82,11 @@
 .contact-item a {
   color: #f0f0f0;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .contact-item a:hover {
-  text-decoration: underline;
+  color: #f39c12;
 }
 
 .contact-label {
@@ -110,11 +117,12 @@
 .link-column a {
   color: #f0f0f0;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .link-column a:hover {
   color: #f39c12;
+  transform: translateX(3px);
 }
 
 /* Social Media */
@@ -136,23 +144,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #333;
+  background: rgba(255,255,255,0.1);
   color: #f0f0f0;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   text-decoration: none;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
   background: #f39c12;
+  transform: scale(1.1);
   color: #fff;
 }
 
 /* Divider */
 .footer-divider {
-  border-top: 1px solid #444;
+  border-top: 1px solid rgba(255,255,255,0.2);
   margin: 20px 0;
 }
 
@@ -162,12 +171,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   font-size: 12px;
-  color: #bbbbbb;
+  color: #cccccc;
   gap: 10px;
 }
 
 .footer-bottom a {
-  color: #bbbbbb;
+  color: #cccccc;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -194,4 +203,3 @@
     text-align: center;
   }
 }
-
