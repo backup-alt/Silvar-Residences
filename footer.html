@@ -4,17 +4,24 @@
   <meta charset="UTF-8">
   <title>Silvaré Residences</title>
   <link rel="stylesheet" href="footer.css">
-  <!-- Font Awesome (if you’re using icons) -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body style="margin:0; min-height:100vh; display:flex; flex-direction:column;">
 
-  <!-- Your footer should be inside body -->
+  <!-- Page content placeholder -->
+  <main style="flex:1; padding:50px; text-align:center;">
+    <h1>Welcome to Silvaré Residences</h1>
+    <p>Scroll down to see the footer</p>
+  </main>
+
+  <!-- FOOTER -->
   <footer class="elegant-footer">
     <div class="footer-container">
+
       <!-- Main Footer Content -->
       <div class="footer-content">
-        
+
         <!-- Brand Section -->
         <div class="footer-brand">
           <div class="brand-logo">
@@ -29,22 +36,17 @@
         <!-- Contact Information -->
         <div class="footer-contact">
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-details">
-              <span class="contact-label">Toll Free</span>
-              <a href="tel:+1-800-SILVARE" class="contact-value">1-800-SILVARE</a>
+            <i class="fas fa-phone"></i>
+            <div>
+              <span class="contact-label">Toll Free</span><br>
+              <a href="tel:+1-800-SILVARE">1-800-SILVARE</a>
             </div>
           </div>
-          
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <span class="contact-label">Email</span>
-              <a href="mailto:info@silvareresidences.com" class="contact-value">info@silvareresidences.com</a>
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span class="contact-label">Email</span><br>
+              <a href="mailto:info@silvareresidences.com">info@silvareresidences.com</a>
             </div>
           </div>
         </div>
@@ -73,47 +75,35 @@
         <div class="footer-social">
           <h4>Follow Us</h4>
           <div class="social-icons">
-            <a href="#" class="social-link" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
+
       </div>
 
       <!-- Divider -->
       <div class="footer-divider"></div>
 
-      <!-- Copyright -->
+      <!-- Bottom -->
       <div class="footer-bottom">
-        <div class="copyright">
-          <p>&copy; <span id="currentYear">2025</span> Silvaré Residences. All rights reserved.</p>
-        </div>
+        <p>&copy; <span id="currentYear">2025</span> Silvaré Residences. All rights reserved.</p>
         <div class="footer-legal">
-          <a href="#privacy">Privacy Policy</a>
-          <span class="separator">|</span>
+          <a href="#privacy">Privacy Policy</a> | 
           <a href="#terms">Terms of Service</a>
         </div>
       </div>
-    </div>
 
-    <!-- Decorative Elements -->
-    <div class="footer-decoration">
-      <div class="decoration-shape shape-1"></div>
-      <div class="decoration-shape shape-2"></div>
-      <div class="decoration-shape shape-3"></div>
     </div>
   </footer>
 
-  <!-- Footer JavaScript -->
-  <script src="js/footer.js"></script>
+  <!-- Footer JS -->
+  <script>
+    // Auto-update year
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
