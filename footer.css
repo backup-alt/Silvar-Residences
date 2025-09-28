@@ -8,13 +8,13 @@
 
 /* Footer Container */
 .elegant-footer {
-  background: linear-gradient(135deg, rgba(58,123,213,0.8), rgba(0,210,255,0.6)); /* Modern gradient */
-  backdrop-filter: blur(15px);       /* Frosted glass effect */
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.85), rgba(72, 61, 139, 0.85)); /* Elegant purple gradient */
+  backdrop-filter: blur(15px);      /* Frosted glass effect */
   -webkit-backdrop-filter: blur(15px);
   color: #ffffff;
   padding: 50px 30px 30px;
-  border-radius: 30px 30px 0 0;     /* Curvy top edges */
-  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px 30px 0 0;    /* Curvy top edges */
+  border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
   margin-top: 20px;
   font-size: 14px;
@@ -65,7 +65,7 @@
 
 .brand-tagline {
   font-size: 13px;
-  color: #e0f7ff;
+  color: #e0d8ff; /* Soft light accent */
   font-style: italic;
 }
 
@@ -85,7 +85,7 @@
 
 .contact-item i {
   font-size: 20px;
-  color: #ffd700; /* golden accent */
+  color: #ffd700; /* golden accent for elegance */
 }
 
 .contact-item a {
@@ -95,7 +95,7 @@
 }
 
 .contact-item a:hover {
-  color: #ffea00; /* bright hover */
+  color: #ffe066; /* subtle elegant hover */
 }
 
 .contact-label {
@@ -131,7 +131,7 @@
 }
 
 .link-column a:hover {
-  color: #ffea00;
+  color: #ffe066;
   transform: translateX(4px);
 }
 
@@ -154,7 +154,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
   color: #ffffff;
   width: 40px;
   height: 40px;
@@ -165,7 +165,7 @@
 }
 
 .social-icons a:hover {
-  background: #ffea00;
+  background: #ffe066;
   transform: scale(1.2);
   color: #000000;
 }
@@ -183,19 +183,19 @@
   flex-wrap: wrap;
   justify-content: space-between;
   font-size: 12px;
-  color: #e0f7ff;
+  color: #e0d8ff;
   gap: 10px;
   border-radius: 20px;
 }
 
 .footer-bottom a {
-  color: #e0f7ff;
+  color: #e0d8ff;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-bottom a:hover {
-  color: #ffea00;
+  color: #ffe066;
 }
 
 /* Responsive */
