@@ -7,7 +7,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="about_us.css">
-   <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 <body>
   <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
@@ -99,9 +100,6 @@
       </div>
 
     </div>
-    <div class="footer-bottom">
-      All rights reserved. 20XX Silvaré Residences. <br>
-    </div>
   </footer>
   <script src="nav.js"></script>
   <script>
@@ -120,8 +118,24 @@
           })
           .catch(err => console.error('❌ Failed to load navbar:', err));
   </script>
+   <div id="footer-placeholder"></div>
+
+  <!-- Include footer.html via JavaScript -->
+    <script>
+      // Dynamically load footer.html
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+          // Now load footer.js (only after footer is placed in DOM)
+          var script = document.createElement('script');
+          script.src = 'js/footer.js';
+          document.body.appendChild(script);
+        });
+    </script>
 
 </html>
+
 
 
 
