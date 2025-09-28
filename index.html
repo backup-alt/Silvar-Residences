@@ -147,25 +147,6 @@
         <link rel="stylesheet" href="footer.css">
     </head>
   
-<!-- Footer will load here -->
-    <div id="footer-placeholder"></div>
-
-    <!-- Load footer JavaScript -->
-  <script src="js/footer.js"></script>
-    
-    <!-- Script to include footer.html -->
-  <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          fetch('footer.html')
-              .then(response => response.text())
-              .then(html => {
-                  document.getElementById('footer-placeholder').innerHTML = html;
-              })
-              .catch(error => {
-                  console.error('Footer loading failed:', error);
-              });
-      });
-  </script>  
   <script src="js/script.js"></script>
   <script src="nav.js"></script>
   <script>
@@ -185,8 +166,25 @@
           .catch(err => console.error('❌ Failed to load navbar:', err));
   </script>
 
+  <div id="footer-placeholder"></div>
+
+  <!-- Include footer.html via JavaScript -->
+  <script>
+    // Dynamically load footer.html
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        // Now load footer.js (only after footer is placed in DOM)
+        var script = document.createElement('script');
+        script.src = 'js/footer.js';
+        document.body.appendChild(script);
+      });
+  </script>
+
 </body>
 </html>
+
 
 
 
