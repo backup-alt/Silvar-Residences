@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <head>
   <meta charset="UTF-8">
-  <title>Live Animation Demo</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f2f2f2;
-    }
-    #box {
-      width: 60px;
-      height: 60px;
-      position: relative;
-      background: #ff4c4c;
-      border-radius: 16px;
-      transition: background 0.2s;
-    }
-  </style>
+  <title>Home Slider</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <div id="box"></div>
-  <script>
-    const box = document.getElementById("box");
-    let position = 0;
-    let direction = 1;
+  <div id="navbar-placeholder"></div> <!-- Placeholder for nav -->
 
-    function animate() {
-      position += direction * 3;           // Move by 3px per frame
-      box.style.left = position + "px";
 
-      // Change color based on position
-      const hue = (position % 360);
-      box.style.background = `hsl(${hue}, 80%, 55%)`;
-
-      // Reverse direction when hitting edge
-      if (position > 350 || position < 0) {
-        direction *= -1;
-      }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+  <div class="slider-container">
+    <div class="slider-track">
+      <div class="slide">
+        <img src="images/1.jpg" class="slider-image" alt="1">
+        <div class="slide-quote">Homes built to inspire, made to last.</div>
+      </div>
+      <div class="slide">
+        <img src="images/2.jpg" class="slider-image" alt="2">
+        <div class="slide-quote">Where your vision becomes home.</div>
+      </div>
+      <div class="slide">
+        <img src="images/3.jpg" class="slider-image" alt="3">
+        <div class="slide-quote">Elegant spaces, timeless living.</div>
+      </div>
+      <div class="slide">
+        <img src="images/4.jpg" class="slider-image" alt="4">
+        <div class="slide-quote">Crafting comfort with style.</div>
+      </div>
+      <div class="slide">
+        <img src="images/5.jpg" class="slider-image" alt="5">
+        <div class="slide-quote">From foundation to finish — perfection.</div>
+      </div>
+      <div class="slide">
+        <img src="images/6.jpg" class="slider-image" alt="6">
+        <div class="slide-quote">Designing dreams, building trust.</div>
+      </div>
+      <div class="slide">
+        <img src="images/7.jpg" class="slider-image" alt="7">
+        <div class="slide-quote">Your journey home starts here.</div>
+      </div>
+    </div>
+  </div>
   <!-- Business/About Section with Blurred Image Background -->
   <section class="business-section">
     <div class="business-bg"></div>
@@ -181,6 +184,7 @@
 
 </body>
 </html>
+
 
 
 
